@@ -44,6 +44,18 @@ body {
   margin-top: 2.25rem;
 }
 
+/* Cap the reading column so cards stop looking half-empty.
+   ~680px is a comfortable line length for body copy and keeps the
+   inline phone screenshots from getting drowned in margin. */
+.page > #quartz-body > .center {
+  & > article,
+  & > .page-header {
+    max-width: 680px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
 /* ─── Headings ──────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6, thead {
   font-family: var(--headerFont);
