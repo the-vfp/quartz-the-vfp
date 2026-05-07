@@ -1,3 +1,668 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+/* ─────────────────────────────────────────────────────────────────
+   Garden Path — Plant Tracker portfolio theme
+   Cream + sage palette, Cormorant Garamond + DM Sans, light only.
+   Designed to match Claude Design's "Garden Path" direction.
+   ───────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Extended Garden Path palette (additional tokens beyond Quartz core) */
+  --gp-cream: #f5f0e2;
+  --gp-cream-2: #efe9d7;
+  --gp-paper: #fbf7eb;
+  --gp-card: #fffcf1;
+  --gp-sage: #6e8c5b;
+  --gp-sage-deep: #4f6a40;
+  --gp-sage-darker: #3b5230;
+  --gp-sage-pale: #dce4cc;
+  --gp-sage-tint: #e9edd9;
+  --gp-terracotta: #dd7b5c;
+  --gp-amber: #c68b2e;
+  --gp-ink: #2a2e20;
+  --gp-ink-2: #3d4234;
+  --gp-ink-mute: #6b7060;
+  --gp-ink-faint: #9a9a8a;
+  --gp-rule: #d9d2bd;
+  --gp-rule-soft: #e5dec8;
+}
+
+body {
+  background-color: var(--gp-cream);
+  color: var(--gp-ink-2);
+  font-feature-settings: "ss01", "kern";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Reduce default vertical breathing so left rail sits up high */
+.page > #quartz-body .sidebar.left {
+  padding-top: 2.25rem;
+}
+.page > #quartz-body .page-header {
+  margin-top: 2.25rem;
+}
+
+/* ─── Headings ──────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6, thead {
+  font-family: var(--headerFont);
+  color: var(--gp-sage-darker);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+article > h2,
+article > h3,
+article > h4 {
+  color: var(--gp-ink);
+}
+
+.article-title {
+  font-family: var(--headerFont);
+  font-size: 3.2rem;
+  line-height: 1.02;
+  font-weight: 600;
+  color: var(--gp-sage-darker);
+  letter-spacing: -0.015em;
+  margin: 0.25rem 0 0.25rem;
+}
+
+/* The index/landing page gets the giant treatment + an italic subtitle */
+body[data-slug="index"] .article-title {
+  font-size: 4rem;
+  letter-spacing: -0.02em;
+}
+
+/* Hide body-level h1 — Quartz already renders the title via ArticleTitle.
+   Most authors put a duplicate # Title at the top of the markdown body. */
+article > h1:first-child,
+article > .popover-hint:first-child > h1,
+article > h1 {
+  display: none;
+}
+
+/* ─── Body type ─────────────────────────────────────────────────── */
+article p,
+article li,
+article td {
+  color: var(--gp-ink-2);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+article p > strong {
+  color: var(--gp-ink);
+  font-weight: 600;
+}
+
+article em {
+  font-family: var(--headerFont);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05em;
+}
+
+/* Eyebrow utility — used above page titles */
+.eyebrow,
+article .eyebrow {
+  display: inline-block;
+  font-family: var(--bodyFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gp-ink-mute);
+  font-weight: 600;
+}
+
+/* ─── Links ─────────────────────────────────────────────────────── */
+a {
+  color: var(--gp-sage-deep);
+  font-weight: 500;
+  &:hover {
+    color: var(--gp-sage-darker);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  &.internal {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--gp-sage-pale);
+    &:hover {
+      border-bottom-color: var(--gp-sage-deep);
+      background-color: transparent;
+    }
+  }
+}
+
+/* ─── Sidebar (left): seamless, no divider rule ─────────────────── */
+.sidebar.left {
+  font-family: var(--bodyFont);
+  gap: 0.85rem;
+}
+
+/* Search field — paper background, soft rule */
+.search > .search-button {
+  background: var(--gp-paper);
+  border: 1px solid var(--gp-rule);
+  border-radius: 8px;
+  height: 2.1rem;
+  color: var(--gp-ink-mute);
+  font-size: 0.85rem;
+  & > p {
+    color: var(--gp-ink-mute);
+  }
+  & svg .search-path {
+    stroke: var(--gp-ink-mute);
+  }
+}
+.search { max-width: 100%; }
+
+/* Explorer — seamless, no left border on nested folders */
+.explorer {
+  margin-top: 0.25rem;
+}
+button.desktop-explorer,
+button.mobile-explorer {
+  & h2 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gp-ink);
+    font-family: var(--bodyFont);
+    letter-spacing: 0;
+  }
+  & .fold {
+    color: var(--gp-ink-faint);
+  }
+}
+
+.explorer-content {
+  font-size: 0.875rem;
+  & ul li > a {
+    color: var(--gp-ink-2);
+    opacity: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    display: block;
+    line-height: 1.35;
+    &:hover {
+      background: var(--gp-cream-2);
+      color: var(--gp-sage-darker);
+    }
+    &.active {
+      background: var(--gp-sage-tint);
+      color: var(--gp-sage-darker);
+      font-weight: 600;
+      opacity: 1;
+    }
+  }
+  /* Seamless: kill the divider rule on nested folders */
+  .folder-outer > ul {
+    border-left: none;
+    margin-left: 0;
+    padding-left: 0.85rem;
+  }
+}
+
+.folder-container {
+  & div > a,
+  & div > button > span {
+    color: var(--gp-ink);
+    font-family: var(--bodyFont);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  & div > a:hover,
+  & div > button:hover > span {
+    color: var(--gp-sage-darker);
+  }
+  & .folder-icon {
+    color: var(--gp-ink-faint);
+    &:hover { color: var(--gp-sage-deep); }
+  }
+}
+
+/* ─── Right rail: "In this article" TOC, Slack-inspired highlight ─── */
+.toc {
+  font-family: var(--bodyFont);
+}
+button.toc-header {
+  color: var(--gp-ink-mute);
+  & h3 {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gp-ink-mute);
+    font-weight: 600;
+    font-family: var(--bodyFont);
+  }
+}
+
+ul.toc-content.overflow {
+  border-left: 2px solid var(--gp-rule);
+  padding-left: 0.75rem;
+  margin: 0.65rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  & > li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.4;
+
+    & > a {
+      color: var(--gp-ink-mute);
+      font-size: 0.85rem;
+      font-weight: 500;
+      opacity: 1;
+      display: block;
+      padding: 0.3rem 0;
+      transition: color 0.2s ease;
+      &:hover {
+        color: var(--gp-sage-darker);
+        text-decoration: none;
+      }
+      &.in-view {
+        color: #fff;
+        background: var(--gp-sage-deep);
+        font-weight: 600;
+        padding: 0.45rem 0.75rem;
+        border-radius: 8px;
+        margin-left: -0.875rem; /* hop over the rule */
+        opacity: 1;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+      }
+    }
+  }
+}
+
+/* ─── Breadcrumbs ───────────────────────────────────────────────── */
+.breadcrumb-container {
+  font-size: 0.78rem;
+  color: var(--gp-ink-mute);
+  margin-top: 0.25rem;
+  & a {
+    color: var(--gp-ink-mute);
+    font-weight: 500;
+    &:hover {
+      color: var(--gp-sage-deep);
+    }
+  }
+  & .breadcrumb-element:last-child p {
+    color: var(--gp-ink);
+  }
+  & p { font-size: 0.78rem; }
+}
+
+/* ─── Content meta (date · read time) ───────────────────────────── */
+.content-meta {
+  color: var(--gp-ink-mute);
+  font-size: 0.85rem;
+  margin: 0.4rem 0 1rem;
+}
+
+/* ─── Callouts: quiet, sage-tint by default ─────────────────────── */
+.callout {
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  margin: 1.1rem 0;
+  font-size: 0.95rem;
+
+  /* Defaults (note) */
+  --color: var(--gp-sage-deep);
+  --border: var(--gp-sage-pale);
+  --bg: var(--gp-sage-tint);
+
+  & .callout-title {
+    color: var(--gp-ink);
+    font-weight: 600;
+    .callout-icon {
+      color: var(--color);
+    }
+  }
+  & .callout-content {
+    color: var(--gp-ink-2);
+    p { color: var(--gp-ink-2); }
+  }
+
+  &[data-callout],
+  &[data-callout="note"],
+  &[data-callout="info"],
+  &[data-callout="todo"],
+  &[data-callout="abstract"] {
+    --color: var(--gp-sage-deep);
+    --border: var(--gp-sage-pale);
+    --bg: var(--gp-sage-tint);
+  }
+  &[data-callout="tip"],
+  &[data-callout="success"],
+  &[data-callout="hint"] {
+    --color: var(--gp-amber);
+    --border: #ebdfaf;
+    --bg: #fbf3d9;
+  }
+  &[data-callout="warning"],
+  &[data-callout="caution"],
+  &[data-callout="attention"],
+  &[data-callout="danger"],
+  &[data-callout="failure"],
+  &[data-callout="error"],
+  &[data-callout="bug"],
+  &[data-callout="missing"] {
+    --color: var(--gp-terracotta);
+    --border: #ebc0a8;
+    --bg: #fbe3d6;
+  }
+  &[data-callout="question"],
+  &[data-callout="example"],
+  &[data-callout="quote"],
+  &[data-callout="cite"] {
+    --color: var(--gp-sage-deep);
+    --border: var(--gp-rule-soft);
+    --bg: var(--gp-paper);
+  }
+}
+
+/* ─── Greenhouse-style content blocks (markdown shortcut) ─────────
+   Use a level-2 heading with the eyebrow text injected via a div
+   containing class .gp-block. Authors write:
+
+     <div class="gp-block">
+     <div class="gp-block-eyebrow">Step-by-step</div>
+
+     ## Adjust the cadence for one plant
+
+     1. Step one
+     2. Step two
+
+     </div>
+
+   Or use the markdown sugar: a fenced section becomes a card.
+   ───────────────────────────────────────────────────────────────── */
+.gp-block {
+  background: var(--gp-card);
+  border: 1px solid var(--gp-rule);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  margin: 1.25rem 0;
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.02),
+    0 4px 14px rgba(60, 90, 40, 0.04);
+
+  & > :first-child { margin-top: 0; }
+  & > :last-child { margin-bottom: 0; }
+
+  & h2,
+  & h3 {
+    color: var(--gp-ink);
+    font-size: 1.4rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.85rem;
+  }
+
+  /* Numbered list inside a block → Slack-style circular numerals */
+  & ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: gp-step;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    & > li {
+      counter-increment: gp-step;
+      padding-left: 2.5rem;
+      position: relative;
+      line-height: 1.55;
+
+      &::before {
+        content: counter(gp-step);
+        position: absolute;
+        left: 0;
+        top: 0.05rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        background: var(--gp-sage-deep);
+        color: #fff;
+        font-family: var(--bodyFont);
+        font-weight: 700;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.gp-block-eyebrow {
+  font-family: var(--bodyFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gp-sage-deep);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+
+  /* Recovery / Removal / etc. — coral variant */
+  &.recovery,
+  &.removal,
+  &.danger {
+    color: var(--gp-terracotta);
+  }
+}
+
+/* Numbered list pattern even outside a block: opt-in via .step-list */
+ol.step-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  counter-reset: gp-step;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  & > li {
+    counter-increment: gp-step;
+    padding-left: 2.5rem;
+    position: relative;
+    line-height: 1.55;
+    &::before {
+      content: counter(gp-step);
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      background: var(--gp-sage-deep);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+  }
+}
+
+/* ─── Landing-page video placeholder ────────────────────────────── */
+.video-placeholder {
+  position: relative;
+  margin: 1.5rem 0 1rem;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--gp-sage-pale);
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--gp-sage-tint), var(--gp-sage-pale));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-placeholder .video-dots {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background:
+    radial-gradient(circle at 20% 30%, #fff 0 14px, transparent 16px),
+    radial-gradient(circle at 75% 65%, #fff 0 8px, transparent 10px),
+    radial-gradient(circle at 88% 22%, #fff 0 5px, transparent 7px),
+    radial-gradient(circle at 35% 80%, #fff 0 6px, transparent 8px);
+  pointer-events: none;
+}
+.video-placeholder .video-play {
+  background: var(--gp-sage-deep);
+  color: #fff;
+  border: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+  &:hover {
+    background: var(--gp-sage-darker);
+    transform: scale(1.05);
+  }
+}
+.video-placeholder .video-label {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-family: var(--bodyFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gp-sage-darker);
+  font-weight: 600;
+}
+
+/* ─── Landing-page CTA cards ────────────────────────────────────── */
+.cta-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+
+  @media all and ($mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  & .cta {
+    display: block;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--gp-rule);
+    background: var(--gp-paper);
+    color: var(--gp-ink);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(60, 90, 40, 0.08);
+    }
+
+    & .cta-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gp-ink-mute);
+      margin-bottom: 0.15rem;
+    }
+    & .cta-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--gp-sage-darker);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    & .cta-arrow {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &.cta-primary {
+      background: var(--gp-sage-deep);
+      border-color: var(--gp-sage-darker);
+      color: #fff;
+      & .cta-eyebrow { color: rgba(255, 255, 255, 0.8); }
+      & .cta-label { color: #fff; }
+      &:hover { background: var(--gp-sage-darker); }
+    }
+
+    /* Hide Quartz's auto-injected external icon — design already has ↗ in label */
+    & .external-icon { display: none; }
+  }
+}
+
+/* ─── Code blocks: warmer palette ───────────────────────────────── */
+code {
+  background: var(--gp-cream-2);
+  color: var(--gp-ink);
+}
+pre {
+  background: var(--gp-paper) !important;
+  border-color: var(--gp-rule);
+}
+
+/* ─── Selection + highlight ─────────────────────────────────────── */
+::selection {
+  background: var(--gp-sage-tint);
+  color: var(--gp-ink);
+}
+
+/* ─── Blockquote ────────────────────────────────────────────────── */
+blockquote {
+  border-left: 3px solid var(--gp-sage);
+  background: transparent;
+  font-family: var(--headerFont);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gp-ink-2);
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+
+/* ─── Footer: keep quiet ────────────────────────────────────────── */
+footer {
+  color: var(--gp-ink-faint);
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 3rem;
+  & a { color: var(--gp-sage-deep); }
+}
+
+/* ─── HR ────────────────────────────────────────────────────────── */
+hr {
+  background-color: var(--gp-rule-soft);
+}
+
+/* ─── Tag list (kept simple) ────────────────────────────────────── */
+.tags {
+  margin: 0.75rem 0;
+  & a {
+    background: var(--gp-sage-tint);
+    color: var(--gp-sage-darker);
+    border-radius: 6px;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.8rem;
+    border-bottom: none;
+    &:hover {
+      background: var(--gp-sage-pale);
+      border-bottom: none;
+    }
+  }
+}
