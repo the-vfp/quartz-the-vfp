@@ -406,24 +406,26 @@ ul.toc-content.overflow {
     margin-bottom: 0.85rem;
   }
 
-  /* Numbered list inside a block → Slack-style circular numerals */
+  /* Numbered list inside a block → Slack-style circular numerals.
+     Use the browser's built-in `list-item` counter so the `start`
+     attribute on <ol start="3"> (which Markdown emits when an author
+     splits a list with intervening content like an image) flows
+     through and the numbering keeps counting up across breaks. */
   & ol {
     list-style: none;
     padding: 0;
     margin: 0;
-    counter-reset: gp-step;
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
 
     & > li {
-      counter-increment: gp-step;
       padding-left: 2.5rem;
       position: relative;
       line-height: 1.55;
 
       &::before {
-        content: counter(gp-step);
+        content: counter(list-item);
         position: absolute;
         left: 0;
         top: 0.05rem;
@@ -466,18 +468,16 @@ ol.step-list {
   list-style: none;
   padding: 0;
   margin: 1rem 0;
-  counter-reset: gp-step;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 
   & > li {
-    counter-increment: gp-step;
     padding-left: 2.5rem;
     position: relative;
     line-height: 1.55;
     &::before {
-      content: counter(gp-step);
+      content: counter(list-item);
       position: absolute;
       left: 0;
       top: 0.05rem;
@@ -610,6 +610,12 @@ ol.step-list {
     /* Hide Quartz's auto-injected external icon — design already has ↗ in label */
     & .external-icon { display: none; }
   }
+}
+
+/* ─── Images: light grey hairline border so screenshots have an edge ─ */
+article img {
+  border: 1px solid var(--gp-rule-soft);
+  border-radius: 8px;
 }
 
 /* ─── Code blocks: warmer palette ───────────────────────────────── */
