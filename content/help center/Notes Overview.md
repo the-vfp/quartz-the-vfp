@@ -1,0 +1,41 @@
+# Notes Overview
+
+Notes are useful for keeping track of any care tips you want to remember further down the line and for keeping track of your plant's life journey in general! Use notes so that you'll have a place to go if you ever need to reference what your plants have been up to!
+
+
+> [!NOTE] Emojis + Notes
+Choosing an emoji for each note allows you to easily read your plant's care log at-a-glance. 
+
+## Adding a note
+
+![[Pasted image 20260506214548.png]]
+
+1. Navigate to a plant's page
+2. Select an emoji — tap the keyboard (⌨) to view the full emoji list and select one from there instead..
+3. Type your note in the text box
+4. Hit *Save* and your note will now appear in the plant's care log
+
+> [!NOTE] Intended Emoji Meaning
+> 📝 pencil = default emoji when none selected
+> 🪴 potted plant = repotted
+> ✂ scissors = pruned
+> 🔄 counterclockwise = rotated
+> 🗳 box = moved
+> ⌨ keyboard = full emoji keyboard to select from all emojis
+
+## Edit a note
+
+![[Pasted image 20260506220817.png]]
+
+1. Tap the pencil (✏) on a note that's already saved in the Care Log
+2. Make changes to the note via the text box above the Care Log
+3. Tap *Save*
+
+## Delete a note
+
+Tap the x on a note that's already in the Care Log to delete a note.
+
+
+> [!warning] Be carefule!
+>Be careful! There isn't a confirmation message when deleting a note, so be mindful as there won't be a way to recover the note once it's gone.
+
