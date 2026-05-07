@@ -224,6 +224,10 @@ button.mobile-explorer {
 /* ─── Right rail: "In this article" TOC, Slack-inspired highlight ─── */
 .toc {
   font-family: var(--bodyFont);
+  /* Quartz base sets overflow-y: hidden; CSS forces overflow-x to auto in
+     that case unless we explicitly hide it, which causes a horizontal
+     scrollbar when titles wrap. Lock both axes. */
+  overflow-x: hidden;
 }
 button.toc-header {
   color: var(--gp-ink-mute);
