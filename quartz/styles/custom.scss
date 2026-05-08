@@ -624,10 +624,15 @@ ol.step-list {
   }
 }
 
-/* ─── Images: light grey hairline border so screenshots have an edge ─ */
+/* ─── Images: hairline border + center stand-alone screenshots ─────
+   Body text and lists stay left-aligned (they extend full width
+   naturally); centering only kicks in for images, which are usually
+   narrower than the column. */
 article img {
   border: 1px solid var(--gp-rule-soft);
   border-radius: 8px;
+  display: block;
+  margin: 1rem auto;
 }
 
 /* ─── Code blocks: warmer palette ───────────────────────────────── */
