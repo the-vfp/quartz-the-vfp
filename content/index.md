@@ -2,6 +2,7 @@
 title: Plant Tracker
 subtitle: a watering app for nineteen houseplants
 eyebrow: Welcome
+description: A personal app I built using Claude to manage watering schedules and keep a care log for nineteen houseplants.
 ---
 
 Plant Tracker is a personal app I built using Claude to manage the watering schedule and keep a care log for all of my houseplants.
