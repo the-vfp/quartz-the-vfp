@@ -1,17 +1,18 @@
 ---
 title: Watering Cadence Chart Overview
 description: What the watering cadence graph measures and how to read it.
+category: tracking-and-insights
+draft:
 tags:
   - plant_tracker
   - help_center
 ---
-# Watering Cadence Chart Overview
 
 The graph measures how many days are in between each watering for a plant. This way, you can see how often you're actually watering your plant!
 
 Use this information to adjust the watering cadence you've set for your plant in the app, to note any changes to its watering needs if any conditions have changed, or to congratulate yourself on a plant well watered 🥂
 
-![[Pasted image plant-tracker-agnes-expanded-graph|343]]
+![[plant-tracker-agnes-expanded-graph.png|320]]
 
 ## Viewing the chart
 
