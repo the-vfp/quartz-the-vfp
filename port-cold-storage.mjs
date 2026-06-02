@@ -148,7 +148,15 @@ function genericScrub(content) {
   c = c.replace(pcTagRe, "") // "X's PC." blockquote tags
   c = stripPlayerColumn(c) // party-table "Player" column
   c = c.replace(/\s*_[^_\n]*generated from[^_\n]*_/gi, "") // auto-caption footer
+  // strip %% private %% … %% /private %% blocks (visible in Obsidian, never public)
+  c = c.replace(/\n?[^\S\n]*%%\s*private\s*%%[\s\S]*?%%\s*\/private\s*%%[^\S\n]*/gi, "")
   return c
+}
+
+// a source note opts out of the public wiki with `draft: true` in frontmatter
+function isDraft(raw) {
+  const fm = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  return !!(fm && /^draft:\s*true\b/m.test(fm[1]))
 }
 
 function applyFileEdits(rel, content) {
@@ -176,6 +184,7 @@ function walk(dir) {
 // ── 1. Copy + scrub the mapped folders ──────────────────────────────────────
 log("PORT — copying source → Cold Storage")
 const sourcedRel = new Set() // target-relative paths we wrote (for orphan check)
+const drafted = [] // skipped because draft: true
 let count = 0
 for (const [srcSub, dstSub] of Object.entries(FOLDER_MAP)) {
   const srcDir = path.join(SRC, srcSub)
@@ -184,8 +193,15 @@ for (const [srcSub, dstSub] of Object.entries(FOLDER_MAP)) {
   for (const f of fs.readdirSync(srcDir)) {
     if (!f.endsWith(".md")) continue
     const rel = `${dstSub}/${f}`
-    let c = fs.readFileSync(path.join(srcDir, f), "utf8")
-    c = ensureTitle(c, f.slice(0, -3))
+    const raw = fs.readFileSync(path.join(srcDir, f), "utf8")
+    if (isDraft(raw)) {
+      // draft → keep it out of public; remove any stale copy from a prior run
+      const tgt = path.join(DST, rel)
+      if (fs.existsSync(tgt)) fs.unlinkSync(tgt)
+      drafted.push(rel)
+      continue
+    }
+    let c = ensureTitle(raw, f.slice(0, -3))
     c = genericScrub(c)
     c = applyFileEdits(rel, c)
     fs.writeFileSync(path.join(dstDir, f), c)
@@ -193,7 +209,8 @@ for (const [srcSub, dstSub] of Object.entries(FOLDER_MAP)) {
     count++
   }
 }
-log(`  copied ${count} content pages`)
+log(`  copied ${count} content pages` + (drafted.length ? `, skipped ${drafted.length} draft` : ""))
+for (const d of drafted) log(`    · draft (kept private): ${d}`)
 
 // ── 2. Index home page (synced from source, with public-only tweaks) ─────────
 {

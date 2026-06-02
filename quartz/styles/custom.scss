@@ -691,140 +691,198 @@ hr {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   DARKHOUR — Cold Storage section theme
-   A dark "case-file / terminal" treatment, scoped entirely to pages
-   under /Cold Storage/* via body[data-slug^="Cold-Storage"]. Quartz
-   slugifies the folder as "Cold-Storage" (case preserved, spaces →
-   dashes), so the
-   Plant Tracker portfolio keeps its cream/sage Garden Path look.
+   DARKHOUR — Cold Storage section theme  (v2 — closer to Claude Design)
+   Scoped entirely to body[data-slug^="Cold-Storage"]; the Plant Tracker
+   portfolio keeps its cream/sage Garden Path look.
 
-   Strategy: re-map the Garden Path (--gp-*) and Quartz core tokens to
-   a warm-black + amber palette inside the scope. Because the rest of
-   this file is built on those tokens, most of the chrome (sidebar,
-   explorer, search, TOC, links, tables) re-colors automatically. The
-   rest is bespoke: mono "case-file" labels, the [!subject] index card,
-   and section-specific headers.
+   v2 pushes toward the DARKHOUR mockup: fully monospace, deeper warm-black
+   palette with a true rust-red, ◆ red pins on section headers, taped/tilted
+   manila index cards, and red handwritten marginalia (system cursive stack —
+   no web-font load, which Quartz's @use/build order can't place reliably).
    ─────────────────────────────────────────────────────────────────── */
 body[data-slug^="Cold-Storage" i] {
   /* --- Quartz core tokens (drive base.scss chrome) --- */
-  --light: #14110f;
-  --lightgray: #2b231c;
+  --light: #100d0b;
+  --lightgray: #2c241c;
   --gray: #8a7f70;
   --darkgray: #cdc4b4;
   --dark: #ece5d8;
-  --secondary: #c9803e;
-  --tertiary: #e0a968;
+  --secondary: #d9a55a;
+  --tertiary: #e8c27e;
   --highlight: rgba(201, 128, 62, 0.1);
-  --textHighlight: #c9803e44;
+  --textHighlight: #b5453a44;
 
   /* --- Garden Path tokens, re-mapped to DARKHOUR --- */
-  --gp-cream: #14110f; /* page background */
-  --gp-cream-2: #1d1813; /* hover / inline code */
-  --gp-paper: #1b1611; /* panels, pre */
-  --gp-card: #211b15; /* cards */
-  --gp-sage: #c9803e; /* accents that were sage → amber */
-  --gp-sage-deep: #d08a44; /* links */
-  --gp-sage-darker: #e0a968; /* headings */
-  --gp-sage-pale: #4a3a28; /* borders, active edge */
-  --gp-sage-tint: #2a2014; /* active background, chips */
-  --gp-terracotta: #c1554a; /* alert red */
+  --gp-cream: #100d0b;   /* page background */
+  --gp-cream-2: #1a1511; /* hover / inline code */
+  --gp-paper: #17120e;   /* panels, pre */
+  --gp-card: #1e1813;    /* cards */
+  --gp-sage: #d9a55a;
+  --gp-sage-deep: #dca94f;
+  --gp-sage-darker: #e8c27e;
+  --gp-sage-pale: #463728;
+  --gp-sage-tint: #241a10;
+  --gp-terracotta: #c1554a;
   --gp-amber: #d3a04a;
-  --gp-ink: #f3ecde; /* strongest text */
-  --gp-ink-2: #ddd4c4; /* body text */
-  --gp-ink-mute: #9c9182; /* meta, muted */
-  --gp-ink-faint: #6c6253; /* faint */
-  --gp-rule: #2f261d; /* hairlines */
-  --gp-rule-soft: #261f17;
+  --gp-ink: #f1ead9;
+  --gp-ink-2: #d8cfbe;
+  --gp-ink-mute: #9a8f7e;
+  --gp-ink-faint: #6a6052;
+  --gp-rule: #2c241b;
+  --gp-rule-soft: #221c15;
+
+  /* --- DARKHOUR-specific --- */
+  --dh-red: #b5453a;
+  --dh-red-bright: #cd5a4d;
+  --dh-hand: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
 
   background-color: var(--gp-cream);
   color: var(--gp-ink-2);
 
-  /* --- Mono "case-file" labels on structural type --- */
+  /* ── Full monospace: body inherits codeFont; re-affirm on components
+       that hardcode bodyFont/headerFont elsewhere in this file ──────── */
+  &,
   .article-title,
-  article h2,
-  article h3,
-  article h4,
-  thead,
-  th,
+  article h1, article h2, article h3, article h4,
   .breadcrumb-container,
   .content-meta,
-  .eyebrow,
   button.toc-header h3,
+  button.desktop-explorer h2, button.mobile-explorer h2,
+  .folder-container,
+  .explorer-content,
+  ul.toc-content,
   .callout-title,
-  button.desktop-explorer h2,
-  button.mobile-explorer h2 {
+  footer {
     font-family: var(--codeFont);
-    letter-spacing: 0.02em;
+  }
+  article p, article li, article td {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--gp-ink-2);
   }
 
   /* Page title → terminal header */
   .article-title {
-    font-size: 2.1rem;
+    font-size: 2rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--gp-sage-darker);
+    letter-spacing: 0.07em;
+    color: var(--gp-ink);
   }
-  /* Section landing (Cold Storage) gets the big treatment */
   &[data-slug="Cold-Storage/index"] .article-title {
-    font-size: 3rem;
-    letter-spacing: 0.04em;
+    font-size: 2.8rem;
   }
 
-  /* Section headers: amber, underscored rule */
+  /* Section headers → ◆ red pin + uppercase tan, no underline */
   article h2 {
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
     color: var(--gp-sage-darker) !important;
-    border-bottom: 1px solid var(--gp-rule);
-    padding-bottom: 0.3rem;
-    margin-top: 2rem;
+    margin-top: 2.2rem;
+    &::before {
+      content: "◆";
+      color: var(--dh-red);
+      font-size: 0.7em;
+      margin-right: 0.55em;
+      vertical-align: 0.12em;
+    }
   }
   article h3 {
     color: var(--gp-ink) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.82rem;
   }
 
-  /* Intro blockquote on each article = "file note" strip */
+  /* Intro blockquote → case-file note strip; italic inside → red marginalia */
   blockquote:not(.callout) {
-    border-left: 3px solid var(--gp-sage);
+    border-left: 2px solid var(--dh-red);
     background: var(--gp-card);
     color: var(--gp-ink-2);
     padding: 0.7rem 1rem;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
+    border-radius: 0 4px 4px 0;
+    font-style: normal;
+    & em {
+      font-family: var(--dh-hand);
+      font-style: normal;
+      color: var(--dh-red-bright);
+      font-size: 1.15em;
+    }
+  }
+
+  /* Links → amber, dotted underline (terminal reference feel) */
+  a.internal {
+    color: var(--gp-sage);
+    border-bottom: 1px dotted var(--gp-sage-pale);
+    &:hover { border-bottom-color: var(--gp-sage); }
   }
 
   /* Tables → data sheets */
-  article table {
-    font-size: 0.9rem;
-  }
+  article table { font-size: 0.82rem; }
   article th {
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    font-size: 0.68rem;
     color: var(--gp-sage-darker);
     border-bottom: 1px solid var(--gp-sage-pale);
   }
-  article td {
-    border-bottom: 1px solid var(--gp-rule);
-  }
+  article td { border-bottom: 1px solid var(--gp-rule); }
 
-  /* Inline code / pre → terminal panel */
-  code {
-    color: var(--gp-amber);
-  }
+  code { color: var(--gp-amber); }
 
-  /* --- [!subject] → manila index card, even on the dark page --- */
+  /* Breadcrumb + content meta → faint terminal stamps */
+  .breadcrumb-container { font-size: 0.72rem; letter-spacing: 0.04em; }
+  .content-meta {
+    color: var(--gp-ink-faint);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .explorer-content, ul.toc-content { font-size: 0.8rem; }
+
+  /* ── [!subject] → taped manila index card ───────────────────────── */
   .callout[data-callout="subject"] {
-    background: linear-gradient(180deg, #e8dcc0 0%, #e0d2af 100%);
+    position: relative;
+    display: inline-block;        /* corkboard: flow 2-up */
+    width: calc(50% - 0.9rem);
+    vertical-align: top;
+    margin: 0 0.4rem 0.9rem 0;
+    background: linear-gradient(180deg, #e9ddc1 0%, #ddcfac 100%);
     border: 1px solid #c4b690;
-    border-radius: 4px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-    padding: 0.7rem 1rem 0.8rem;
+    border-radius: 3px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.4);
+    padding: 0.7rem 0.85rem 0.75rem;
+    transform: rotate(-0.5deg);
+    transition: transform 0.15s ease;
+    &:nth-of-type(even) { transform: rotate(0.6deg); }
+    &:hover { transform: rotate(0deg); }
 
-    .callout-icon {
-      display: none;
+    @media all and ($mobile) { /* stack full-width on phones */
+      display: block;
+      width: 100%;
+      margin: 0 0 0.9rem 0;
     }
+
+    /* two angled tape pieces at the top corners (translucent, slight shine) */
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: -8px;
+      width: 50px; height: 15px;
+      z-index: 2;
+      background: linear-gradient(
+        115deg,
+        rgba(255, 250, 232, 0.22),
+        rgba(228, 219, 182, 0.42) 45%,
+        rgba(203, 192, 154, 0.32)
+      );
+      border: 1px solid rgba(176, 162, 128, 0.38);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+    }
+    &::before { left: 20px; transform: rotate(-5deg); }
+    &::after  { right: 20px; transform: rotate(5deg); }
+
+    .callout-icon { display: none; }
     .callout-title {
       color: #1f1a12;
       font-size: 1rem;
@@ -833,34 +891,55 @@ body[data-slug^="Cold-Storage" i] {
       &::before {
         content: "SUBJECT";
         display: block;
-        font-family: var(--codeFont);
-        font-size: 0.58rem;
-        letter-spacing: 0.22em;
-        color: #9a3b32;
+        font-size: 0.55rem;
+        letter-spacing: 0.24em;
+        color: var(--dh-red);
         margin-bottom: 0.15rem;
       }
     }
-    .callout-title-inner {
-      color: #1f1a12;
-    }
-    .callout-content,
-    .callout-content p {
-      color: #4a4031;
-    }
+    .callout-title-inner,
+    .callout-title-inner p { color: #1f1a12; }
+    .callout-content, .callout-content p { color: #4a4031; }
     a {
       color: #6e4a1f;
       border-bottom-color: #b89a63;
-      &:hover {
-        color: #2f1f0c;
-      }
+      &:hover { color: #2f1f0c; }
     }
-    /* first content line (status) reads like a stamp */
-    .callout-content > p:first-child {
-      font-family: var(--codeFont);
-      font-size: 0.7rem;
+    .callout-content > p:first-child { /* status stamp */
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       color: #7a6a3f;
+    }
+    .callout-content em { /* tagline → red handwriting */
+      font-family: var(--dh-hand);
+      font-style: normal;
+      color: #9a3b32;
+      font-size: 1.25em;
+    }
+  }
+
+  /* ── [!margin] → red handwritten marginalia (opt-in convention) ──── */
+  .callout[data-callout="margin"] {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0.8rem 0;
+    padding: 0.1rem 0 0.1rem 1.6rem;
+    position: relative;
+    &::before {
+      content: "↳";
+      position: absolute; left: 0.2rem; top: 0.15rem;
+      color: var(--dh-red);
+    }
+    .callout-icon { display: none; }
+    .callout-title, .callout-title-inner,
+    .callout-content, .callout-content p {
+      font-family: var(--dh-hand);
+      font-weight: 500;
+      color: var(--dh-red-bright);
+      font-size: 1.25rem;
+      line-height: 1.3;
     }
   }
 }

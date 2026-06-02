@@ -41,12 +41,12 @@ Everything ends up here eventually. Filed, cross-referenced, kept cold.
 
 ## Case Log
 
-| Arc | # | Log | Date |
-|---|---|---|---|
-| I | 1 | [[Session 1]] | 2026-03-23 |
-| I | 2 | [[Session 2]] | 2026-04-20 |
-| I | 3 | [[Session 3]] | 2026-05-04 |
-| I | 4 | [[Session 4]] | 2026-05-05 |
+| Log | Date |
+|---|---|
+| [[Session 1]] | 2026-03-23 |
+| [[Session 2]] | 2026-04-20 |
+| [[Session 3]] | 2026-05-04 |
+| [[Session 4]] | 2026-05-05 |
 
 Arc I — *Power Prey* — runs Sessions 1–4. Arc II opens next. The [[Journal — Session 0|Journal]] entries are Claire's own, written to her husband — subjective by design.
 
@@ -66,6 +66,7 @@ Arc I — *Power Prey* — runs Sessions 1–4. Arc II opens next. The [[Journal
 - [[Steve Jensen]] — dead; the man on the Nash footage
 - [[Jonathan]] — Collin's touchstone; taken, and recovered
 - [[Dutch]] — Trip's ghoul · [[Carter]] — Mitch's brother
+
 
 ## The City
 
