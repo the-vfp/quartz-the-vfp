@@ -689,3 +689,178 @@ hr {
     }
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DARKHOUR — Cold Storage section theme
+   A dark "case-file / terminal" treatment, scoped entirely to pages
+   under /Cold Storage/* via body[data-slug^="Cold-Storage"]. Quartz
+   slugifies the folder as "Cold-Storage" (case preserved, spaces →
+   dashes), so the
+   Plant Tracker portfolio keeps its cream/sage Garden Path look.
+
+   Strategy: re-map the Garden Path (--gp-*) and Quartz core tokens to
+   a warm-black + amber palette inside the scope. Because the rest of
+   this file is built on those tokens, most of the chrome (sidebar,
+   explorer, search, TOC, links, tables) re-colors automatically. The
+   rest is bespoke: mono "case-file" labels, the [!subject] index card,
+   and section-specific headers.
+   ─────────────────────────────────────────────────────────────────── */
+body[data-slug^="Cold-Storage" i] {
+  /* --- Quartz core tokens (drive base.scss chrome) --- */
+  --light: #14110f;
+  --lightgray: #2b231c;
+  --gray: #8a7f70;
+  --darkgray: #cdc4b4;
+  --dark: #ece5d8;
+  --secondary: #c9803e;
+  --tertiary: #e0a968;
+  --highlight: rgba(201, 128, 62, 0.1);
+  --textHighlight: #c9803e44;
+
+  /* --- Garden Path tokens, re-mapped to DARKHOUR --- */
+  --gp-cream: #14110f; /* page background */
+  --gp-cream-2: #1d1813; /* hover / inline code */
+  --gp-paper: #1b1611; /* panels, pre */
+  --gp-card: #211b15; /* cards */
+  --gp-sage: #c9803e; /* accents that were sage → amber */
+  --gp-sage-deep: #d08a44; /* links */
+  --gp-sage-darker: #e0a968; /* headings */
+  --gp-sage-pale: #4a3a28; /* borders, active edge */
+  --gp-sage-tint: #2a2014; /* active background, chips */
+  --gp-terracotta: #c1554a; /* alert red */
+  --gp-amber: #d3a04a;
+  --gp-ink: #f3ecde; /* strongest text */
+  --gp-ink-2: #ddd4c4; /* body text */
+  --gp-ink-mute: #9c9182; /* meta, muted */
+  --gp-ink-faint: #6c6253; /* faint */
+  --gp-rule: #2f261d; /* hairlines */
+  --gp-rule-soft: #261f17;
+
+  background-color: var(--gp-cream);
+  color: var(--gp-ink-2);
+
+  /* --- Mono "case-file" labels on structural type --- */
+  .article-title,
+  article h2,
+  article h3,
+  article h4,
+  thead,
+  th,
+  .breadcrumb-container,
+  .content-meta,
+  .eyebrow,
+  button.toc-header h3,
+  .callout-title,
+  button.desktop-explorer h2,
+  button.mobile-explorer h2 {
+    font-family: var(--codeFont);
+    letter-spacing: 0.02em;
+  }
+
+  /* Page title → terminal header */
+  .article-title {
+    font-size: 2.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gp-sage-darker);
+  }
+  /* Section landing (Cold Storage) gets the big treatment */
+  &[data-slug="Cold-Storage/index"] .article-title {
+    font-size: 3rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* Section headers: amber, underscored rule */
+  article h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 1.1rem;
+    color: var(--gp-sage-darker) !important;
+    border-bottom: 1px solid var(--gp-rule);
+    padding-bottom: 0.3rem;
+    margin-top: 2rem;
+  }
+  article h3 {
+    color: var(--gp-ink) !important;
+  }
+
+  /* Intro blockquote on each article = "file note" strip */
+  blockquote:not(.callout) {
+    border-left: 3px solid var(--gp-sage);
+    background: var(--gp-card);
+    color: var(--gp-ink-2);
+    padding: 0.7rem 1rem;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+  }
+
+  /* Tables → data sheets */
+  article table {
+    font-size: 0.9rem;
+  }
+  article th {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    color: var(--gp-sage-darker);
+    border-bottom: 1px solid var(--gp-sage-pale);
+  }
+  article td {
+    border-bottom: 1px solid var(--gp-rule);
+  }
+
+  /* Inline code / pre → terminal panel */
+  code {
+    color: var(--gp-amber);
+  }
+
+  /* --- [!subject] → manila index card, even on the dark page --- */
+  .callout[data-callout="subject"] {
+    background: linear-gradient(180deg, #e8dcc0 0%, #e0d2af 100%);
+    border: 1px solid #c4b690;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    padding: 0.7rem 1rem 0.8rem;
+
+    .callout-icon {
+      display: none;
+    }
+    .callout-title {
+      color: #1f1a12;
+      font-size: 1rem;
+      margin: 0;
+      padding-left: 0;
+      &::before {
+        content: "SUBJECT";
+        display: block;
+        font-family: var(--codeFont);
+        font-size: 0.58rem;
+        letter-spacing: 0.22em;
+        color: #9a3b32;
+        margin-bottom: 0.15rem;
+      }
+    }
+    .callout-title-inner {
+      color: #1f1a12;
+    }
+    .callout-content,
+    .callout-content p {
+      color: #4a4031;
+    }
+    a {
+      color: #6e4a1f;
+      border-bottom-color: #b89a63;
+      &:hover {
+        color: #2f1f0c;
+      }
+    }
+    /* first content line (status) reads like a stamp */
+    .callout-content > p:first-child {
+      font-family: var(--codeFont);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7a6a3f;
+    }
+  }
+}
