@@ -1,21 +1,41 @@
 ---
 title: Plant Tracker
-subtitle: a watering app for nineteen houseplants
+subtitle: a watering app for twenty houseplants
 eyebrow: Welcome
-description: A personal app I built using Claude to manage watering schedules and keep a care log for nineteen houseplants.
+description: A personal app I built using Claude to manage watering schedules and keep a care log for twenty houseplants.
 ---
 
 Plant Tracker is a personal app I built using Claude to manage the watering schedule and keep a care log for all of my houseplants.
 
-You can use the actual app — it works on web and mobile, and I've prepopulated it with demo plants so you can get a feel for how it flows. I've also built a help center to demonstrate how I approach knowledge-base design. *My Methodology* walks through how I built the app and the help center.
+You can use the actual app — it works on web and mobile, and I've prepopulated it with demo plants so you can get a feel for how it flows. I've also built a help center to demonstrate how I approach knowledge-base design. *Project Journey* walks through how I built the app and the help center.
 
-<div class="video-placeholder">
-<div class="video-dots"></div>
-<button class="video-play" aria-label="Play demo">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+<div class="video-embed">
+<button type="button" class="video-facade" data-video-id="or_6jfqfYKA" aria-label="Play Plant Tracker welcome video">
+<img src="https://img.youtube.com/vi/or_6jfqfYKA/maxresdefault.jpg" alt="" loading="lazy" />
+<span class="video-facade-play" aria-hidden="true">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+</span>
 </button>
-<span class="video-label">2 MIN DEMO</span>
 </div>
+
+<script>
+function bindVideoFacades() {
+  document.querySelectorAll('.video-facade:not([data-bound])').forEach(function (el) {
+    el.setAttribute('data-bound', '1');
+    el.addEventListener('click', function () {
+      var id = el.dataset.videoId;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+      iframe.title = 'Plant Tracker — welcome video';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      el.replaceWith(iframe);
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', bindVideoFacades);
+document.addEventListener('nav', bindVideoFacades);
+</script>
 
 <div class="cta-cards">
 <a class="cta cta-primary" href="https://plant-tracker-blue.vercel.app">
@@ -26,8 +46,8 @@ You can use the actual app — it works on web and mobile, and I've prepopulated
 <div class="cta-eyebrow">Read</div>
 <div class="cta-label">Help Center<span class="cta-arrow" aria-hidden="true">→</span></div>
 </a>
-<a class="cta" href="My-Methodology">
+<a class="cta" href="Project-Journey/index">
 <div class="cta-eyebrow">Read</div>
-<div class="cta-label">My Methodology<span class="cta-arrow" aria-hidden="true">→</span></div>
+<div class="cta-label">Project Journey<span class="cta-arrow" aria-hidden="true">→</span></div>
 </a>
 </div>
