@@ -8,6 +8,11 @@
    ───────────────────────────────────────────────────────────────── */
 
 :root {
+  /* Garden Path — the site's DEFAULT palette (warm parchment + sage),
+     used by Plant Tracker and anything not overridden. Per-section palettes
+     override these --gp-* tokens in scoped blocks below: the home page in
+     body[data-slug="index"] (Porcelain & Rose) and Cold Storage in
+     body[data-slug^="Cold-Storage"] (DARKHOUR). Mirrors quartz.config.ts. */
   /* Extended Garden Path palette (additional tokens beyond Quartz core) */
   --gp-cream: #f5f0e2;
   --gp-cream-2: #efe9d7;

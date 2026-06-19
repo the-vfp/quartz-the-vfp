@@ -27,6 +27,17 @@ const config: QuartzConfig = {
         body: "DM Sans",
         code: "IBM Plex Mono",
       },
+      // ── Palette architecture (read before changing these colors) ──────
+      // GLOBAL DEFAULT palette: warm parchment + sage green ("Garden Path"),
+      // used by the Plant Tracker section and anything not overridden.
+      // Quartz supports only ONE palette here; the other section looks are
+      // layered on top as scoped CSS overrides in quartz/styles/custom.scss:
+      //   • Home page    → body[data-slug="index"]         (Porcelain & Rose)
+      //   • Cold Storage → body[data-slug^="Cold-Storage"] (DARKHOUR / dark)
+      // Don't switch these to the home's rose palette — that would turn
+      // Plant Tracker rose too. These colors also generate the sitewide
+      // social-share (OG) images, so the home page's share thumbnail
+      // intentionally renders in sage/cream (known, accepted limitation).
       colors: {
         lightMode: {
           light: "#F5F0E2",
