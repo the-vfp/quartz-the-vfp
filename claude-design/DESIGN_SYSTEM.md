@@ -106,7 +106,7 @@ Drop cap is **intentionally omitted** — it fights the centered hero. (If a lon
 - **Section header** — small-caps gold eyebrow + Playfair `h2`, left-aligned.
 - **Capability card** — `--surface`, 1px hairline, radius 10; small-caps gold number → Playfair title → EB Garamond body.
 - **Project entry** — Playfair title → body → buttons. No number, no subtitle, no card; entries separated by hairlines.
-- **Background timeline** — gold dot (filled = work, hollow = study) on a hairline spine; bold entity + small-caps tag; small-caps date range right-aligned.
+- **Background timeline** — rose marker (filled diamond = work, hollow circle = study) on a gold spine; bold entity + small-caps tag; small-caps gold date range right-aligned. Markers sit centred in the gap between the role line and its description.
 - **Buttons** — primary: `--rose-fill`, `--on-rose`, radius 8px, small caps; secondary: transparent, 1px gold border. Trailing `→` (internal) / `↗` (external; pin the arrow to the mono font so serifs don't fall back to the emoji glyph).
 - **Work-sample plate** — screenshot inside a `--surface` card, padded, 1px gold-tinted border. Mandatory on dark.
 - **Footer** — centered: flourish above a single small-caps muted line (`© 2026 Anne Elefante · Built with Quartz`). No type credits, no extra rule.

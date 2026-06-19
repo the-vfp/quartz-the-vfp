@@ -1103,8 +1103,8 @@ body[data-slug="index"] {
       width: 12px;
       height: 12px;
       box-sizing: border-box;
-      background: var(--gp-gold);
-      border: 1.5px solid var(--gp-gold);
+      background: var(--gp-sage-deep);
+      border: 1.5px solid var(--gp-sage-deep);
     }
     /* work = filled gold diamond, study = hollow gold circle */
     &[data-kind="work"]::before { transform: rotate(45deg); }
