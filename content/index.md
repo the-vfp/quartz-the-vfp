@@ -10,7 +10,6 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <a href="#whatido">What I do</a>
 <a href="#projects">Projects</a>
 <a href="#background">Background</a>
-<a href="#contact">Contact</a>
 </div>
 <a class="hp-btn hp-btn-primary hp-nav-resume" href="/resume.pdf" target="_blank" rel="noopener">Résumé <span class="hp-ext" aria-hidden="true">↗</span></a>
 </nav>
