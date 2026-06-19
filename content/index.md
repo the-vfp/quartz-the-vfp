@@ -24,7 +24,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <p class="hp-intro">Good answers fail all the time — buried in a help centre, written for the wrong audience, arriving three steps too late. I build knowledge systems that show up for people when they need them.</p>
 <div class="hp-hero-cta">
 <a class="hp-btn hp-btn-primary" href="/resume.pdf" target="_blank" rel="noopener">Résumé <span class="hp-ext" aria-hidden="true">↗</span></a>
-<a class="hp-btn" href="https://www.linkedin.com/in/christianne-elefante-598203137" target="_blank" rel="noopener">LinkedIn <span class="hp-ext" aria-hidden="true">↗</span></a>
+<a class="hp-btn" href="https://www.linkedin.com/in/christianne-elefante" target="_blank" rel="noopener">LinkedIn <span class="hp-ext" aria-hidden="true">↗</span></a>
 </div>
 </header>
 
@@ -151,6 +151,6 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <footer class="hp-footer" id="contact">
 <div class="hp-footer-copy">© 2026 Anne Elefante · Built with Quartz</div>
 <div class="hp-footer-links">
-<a href="https://www.linkedin.com/in/christianne-elefante-598203137" target="_blank" rel="noopener">LinkedIn <span class="hp-ext" aria-hidden="true">↗</span></a>
+<a href="https://www.linkedin.com/in/christianne-elefante" target="_blank" rel="noopener">LinkedIn <span class="hp-ext" aria-hidden="true">↗</span></a>
 </div>
 </footer>
