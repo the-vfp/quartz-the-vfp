@@ -23,8 +23,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Cormorant Garamond",
-        body: "DM Sans",
+        header: "Playfair Display",
+        body: "EB Garamond",
         code: "IBM Plex Mono",
       },
       // ── Palette architecture (read before changing these colors) ──────

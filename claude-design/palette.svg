@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" font-family="'EB Garamond', Georgia, serif">
+  <rect width="960" height="470" fill="#EFE6D4"/>
+  <text x="48" y="56" font-size="30" fill="#9E4757" font-weight="500" font-family="'Playfair Display', Georgia, serif">Anne Elefante — Romantic Academia</text>
+  <text x="48" y="80" font-size="13" fill="#A78B66" font-variant="small-caps" letter-spacing="3">Playfair Display · EB Garamond · two themes, one system</text>
+
+  <text x="48" y="124" font-size="14" fill="#5A4A42" font-variant="small-caps" letter-spacing="3">Dark academia — primary shell</text>
+  <g>
+    <rect x="48"  y="138" width="138" height="110" rx="10" fill="#221A16"/>
+    <rect x="202" y="138" width="138" height="110" rx="10" fill="#2A2019"/>
+    <rect x="356" y="138" width="138" height="110" rx="10" fill="#C9BCA3"/>
+    <rect x="510" y="138" width="138" height="110" rx="10" fill="#E9DDC7"/>
+    <rect x="664" y="138" width="138" height="110" rx="10" fill="#C2A36B"/>
+    <rect x="818" y="138" width="94"  height="110" rx="10" fill="#CE8C9B"/>
+  </g>
+  <g font-size="12" fill="#5A4A42" font-variant="small-caps" letter-spacing="1">
+    <text x="48"  y="268">Espresso #221A16</text>
+    <text x="202" y="268">Surface #2A2019</text>
+    <text x="356" y="268">Body #C9BCA3</text>
+    <text x="510" y="268">Cream #E9DDC7</text>
+    <text x="664" y="268">Gold #C2A36B</text>
+    <text x="818" y="268">Rose #CE8C9B</text>
+  </g>
+
+  <text x="48" y="320" font-size="14" fill="#5A4A42" font-variant="small-caps" letter-spacing="3">Light academia — reading pages</text>
+  <g>
+    <rect x="48"  y="334" width="138" height="110" rx="10" fill="#F4ECDC" stroke="#E2D2B8"/>
+    <rect x="202" y="334" width="138" height="110" rx="10" fill="#E2D2B8"/>
+    <rect x="356" y="334" width="138" height="110" rx="10" fill="#5A4A42"/>
+    <rect x="510" y="334" width="138" height="110" rx="10" fill="#2E2620"/>
+    <rect x="664" y="334" width="138" height="110" rx="10" fill="#B0894C"/>
+    <rect x="818" y="334" width="94"  height="110" rx="10" fill="#9E4757"/>
+  </g>
+  <g font-size="12" fill="#5A4A42" font-variant="small-caps" letter-spacing="1">
+    <text x="48"  y="464">Cream #F4ECDC</text>
+    <text x="202" y="464">Subtle #E2D2B8</text>
+    <text x="356" y="464">Body #5A4A42</text>
+    <text x="510" y="464">Ink #2E2620</text>
+    <text x="664" y="464">Gold #B0894C</text>
+    <text x="818" y="464">Rose #9E4757</text>
+  </g>
+</svg>

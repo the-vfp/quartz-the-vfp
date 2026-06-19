@@ -1,0 +1,99 @@
+/* Anne Elefante — Design tokens
+   Romantic academia · light default, dark-mode toggle
+   Pairs with DESIGN_SYSTEM.md and flourish.svg */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  /* Families */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+
+  /* Scale */
+  --text-display: 56px;
+  --text-h2: 28px;
+  --text-project: 26px;
+  --text-card-title: 18px;
+  --text-lead: 21px;
+  --text-body: 17px;
+  --text-eyebrow: 13px;
+
+  /* Tracking */
+  --track-display: -0.02em;
+  --track-eyebrow: 0.20em;
+
+  /* Spacing */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+
+  /* Shape */
+  --radius-card: 12px;
+  --radius-button: 8px;
+
+  /* LIGHT ACADEMIA — default (portfolio + reading) */
+  --bg: #F4ECDC;
+  --surface: #FBF6EA;
+  --hairline: #E2D2B8;
+  --heading: #2E2620;
+  --body: #5A4A42;
+  --muted: #A78B66;
+  --gold: #B0894C;
+  --rose: #9E4757;
+  --rose-fill: #9E4757;
+  --on-rose: #F4ECDC;
+}
+
+/* DARK ACADEMIA — dark-mode toggle */
+[data-theme="dark"], .dark-academia {
+  --bg: #221A16;
+  --surface: #2A2019;
+  --hairline: #3A2C22;
+  --heading: #E9DDC7;
+  --body: #C9BCA3;
+  --muted: #9A876C;
+  --gold: #C2A36B;
+  --rose: #CE8C9B;
+  --rose-fill: #9E4757;
+  --on-rose: #F4ECDC;
+}
+
+/* Primitives */
+.cd-eyebrow {
+  font-family: var(--font-body);
+  font-variant: small-caps;
+  letter-spacing: var(--track-eyebrow);
+  font-size: var(--text-eyebrow);
+  color: var(--gold);
+}
+
+.cd-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-display);
+  letter-spacing: var(--track-display);
+  line-height: 1.02;
+  color: var(--heading);
+}
+.cd-name em { font-style: italic; color: var(--rose); }
+
+.cd-flourish { color: var(--gold); display: block; margin: 18px auto 10px; }
+
+.cd-btn {
+  font-family: var(--font-body);
+  font-variant: small-caps;
+  letter-spacing: .04em;
+  font-size: 13px;
+  border-radius: var(--radius-button);
+  padding: 8px 20px;
+  cursor: pointer;
+}
+.cd-btn--primary { background: var(--rose-fill); color: var(--on-rose); border: none; }
+.cd-btn--secondary { background: transparent; color: var(--heading); border: 1px solid var(--gold); }
+
+/* Mount screenshots on this when on the dark shell */
+.cd-plate {
+  background: var(--surface);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+}
