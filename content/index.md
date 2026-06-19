@@ -17,8 +17,8 @@ description: Knowledge & Support Specialist — I build the things people reach 
 
 <header class="hp-hero" id="about">
 <img class="hp-avatar" src="attachments/anne-elefante.jpg" alt="Anne Elefante" />
-<h1 class="hp-name">Anne <span class="hp-accent">Elefante</span></h1>
 <div class="hp-role">Knowledge &amp; Support Specialist</div>
+<h1 class="hp-name">Anne <span class="hp-accent">Elefante</span></h1>
 <div class="hp-flourish" aria-hidden="true"></div>
 <p class="hp-tagline">I build the things people reach for when they're stuck.</p>
 <p class="hp-intro">Good answers fail all the time — buried in a help centre, written for the wrong audience, arriving three steps too late. I build knowledge systems that show up for people when they need them.</p>

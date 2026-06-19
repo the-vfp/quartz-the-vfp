@@ -744,7 +744,7 @@ body[data-slug="index"] {
   --gp-sage-deep: #9e4757;  /* rose — primary buttons, links, surname accent */
   --gp-sage-darker: #8a3b4c;/* deep rose — hovers */
   --gp-sage-pale: #e2c9cf;  /* pale rose */
-  --gp-sage-tint: #f3e7ea;  /* rose tint — selection / tags */
+  --gp-sage-tint: #f3e7e1;  /* rose tint — selection / tags */
 
   --gp-gold: #b0894c;       /* gold — section eyebrows, flourish, rings, dates */
   --gp-gold-soft: #d8c7a8;  /* soft gold — ledger spine, image frames, outline */
@@ -904,14 +904,15 @@ body[data-slug="index"] {
     margin: 0.9rem auto 0.25rem;
     background: var(--gp-flourish) center / 170px 18px no-repeat;
   }
+  /* Hero eyebrow — sits ABOVE the name (matches the design-system hero).
+     Rose small-caps, 0.18em tracking, ~13–14px. */
   & .hp-role {
     font-family: var(--bodyFont);
     font-variant: small-caps;
-    letter-spacing: 0.16em;
-    font-size: 1rem;
+    letter-spacing: 0.18em;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--gp-sage-deep);
-    margin-top: 0.6rem;
   }
   & .hp-tagline {
     font-family: var(--bodyFont);
@@ -952,8 +953,8 @@ body[data-slug="index"] {
   & .hp-section-head { margin-bottom: 1.75rem; }
   & .hp-section-title {
     font-family: var(--headerFont);
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    font-weight: 600;
+    font-size: 1.75rem;   /* 28px — design-system Section size (fixed, not scaled) */
+    font-weight: 500;     /* Playfair 500 — the system never uses bold for headings */
     color: var(--gp-ink);
     letter-spacing: -0.015em;
     margin: 0.25rem 0 0;
@@ -980,7 +981,7 @@ body[data-slug="index"] {
   & .hp-card-num { display: none; }
   & .hp-card-title {
     font-family: var(--headerFont);
-    font-size: 1.35rem;
+    font-size: 1.125rem;  /* 18px — design-system Card heading */
     font-weight: 500;
     color: var(--gp-sage-deep);
     margin: 0 0 0.5rem;
@@ -1012,7 +1013,7 @@ body[data-slug="index"] {
   & .hp-proj-text { min-width: 0; }
   & .hp-proj-title {
     font-family: var(--headerFont);
-    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-size: 1.625rem;  /* 26px — design-system Project heading */
     font-weight: 500;
     color: var(--gp-ink);
     margin: 0;
