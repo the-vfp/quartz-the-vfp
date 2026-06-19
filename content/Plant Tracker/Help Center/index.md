@@ -5,7 +5,7 @@ description: Guides for using the Plant Tracker app — schedules, cadence, note
 draft: false
 ---
 
-The Plant Tracker Help Center is a demonstration of my approach to designing and creating learning content through a selection of guides. Take a look around and read *My Craft Notes* for a deeper dive into how I put this together.
+The Plant Tracker Help Center is a demonstration of my approach to designing and creating learning content through a selection of guides and AI. Take a look around and read [[Creating the Help Center]] for a deeper dive into how I put this together.
 
 > [!TIP] New here?
 > [[Setting up your collection]] is the short path through your first ten minutes with Plant Tracker — installing it, adding a plant, and logging the first watering.
@@ -38,7 +38,3 @@ The Plant Tracker Help Center is a demonstration of my approach to designing and
 - [[Exporting and importing data]] — back up your collection and restore it later
 - [[Troubleshooting]] — what to do when something seems off
 - [[Frequently asked questions|FAQ]] — quick answers to common questions
-
----
-
-[[My Craft Notes]] — meta reflection on what I learned building this help center with AI assistance

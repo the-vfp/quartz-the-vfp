@@ -312,6 +312,23 @@ ul.toc-content.overflow {
   & p { font-size: 0.78rem; }
 }
 
+/* ─── Portfolio back-link (top of every page except the home) ────── */
+.portfolio-backlink {
+  display: inline-block;
+  font-family: var(--bodyFont);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--gp-ink-mute);
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  border-bottom: none;
+  &:hover {
+    color: var(--gp-sage-deep);
+    text-decoration: none;
+    border-bottom: none;
+  }
+}
+
 /* ─── Content meta (date · read time) ───────────────────────────── */
 .content-meta {
   color: var(--gp-ink-mute);
@@ -692,6 +709,436 @@ hr {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   PORTFOLIO HOME — "The VFP" landing page
+   Scoped entirely to body[data-slug="index"]. Renders WireframeE
+   (top sticky nav · centered hero · capability cards · editorial project
+   spreads, text-left/image-right · dotted timeline · footer) in the
+   Garden Path palette. The full-bleed layout collapses Quartz's grid
+   chrome (sidebars, breadcrumbs, article title, global footer) on the
+   home page only — every other page keeps the standard sidebar layout.
+   ─────────────────────────────────────────────────────────────────── */
+body[data-slug="index"] {
+  --hp-max: 1080px;
+  --hp-pad: clamp(1.25rem, 4vw, 4rem);
+
+  /* ── Porcelain & Rose palette (home page only) ──────────────────────
+     Remaps the Garden Path tokens so the whole home page recolors while
+     Plant Tracker (sage) and Cold Storage (DARKHOUR) stay as they are.
+     Porcelain near-white surfaces · dusty-rose accent · warm cocoa ink.
+     NB: hexes are an interpretation of Design's "Porcelain & Rose" — easy
+     to swap for the exact tokens if/when the handoff lands. */
+  --gp-cream: #faf6f1;      /* page background */
+  --gp-cream-2: #f2eae2;    /* hover / inline code */
+  --gp-paper: #fdfbf8;      /* buttons, soft surfaces */
+  --gp-card: #fffdfb;       /* cards */
+
+  --gp-sage: #c0738a;       /* rose (mid) */
+  --gp-sage-deep: #b15c70;  /* rose — primary buttons, links, dots, role */
+  --gp-sage-darker: #8f4456;/* deep rose — name, hovers, dot borders */
+  --gp-sage-pale: #e8cfd6;  /* pale rose hairlines */
+  --gp-sage-tint: #f5e5e9;  /* rose tint — selection / tags */
+
+  --gp-ink: #382b2d;        /* warm cocoa — headings, body emphasis */
+  --gp-ink-2: #4e4042;      /* body text */
+  --gp-ink-mute: #8b7a7c;   /* mauve-grey — eyebrows, nav, mutes */
+  --gp-ink-faint: #ab9ea0;  /* faintest */
+
+  --gp-rule: #e7ded6;       /* hairline borders */
+  --gp-rule-soft: #f0e9e2;  /* dividers, image frames */
+
+  /* ── Collapse Quartz chrome: full-bleed single column ───────────── */
+  & .sidebar { display: none !important; }
+  & .page-header { display: none !important; }
+  & .article-title,
+  & .content-meta,
+  & .breadcrumb-container { display: none !important; }
+  /* NB: real DOM is body > .page > #quartz-body, so use a descendant
+     combinator here — a direct-child `>` from body never matches. */
+  & #quartz-body { display: block !important; }
+  & #quartz-body > .center { max-width: 100% !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; }
+  & #quartz-body > .center > article { max-width: none !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; }
+  /* hide the global Quartz footer — the home page carries its own */
+  & #quartz-body > footer { display: none !important; }
+
+  /* ── Shared buttons (mono, editorial) ───────────────────────────── */
+  & .hp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    font-family: var(--codeFont);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--gp-ink);
+    border-radius: 8px;
+    background: var(--gp-paper);
+    color: var(--gp-ink);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+
+    &:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(60, 90, 40, 0.1);
+    }
+    /* Quartz auto-appends an external-link icon; we ship our own ↗ */
+    & .external-icon { display: none; }
+  }
+  & .hp-btn-primary {
+    background: var(--gp-sage-deep);
+    border-color: var(--gp-sage-darker);
+    color: #fff;
+    &:hover { background: var(--gp-sage-darker); color: #fff; }
+  }
+  & .hp-ext { font-size: 0.85em; }
+
+  /* ── Sticky top nav ─────────────────────────────────────────────── */
+  & .hp-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0.8rem var(--hp-pad);
+    background: rgba(250, 246, 241, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gp-rule);
+  }
+  & .hp-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    border-bottom: none;
+    &:hover { border-bottom: none; }
+  }
+  & .hp-brand-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gp-sage-deep);
+  }
+  & .hp-brand-word {
+    font-family: var(--headerFont);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gp-ink);
+  }
+  & .hp-navlinks {
+    display: flex;
+    gap: 1.4rem;
+    & a {
+      font-family: var(--bodyFont);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--gp-ink-mute);
+      text-decoration: none;
+      border-bottom: none;
+      &:hover { color: var(--gp-sage-darker); border-bottom: none; }
+    }
+  }
+  & .hp-nav-resume { padding: 0.5rem 0.9rem; }
+
+  /* ── Hero ───────────────────────────────────────────────────────── */
+  & .hp-hero {
+    /* override Quartz's base `header { display: flex }` rule */
+    display: block;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: clamp(3rem, 8vh, 6rem) var(--hp-pad) 1rem;
+  }
+  & .hp-avatar {
+    display: block;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--gp-rule-soft);
+    box-shadow: 0 8px 24px rgba(60, 90, 40, 0.12);
+  }
+  & .hp-eyebrow {
+    font-family: var(--codeFont);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gp-ink-mute);
+    font-weight: 500;
+  }
+  & .hp-name {
+    display: block !important;
+    font-family: var(--headerFont);
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    line-height: 1;
+    font-weight: 600;
+    color: var(--gp-sage-darker);
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0 0;
+  }
+  & .hp-role {
+    font-family: var(--bodyFont);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gp-sage-deep);
+    margin-top: 0.5rem;
+  }
+  & .hp-tagline {
+    font-family: var(--headerFont);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--gp-ink-mute);
+    margin: 0.75rem 0 0;
+  }
+  & .hp-intro {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--gp-ink-2);
+    max-width: 36rem;
+    margin: 1.1rem auto 0;
+  }
+  & .hp-hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── Section scaffolding ────────────────────────────────────────── */
+  & .hp-divider {
+    max-width: var(--hp-max);
+    margin: clamp(2.5rem, 6vw, 4rem) auto;
+    border: 0;
+    border-top: 1px solid var(--gp-rule-soft);
+  }
+  & .hp-section {
+    max-width: var(--hp-max);
+    margin: 0 auto;
+    padding: 0 var(--hp-pad);
+  }
+  & .hp-section-head { margin-bottom: 1.75rem; }
+  & .hp-section-title {
+    font-family: var(--headerFont);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--gp-ink);
+    letter-spacing: -0.015em;
+    margin: 0.25rem 0 0;
+  }
+
+  /* ── "What I do" cards ──────────────────────────────────────────── */
+  & .hp-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  & .hp-card {
+    background: var(--gp-card);
+    border: 1px solid var(--gp-rule);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02), 0 4px 14px rgba(60, 90, 40, 0.04);
+  }
+  & .hp-card-num {
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--gp-sage-deep);
+    font-weight: 600;
+  }
+  & .hp-card-title {
+    font-family: var(--headerFont);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gp-ink);
+    margin-top: 0.5rem;
+  }
+  & .hp-card-body {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--gp-ink-2);
+    margin: 0.5rem 0 0;
+  }
+
+  /* ── Project spreads: text left, image right ────────────────────── */
+  & .hp-projects {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  & .hp-proj {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 42%);
+    gap: clamp(1.5rem, 4vw, 2.75rem);
+    align-items: center;
+  }
+  & .hp-proj-text { min-width: 0; }
+  & .hp-proj-title {
+    font-family: var(--headerFont);
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--gp-ink);
+    margin: 0.35rem 0 0;
+  }
+  & .hp-proj-sub {
+    font-family: var(--headerFont);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gp-ink-mute);
+    margin-top: 0.25rem;
+  }
+  & .hp-proj-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gp-ink-2);
+    margin: 0.85rem 0 0;
+  }
+  & .hp-proj-cta {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.1rem;
+    flex-wrap: wrap;
+  }
+  & .hp-proj-img {
+    display: flex;
+    justify-content: center;
+    & img {
+      max-width: 100%;
+      max-height: 440px;
+      width: auto;
+      height: auto;
+      margin: 0;
+      border-radius: 14px;
+      border: 1px solid var(--gp-rule-soft);
+      box-shadow: 0 10px 30px rgba(60, 90, 40, 0.08);
+    }
+  }
+  & .hp-proj-ph {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    border: 1px dashed var(--gp-sage-pale);
+    background: var(--gp-sage-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gp-ink-mute);
+  }
+
+  /* ── Background timeline ────────────────────────────────────────── */
+  & .hp-timeline {
+    --rail: 0.45rem; /* shared center axis for the line + dots */
+    position: relative;
+    padding-left: 1.75rem;
+    &::before {
+      content: "";
+      position: absolute;
+      left: var(--rail);
+      transform: translateX(-50%);
+      top: 0.6rem;
+      bottom: 0.6rem;
+      width: 2px;
+      background: var(--gp-rule);
+    }
+  }
+  & .hp-bg {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--gp-rule-soft);
+    &:last-child { border-bottom: none; }
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(var(--rail) - 1.75rem); /* matches the line's center axis */
+      transform: translateX(-50%);
+      top: 1.15rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gp-sage-deep);
+      border: 1.5px solid var(--gp-sage-deep);
+    }
+    &[data-kind="edu"]::before { background: var(--gp-paper); }
+  }
+  & .hp-bg-role {
+    font-family: var(--headerFont);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--gp-ink);
+  }
+  & .hp-bg-tag {
+    font-family: var(--bodyFont);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gp-ink-mute);
+  }
+  & .hp-bg-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--gp-ink-2);
+    margin-top: 0.2rem;
+    max-width: 46rem;
+  }
+  & .hp-bg-year {
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    color: var(--gp-ink-mute);
+    white-space: nowrap;
+  }
+
+  /* ── Footer / contact ───────────────────────────────────────────── */
+  & .hp-footer {
+    max-width: var(--hp-max);
+    margin: clamp(2.5rem, 6vw, 4rem) auto 3rem;
+    padding: 1.75rem var(--hp-pad) 0;
+    border-top: 1px solid var(--gp-rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  & .hp-footer-copy {
+    font-size: 0.85rem;
+    color: var(--gp-ink-faint);
+  }
+  & .hp-footer-links a {
+    font-family: var(--codeFont);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gp-sage-deep);
+    border-bottom: none;
+    & .external-icon { display: none; }
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────────── */
+  @media all and ($mobile) {
+    & .hp-navlinks { display: none; }
+    & .hp-cards { grid-template-columns: 1fr; }
+    & .hp-proj { grid-template-columns: 1fr; }
+    & .hp-footer { flex-direction: column; align-items: flex-start; }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    DARKHOUR — Cold Storage section theme  (v2 — closer to Claude Design)
    Scoped entirely to body[data-slug^="Cold-Storage"]; the Plant Tracker
    portfolio keeps its cream/sage Garden Path look.
@@ -745,6 +1192,7 @@ body[data-slug^="Cold-Storage" i] {
   &,
   .article-title,
   article h1, article h2, article h3, article h4,
+  .portfolio-backlink,
   .breadcrumb-container,
   .content-meta,
   button.toc-header h3,
