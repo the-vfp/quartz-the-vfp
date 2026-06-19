@@ -11,25 +11,30 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
       <a href={baseDir}>
         <svg
           class="page-title-leaf"
-          width="22"
-          height="22"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           aria-hidden="true"
         >
+          {/* body */}
+          <ellipse cx="14.5" cy="12.5" rx="6.8" ry="5.4" fill="#4F6A40" />
+          {/* head */}
+          <circle cx="8.5" cy="12.2" r="4.6" fill="#4F6A40" />
+          {/* ear */}
+          <circle cx="9.2" cy="9.6" r="3" fill="#4F6A40" />
+          {/* legs */}
+          <rect x="7.4" y="15.5" width="2.6" height="4.4" rx="1.2" fill="#4F6A40" />
+          <rect x="15.4" y="15.8" width="2.6" height="4.1" rx="1.2" fill="#4F6A40" />
+          {/* trunk */}
           <path
-            d="M3 21c0-9 7-15 18-15-1 11-7 17-18 15Z"
-            fill="#9DBA82"
+            d="M5.6 13c-1.7 1.1-2.4 2.9-2 4.8"
             stroke="#4F6A40"
-            stroke-width="1.4"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M3 21c4-3 8-6 12-9"
-            stroke="#4F6A40"
-            stroke-width="1.4"
+            stroke-width="2.4"
             stroke-linecap="round"
           />
+          {/* eye */}
+          <circle cx="7.4" cy="11.2" r="0.8" fill="#F5F0E2" />
         </svg>
         <span>{title}</span>
       </a>

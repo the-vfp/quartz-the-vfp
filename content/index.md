@@ -4,7 +4,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 ---
 
 <nav class="hp-nav">
-<a class="hp-brand" href="/"><span class="hp-brand-dot" aria-hidden="true"></span><span class="hp-brand-word">The VFP</span></a>
+<a class="hp-brand" href="/"><svg class="hp-brand-elephant" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="14.5" cy="12.5" rx="6.8" ry="5.4" fill="var(--gp-sage-deep)"/><circle cx="8.5" cy="12.2" r="4.6" fill="var(--gp-sage-deep)"/><circle cx="9.2" cy="9.6" r="3" fill="var(--gp-sage-deep)"/><rect x="7.4" y="15.5" width="2.6" height="4.4" rx="1.2" fill="var(--gp-sage-deep)"/><rect x="15.4" y="15.8" width="2.6" height="4.1" rx="1.2" fill="var(--gp-sage-deep)"/><path d="M5.6 13c-1.7 1.1-2.4 2.9-2 4.8" stroke="var(--gp-sage-deep)" stroke-width="2.4" stroke-linecap="round"/><circle cx="7.4" cy="11.2" r="0.8" fill="var(--gp-paper)"/></svg><span class="hp-brand-word">Anne Elefante</span></a>
 <div class="hp-navlinks">
 <a href="#about">About</a>
 <a href="#whatido">What I do</a>

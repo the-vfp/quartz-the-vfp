@@ -818,11 +818,9 @@ body[data-slug="index"] {
     border-bottom: none;
     &:hover { border-bottom: none; }
   }
-  & .hp-brand-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--gp-sage-deep);
+  & .hp-brand-elephant {
+    flex-shrink: 0;
+    display: block;
   }
   & .hp-brand-word {
     font-family: var(--headerFont);
