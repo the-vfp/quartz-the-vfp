@@ -90,7 +90,13 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         .filter((page) => page !== undefined) ?? []
     const cssClasses: string[] = fileData.frontmatter?.cssclasses ?? []
     const classes = cssClasses.join(" ")
-    const hideListing = fileData.frontmatter?.hideFolderListing === true
+    // Hide the auto-generated "N items under this folder" listing on folder
+    // pages that already have their own body content (e.g. a landing page with
+    // cards) so it isn't redundant, or when a page opts out explicitly via the
+    // `hideFolderListing` frontmatter flag. Bare folders (no index.md content)
+    // keep the listing so they aren't left empty.
+    const hasOwnContent = (tree as Root).children.length > 0
+    const hideListing = hasOwnContent || fileData.frontmatter?.hideFolderListing === true
     const listProps = {
       ...props,
       sort: options.sort,

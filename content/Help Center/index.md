@@ -3,6 +3,7 @@ title: Help Center
 eyebrow: Knowledge base
 description: Guides for using the Plant Tracker app — schedules, cadence, notes, and care logs.
 draft: false
+hideReadingTime: true
 ---
 
 The Plant Tracker Help Center is a demonstration of my approach to designing and creating learning content through a selection of guides and AI. Take a look around and read [[Creating the Help Center]] for a deeper dive into how I put this together.
