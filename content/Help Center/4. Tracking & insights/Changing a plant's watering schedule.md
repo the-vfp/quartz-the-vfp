@@ -1,5 +1,6 @@
 ---
 title: Changing a plant's watering schedule
+order: 1
 description: How to edit how frequently a plant's water reminder surfaces.
 category: tracking-and-insights
 draft:

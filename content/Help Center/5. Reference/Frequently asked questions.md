@@ -1,5 +1,6 @@
 ---
 title: Frequently asked questions
+order: 3
 description: Quick answers to the questions readers ask most often about Plant Tracker.
 category: reference
 draft: false

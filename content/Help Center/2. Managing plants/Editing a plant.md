@@ -1,5 +1,6 @@
 ---
 title: Editing a plant
+order: 2
 description: Update a plant's name, type, emoji, or watering schedule any time.
 category: managing-plants
 draft: false

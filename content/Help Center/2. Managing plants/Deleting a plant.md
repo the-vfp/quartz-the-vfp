@@ -1,5 +1,6 @@
 ---
 title: Deleting a plant
+order: 3
 description: How to remove a plant from your collection — and what gets deleted with it.
 category: managing-plants
 draft: false

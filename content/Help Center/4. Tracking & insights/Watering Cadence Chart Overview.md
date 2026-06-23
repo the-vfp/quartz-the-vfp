@@ -1,5 +1,6 @@
 ---
 title: Watering Cadence Chart Overview
+order: 2
 description: What the watering cadence chart measures and how to read it.
 category: tracking-and-insights
 draft:

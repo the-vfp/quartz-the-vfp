@@ -1,5 +1,6 @@
 ---
 title: Home dashboard overview
+order: 3
 description: A tour of the home dashboard — the week-ahead strip, the three tabs, and what shows up on each plant row.
 category: getting-started
 draft: false

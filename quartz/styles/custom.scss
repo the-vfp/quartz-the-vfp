@@ -2478,6 +2478,129 @@ body[data-slug^="Help-Center" i] {
     & ol > li::before { background: var(--leaf); color: var(--leaf-ink); }
   }
 
+  /* ═══ COLLECTION (folder) PAGES — numbered article index ═══════════════
+     A folder index (e.g. "Getting started") gets a hero — round emoji badge +
+     "N ARTICLES" eyebrow + Fredoka title + lead description — over a numbered
+     list of the articles inside (NN · title · →, no subtitle). The hero copy
+     comes from each folder's frontmatter-only index.md; the list is the
+     auto-generated FolderContent listing, restyled. Scoped to sub-folder
+     /index pages so the Help Center home and article pages are untouched. */
+  &[data-slug$="/index"]:not([data-slug="Help-Center/index"]) {
+    /* no in-article TOC on a folder index — drop the empty right rail */
+    & .sidebar.right { display: none; }
+    /* the eyebrow carries the count, so hide the reading-time meta and the
+       auto "N items under this folder" line */
+    & .content-meta { display: none; }
+    & .page-listing > p { display: none; }
+
+    /* Hero: round emoji badge to the left of the eyebrow + title stack */
+    & .article-title-block {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "badge eyebrow"
+        "badge title";
+      align-items: center;
+      column-gap: 18px;
+      margin: 2rem 0 0;
+      &::before {
+        content: "🌿";
+        grid-area: badge;
+        align-self: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--pot-fill);
+        border: 2.5px solid var(--ink);
+        box-shadow: var(--pop-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+      }
+    }
+    & .article-eyebrow { grid-area: eyebrow; margin: 0 0 0.15rem; }
+    & .article-title { grid-area: title; margin: 0; }
+
+    /* Lead description — FolderContent renders the folder's `description`
+       frontmatter as the article body text */
+    & .popover-hint > article {
+      font-family: var(--bodyFont);
+      font-size: var(--doc-lead);
+      line-height: 1.55;
+      color: var(--text-muted);
+      max-width: 60ch;
+      margin: 0.9rem 0 0;
+    }
+
+    /* Numbered article rows */
+    & .page-listing {
+      margin-top: 1.6rem;
+      counter-reset: hc-article;
+    }
+    & ul.section-ul { margin: 0; }
+    & li.section-li {
+      margin: 0;
+      counter-increment: hc-article;
+      border-top: 1px solid var(--card-edge);
+      &::before,
+      &::marker { content: none; }
+      &:last-child { border-bottom: 1px solid var(--card-edge); }
+
+      & > .section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 18px 8px;
+        border-radius: var(--radius-sm);
+        transition: background 0.12s ease;
+        &:hover { background: var(--rest-fill); }
+        &::before {
+          content: counter(hc-article, decimal-leading-zero);
+          flex: 0 0 auto;
+          width: 1.6em;
+          font-family: var(--bodyFont);
+          font-weight: 800;
+          font-size: 13px;
+          letter-spacing: 0.06em;
+          color: var(--text-faint);
+        }
+        &::after {
+          content: "→";
+          margin-left: auto;
+          font-weight: 700;
+          color: var(--leaf);
+          transition: transform 0.12s ease, color 0.12s ease;
+        }
+        &:hover::after { color: var(--cactus); transform: translateX(3px); }
+      }
+
+      /* roster bits we don't use on the Help Center index */
+      & .section-monogram,
+      & .section .meta,
+      & .section .tags { display: none; }
+
+      & .section .desc { flex: 1 1 auto; min-width: 0; margin: 0; }
+      & .section .desc h3 { margin: 0; }
+      & .section .desc h3 a {
+        font-family: var(--headerFont);
+        font-weight: 600;
+        font-size: 19px;
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: none;
+        &:hover { color: var(--cactus); border-bottom: none; }
+      }
+    }
+
+    /* Per-collection badge emoji (keyed to the folder slug; default 🌿) */
+    &[data-slug$="Getting-started/index"] .article-title-block::before { content: "🌱"; }
+    &[data-slug$="Managing-plants/index"] .article-title-block::before { content: "🌵"; }
+    &[data-slug$="Daily-care/index"] .article-title-block::before { content: "💧"; background: var(--water); }
+    &[data-slug$="insights/index"] .article-title-block::before { content: "📈"; }
+    &[data-slug$="Reference/index"] .article-title-block::before { content: "📖"; }
+  }
+
   /* ═══ HOME (index) ONLY — hero badge + section emoji badges ════════ */
   &[data-slug="Help-Center/index"] {
     /* The home has no in-article TOC — drop the empty right rail and centre

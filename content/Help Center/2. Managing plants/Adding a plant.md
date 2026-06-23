@@ -1,5 +1,6 @@
 ---
 title: Adding a plant
+order: 1
 description: How to create a plant in the tracker and set its watering schedule.
 category: managing-plants
 draft: false

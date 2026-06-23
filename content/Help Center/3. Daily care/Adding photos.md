@@ -1,5 +1,6 @@
 ---
 title: Adding photos
+order: 2
 description: Snap or pick a photo of a plant to track its growth — and how to view or remove photos later.
 category: daily-care
 draft: false

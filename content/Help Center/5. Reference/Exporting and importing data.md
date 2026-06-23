@@ -1,5 +1,6 @@
 ---
 title: Exporting and importing data
+order: 1
 description: Save a backup of your plants, waterings, notes, and photos — or restore from one if you ever lose your data.
 category: reference
 draft: false

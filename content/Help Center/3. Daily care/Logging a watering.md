@@ -1,5 +1,6 @@
 ---
 title: Logging a watering
+order: 1
 description: Two ways to record that you watered a plant — a one-tap shortcut from the home dashboard, or the bigger button on the plant's own page.
 category: daily-care
 draft: false

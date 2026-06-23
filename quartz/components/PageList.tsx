@@ -34,6 +34,15 @@ export function byDateAndAlphabeticalFolderFirst(cfg: GlobalConfiguration): Sort
     if (f1IsFolder && !f2IsFolder) return -1
     if (!f1IsFolder && f2IsFolder) return 1
 
+    // Explicit `order` frontmatter wins (used by the Help Center collection
+    // pages so the numbered article list follows the curated reading order
+    // rather than date/alphabetical). Only kicks in when both files set it.
+    const f1Order = (f1.frontmatter as Record<string, unknown> | undefined)?.order
+    const f2Order = (f2.frontmatter as Record<string, unknown> | undefined)?.order
+    if (typeof f1Order === "number" && typeof f2Order === "number" && f1Order !== f2Order) {
+      return f1Order - f2Order
+    }
+
     // If both are folders or both are files, sort by date/alphabetical
     if (f1.dates && f2.dates) {
       // sort descending

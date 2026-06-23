@@ -1,5 +1,6 @@
 ---
 title: Installing Plant Tracker on your phone
+order: 2
 description: How to add Plant Tracker to your home screen on iPhone or Android so it opens like a native app.
 category: getting-started
 draft: false

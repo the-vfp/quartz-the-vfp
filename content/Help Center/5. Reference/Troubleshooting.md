@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+order: 2
 description: Common issues with Plant Tracker — what causes them, how to fix them, and what to back up to avoid them next time.
 category: reference
 draft: false

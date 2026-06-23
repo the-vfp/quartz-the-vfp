@@ -1,5 +1,6 @@
 ---
 title: Setting up your collection
+order: 1
 description: From your first install through your first watering — a quick tour of how Plant Tracker fits into your routine.
 category: getting-started
 draft: false

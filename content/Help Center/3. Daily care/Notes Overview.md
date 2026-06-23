@@ -1,5 +1,6 @@
 ---
 title: Notes Overview
+order: 3
 description: Why notes are useful and how to add, edit, and delete them.
 category: daily-care
 draft:
