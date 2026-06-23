@@ -1445,3 +1445,504 @@ body[data-slug^="Cold-Storage" i] {
     }
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PLANT TRACKER HELP CENTER — "sticker" reskin
+   Scoped to body[data-slug^="Plant-Tracker/Help-Center"]. Mirrors the
+   live app's reskin (Claude Design handoff): warm cream paper, leaf-green
+   primary, deep-cactus links, thick ink outlines + offset "sticker"
+   shadows, Fredoka display + Nunito body. Everything else on the site
+   (home = rose, Cold Storage = dark, the rest of Plant Tracker = sage)
+   is untouched. Light only — the palette is forced regardless of the
+   dark-mode toggle so the docs always read like the app.
+   ═══════════════════════════════════════════════════════════════════ */
+body[data-slug^="Plant-Tracker/Help-Center" i] {
+  /* ── Design-system tokens (verbatim from the handoff) ─────────────── */
+  --paper: #fbf3e4;
+  --surface: #fffcf6;
+  --ink: #2b3a2e;
+  --leaf: #79c25b;
+  --leaf-ink: #1f3326;
+  --cactus: #2f6e47;
+  --pot-fill: #e8f0db;
+  --text-muted: #5c6953;
+  --text-faint: #a6b099;
+  --label: #9aa68c;
+  --card-edge: #ebddc1;
+  --rest-fill: #ebeee6;
+  --water: #dcebf5;
+  --leaf-quiet: #c3e3b2;
+  --leaf-quiet-edge: #a4ce8c;
+  --blush-ink: #5a2233;
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow-card: 0 6px 16px rgba(43, 58, 46, 0.07);
+  --pop-sm: 2px 3px 0 rgba(43, 58, 46, 0.12);
+  --pop-tab: 0 3px 0 rgba(43, 58, 46, 0.16);
+
+  --doc-h1: 44px;
+  --doc-h2: 30px;
+  --doc-lead: 21px;
+  --doc-body: 18px;
+  --doc-small: 15px;
+
+  /* Fonts — Fredoka (display) + Nunito (body/labels), loaded in Head.tsx */
+  --headerFont: "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --titleFont: "Fredoka", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --bodyFont: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Remap the Garden Path + Quartz core tokens so any rule we don't touch
+     still resolves to the sticker palette (and dark mode is neutralised). */
+  --gp-cream: var(--paper);
+  --gp-cream-2: var(--rest-fill);
+  --gp-paper: var(--surface);
+  --gp-card: var(--surface);
+  --gp-sage: var(--leaf);
+  --gp-sage-deep: var(--cactus);
+  --gp-sage-darker: var(--leaf);
+  --gp-sage-pale: var(--card-edge);
+  --gp-sage-tint: var(--pot-fill);
+  --gp-ink: var(--ink);
+  --gp-ink-2: var(--text-muted);
+  --gp-ink-mute: var(--text-muted);
+  --gp-ink-faint: var(--text-faint);
+  --gp-rule: var(--card-edge);
+  --gp-rule-soft: var(--card-edge);
+  --light: var(--paper);
+  --dark: var(--ink);
+  --darkgray: var(--text-muted);
+  --gray: var(--text-faint);
+  --lightgray: var(--card-edge);
+  --secondary: var(--cactus);
+  --tertiary: var(--leaf);
+  --highlight: var(--leaf-quiet);
+  --textHighlight: #c3e3b288;
+
+  background-color: var(--paper);
+  & ::selection { background: var(--leaf-quiet); }
+
+  /* A touch more room than the global 680px — the docs column is 720px */
+  & #quartz-body > .center > article,
+  & #quartz-body > .center > .page-header {
+    max-width: 720px;
+  }
+
+  /* ── Eyebrow · title · meta ───────────────────────────────────────── */
+  & .article-eyebrow {
+    font-family: var(--bodyFont);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--label);
+    margin-bottom: 0.55rem;
+  }
+  & .article-title {
+    font-family: var(--headerFont);
+    font-weight: 700;
+    font-size: var(--doc-h1);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0.25rem 0 0.6rem;
+  }
+  & .content-meta {
+    font-family: var(--bodyFont);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0.4rem 0 1.8rem;
+    &[show-comma="true"] > *:not(:last-child) {
+      margin-right: 10px;
+      &::after { content: "·"; margin-left: 10px; }
+    }
+  }
+
+  /* ── Breadcrumbs · portfolio back-link ────────────────────────────── */
+  & .breadcrumb-container {
+    font-family: var(--bodyFont);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-faint);
+    & a, & p { font-size: 13px; }
+    & a { color: var(--cactus); font-weight: 700; &:hover { color: var(--leaf); } }
+    & .breadcrumb-element:last-child p { color: var(--text-muted); font-weight: 700; }
+  }
+  & .portfolio-backlink {
+    font-family: var(--bodyFont);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0;
+    color: var(--cactus);
+    &:hover { color: var(--leaf); }
+  }
+
+  /* ── Body prose ───────────────────────────────────────────────────── */
+  & article h2 {
+    font-family: var(--headerFont);
+    font-weight: 700;
+    font-size: var(--doc-h2);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-top: 2.2rem;
+  }
+  & article h3 {
+    font-family: var(--headerFont);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--ink);
+  }
+  & article p,
+  & article li,
+  & article td {
+    font-family: var(--bodyFont);
+    font-weight: 400;
+    font-size: var(--doc-body);
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  & article > p:first-of-type {
+    font-size: var(--doc-lead);
+    line-height: 1.6;
+  }
+  & article strong { color: var(--ink); font-weight: 800; }
+  & article ul > li::marker { color: var(--leaf); }
+  & article a {
+    color: var(--cactus);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--leaf);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    &.internal { border-bottom: none; }
+    &:hover { color: var(--leaf); border-bottom: none; }
+  }
+
+  /* Screenshots get the app's "peeled sticker" framing */
+  & article img {
+    display: block;
+    margin: 1.6rem auto;
+    border: 2.5px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: var(--pop-sm);
+    background: var(--surface);
+  }
+
+  /* ── Callouts → soft sticker cards with emoji icons ───────────────────
+     Quartz draws the callout icon as a masked (monochrome) SVG. We blank the
+     mask and render a full-colour emoji from --hc-cico instead, set per type
+     below. Emojis are kept to the universally-supported set (see note). */
+  & .callout {
+    border: 2px solid var(--card-edge);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    box-shadow: none;
+    padding: 1rem 1.25rem;
+    --color: var(--cactus);
+    --border: var(--card-edge);
+    --bg: var(--surface);
+    --hc-cico: "📝";
+
+    & .callout-title {
+      font-family: var(--bodyFont);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cactus);
+    }
+    & .callout-title .callout-icon {
+      -webkit-mask: none;
+      mask: none;
+      background: none;
+      width: auto;
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      &::before {
+        content: var(--hc-cico);
+        font-size: 1rem;
+        line-height: 1;
+      }
+    }
+    & .callout-content, & .callout-content p {
+      font-family: var(--bodyFont);
+      font-weight: 400;
+      font-size: var(--doc-small);
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    &[data-callout="note"],
+    &[data-callout="info"],
+    &[data-callout="abstract"] { --hc-cico: "📝"; }
+    &[data-callout="tip"],
+    &[data-callout="hint"] {
+      --hc-cico: "💡";
+      background: var(--pot-fill);
+      border-color: var(--leaf-quiet-edge);
+    }
+    &[data-callout="success"],
+    &[data-callout="todo"] { --hc-cico: "✅"; }
+    &[data-callout="question"] { --hc-cico: "❓"; }
+    &[data-callout="example"] { --hc-cico: "📋"; }
+    &[data-callout="quote"] { --hc-cico: "💬"; }
+    /* Urgent callouts lean on the app's terracotta/danger accents, get a
+       bolder border + sticker lift, and a saturated title so they read as a
+       stop sign on the warm cream paper instead of fading into it. */
+    &[data-callout="warning"],
+    &[data-callout="caution"],
+    &[data-callout="attention"] {
+      --hc-cico: "⚠️";
+      background: #f9dcb8;
+      border-color: #d98a3c;
+      border-width: 2.5px;
+      box-shadow: var(--pop-sm);
+      & .callout-title { color: #a8501a; }
+    }
+    &[data-callout="danger"],
+    &[data-callout="failure"],
+    &[data-callout="error"],
+    &[data-callout="bug"] {
+      --hc-cico: "🚨";
+      background: #f9d3ca;
+      border-color: #d9573a;
+      border-width: 2.5px;
+      box-shadow: var(--pop-sm);
+      & .callout-title { color: #b5341f; }
+    }
+  }
+
+  /* ── Left rail: brand · search · explorer ─────────────────────────── */
+  & .page-title {
+    font-family: var(--headerFont);
+    & a span { color: var(--cactus); font-weight: 700; letter-spacing: -0.3px; }
+    /* Recolour the elephant mark from its baked-in sage to cactus so it
+       matches the wordmark (CSS fill/stroke beats the SVG's inline attrs).
+       The eye keeps a light fill so it still reads. */
+    & .page-title-leaf [fill="#4F6A40"] { fill: var(--cactus); }
+    & .page-title-leaf [stroke="#4F6A40"] { stroke: var(--cactus); }
+    & .page-title-leaf [fill="#F5F0E2"] { fill: var(--paper); }
+  }
+  & .search > .search-button {
+    background: var(--surface);
+    border: 2px solid var(--card-edge);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    height: auto;
+    padding: 10px 14px;
+    color: var(--ink);
+    font-family: var(--bodyFont);
+    font-weight: 600;
+    & > p { color: var(--text-faint); }
+    & svg .search-path { stroke: var(--text-faint); }
+  }
+  & button.desktop-explorer h2,
+  & button.mobile-explorer h2 {
+    font-family: var(--bodyFont);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--label);
+  }
+  & .folder-container {
+    & div > a, & div > button > span {
+      font-family: var(--headerFont);
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+    & div > a:hover, & div > button:hover > span { color: var(--ink); }
+    & .folder-icon { color: var(--text-faint); }
+  }
+  & .explorer-content {
+    font-family: var(--headerFont);
+    & ul li > a {
+      font-family: var(--headerFont);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-radius: 12px;
+      padding: 6px 12px;
+      border: 2.5px solid transparent;
+      &:hover { background: var(--rest-fill); color: var(--ink); }
+      &.active {
+        background: var(--leaf);
+        color: var(--leaf-ink);
+        font-weight: 700;
+        border-color: var(--ink);
+        box-shadow: var(--pop-tab);
+      }
+    }
+  }
+
+  /* Sidebar shows only the Help Center branch: hide the "Plant Tracker"
+     wrapper row (kept in the tree so Help Center stays reachable) and drop its
+     indent so Help Center reads as the top-level folder. */
+  & .explorer-ul > li > .folder-container[data-folderpath="Plant-Tracker/index"] {
+    display: none;
+  }
+  & .explorer-ul
+    > li
+    > .folder-container[data-folderpath="Plant-Tracker/index"]
+    + .folder-outer
+    > ul {
+    padding-left: 0;
+  }
+
+  /* ── Right rail: "In this article" TOC pills ──────────────────────── */
+  & button.toc-header h3 {
+    font-family: var(--bodyFont);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--label);
+  }
+  & ul.toc-content.overflow {
+    border-left: 2px solid var(--card-edge);
+    & > li > a {
+      font-family: var(--headerFont);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-radius: var(--radius-pill);
+      padding: 8px 14px;
+      &:hover { background: var(--rest-fill); color: var(--ink); }
+      &.in-view {
+        background: var(--cactus);
+        color: var(--surface);
+        font-weight: 700;
+        box-shadow: none;
+      }
+    }
+  }
+
+  /* ── GardenBlocks section cards → the app's soft sticker card ─────────
+     The GardenBlocks plugin wraps each "## Heading" + its content into a
+     <section class="gp-block">. Restyle those into the reskin card. This
+     applies on article pages too (matching the handoff's article mockup). */
+  & .gp-block {
+    background: var(--surface);
+    border: 2px solid var(--card-edge);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 28px 34px;
+    margin: 20px 0;
+    & > h2,
+    & > h3 {
+      font-family: var(--headerFont);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin: 0 0 1.1rem;
+    }
+    & > h2 { font-size: var(--doc-h2); }
+    /* keep the numbered-step circles on-brand (leaf instead of sage) */
+    & ol > li::before { background: var(--leaf); color: var(--leaf-ink); }
+  }
+
+  /* ═══ HOME (index) ONLY — hero badge + section emoji badges ════════ */
+  &[data-slug="Plant-Tracker/Help-Center/index"] {
+    /* The home has no in-article TOC — drop the empty right rail and centre
+       the content beside the sidebar, like the handoff's 2-column home.
+       Desktop only: tablet/mobile keep Quartz's stacked responsive grids. */
+    & .sidebar.right { display: none; }
+    @media all and ($desktop) {
+      & #quartz-body {
+        grid-template-columns: 320px minmax(0, 1fr);
+        grid-template-areas:
+          "grid-sidebar-left grid-header"
+          "grid-sidebar-left grid-center"
+          "grid-sidebar-left grid-footer";
+      }
+      & #quartz-body > .center > article { margin-left: auto; margin-right: auto; }
+    }
+
+    & .article-title {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+      &::before {
+        content: "🌿";
+        flex: 0 0 auto;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--pot-fill);
+        border: 3px solid var(--ink);
+        box-shadow: var(--pop-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+    }
+
+    /* Section header: emoji "pot" badge + Fredoka title */
+    & article > section.gp-block > h2 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      &::before {
+        flex: 0 0 auto;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--pot-fill);
+        border: 2.5px solid var(--ink);
+        box-shadow: var(--pop-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+      }
+    }
+    & article > section.gp-block:nth-of-type(1) > h2::before { content: "🌱"; }
+    & article > section.gp-block:nth-of-type(2) > h2::before { content: "🌵"; }
+    & article > section.gp-block:nth-of-type(3) > h2::before { content: "💧"; background: var(--water); }
+    & article > section.gp-block:nth-of-type(4) > h2::before { content: "📈"; }
+    & article > section.gp-block:nth-of-type(5) > h2::before { content: "📖"; }
+    & article > section.gp-block:nth-of-type(n + 6) > h2::before { content: "🌿"; }
+
+    /* Link list inside each section card */
+    & article > section.gp-block > ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      & > li {
+        position: relative;
+        padding-left: 22px;
+        font-size: var(--doc-body);
+        line-height: 1.55;
+        &::marker { content: none; }
+        &::before {
+          content: "•";
+          position: absolute;
+          left: 2px;
+          color: var(--leaf);
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
+  @media all and ($mobile) {
+    & .article-title { font-size: 34px; }
+    & .gp-block { padding: 20px 22px; }
+    &[data-slug="Plant-Tracker/Help-Center/index"] {
+      & .article-title::before { width: 48px; height: 48px; font-size: 24px; }
+      & article > section.gp-block > h2 { font-size: 24px; }
+    }
+  }
+}

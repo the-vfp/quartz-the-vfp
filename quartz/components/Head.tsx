@@ -50,6 +50,13 @@ export default (() => {
             )}
           </>
         )}
+        {/* Plant Tracker Help Center reskin fonts — Fredoka (display) + Nunito
+            (body/labels). Loaded sitewide but only applied under the scoped
+            Help Center theme in custom.scss. */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
+        />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
