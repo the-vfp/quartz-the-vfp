@@ -2376,14 +2376,16 @@ body[data-slug^="Help-Center" i] {
   & .search > .search-button {
     background: var(--surface);
     border: 2px solid var(--card-edge);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-card);
     height: auto;
-    padding: 10px 14px;
+    padding: 7px 14px;
     color: var(--ink);
     font-family: var(--bodyFont);
     font-weight: 600;
-    & > p { color: var(--text-faint); }
+    /* The base p carries a 1em block margin that inflated the collapsed bar
+       to ~77px — zero it so the height is just text + padding (~40px). */
+    & > p { color: var(--text-faint); margin: 0; }
     & svg .search-path { stroke: var(--text-faint); }
   }
   & button.desktop-explorer h2,

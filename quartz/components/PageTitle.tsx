@@ -15,8 +15,8 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
             Cold Storage vault. stroke-width bumped to 2.6 for inline/small size. */}
         <svg
           class="page-title-leaf"
-          width="24"
-          height="24"
+          width="36"
+          height="36"
           viewBox="0 0 64 64"
           fill="none"
           aria-hidden="true"
