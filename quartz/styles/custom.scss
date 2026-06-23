@@ -1309,8 +1309,8 @@ body[data-slug^="Cold-Storage" i] {
   article strong, article b { color: var(--cs-strong); }
 
   /* ── Portfolio identity (Override #2): wordmark + back-link in palette ─ */
-  .page-title a { color: var(--cs-gold); }            /* elephant mark → gold */
-  .page-title-leaf { color: var(--cs-gold); }
+  .page-title a { color: var(--cs-red); }             /* elephant mark → red */
+  .page-title-leaf { color: var(--cs-red); }
   .page-title a span { font-family: var(--cs-display); color: var(--cs-heading); }
   .portfolio-backlink {
     color: var(--cs-red-link);
@@ -1527,7 +1527,13 @@ body[data-slug^="Cold-Storage" i] {
       font-family: var(--cs-ui);
       font-weight: 500;
       color: var(--cs-mute-1);
-      &:hover, &.in-view { color: var(--cs-heading); }
+      &:hover { color: var(--cs-heading); }
+      /* active heading → deep-red pill, light text (override the gold fill) */
+      &.in-view {
+        color: #fff;
+        background: var(--cs-red);
+        font-weight: 600;
+      }
     }
   }
 
@@ -1654,13 +1660,7 @@ body[data-slug^="Cold-Storage" i] {
     font-weight: 600;
     font-size: 1.16rem;
     color: var(--cs-heading);
-    margin: 1.3rem 0 0.35rem;
-  }
-  .cs-card-tag {
-    font-family: var(--cs-serif);
-    font-style: italic;
-    font-size: 0.86rem;
-    color: var(--cs-mute-2);
+    margin: 1.3rem 0 0;
   }
   .cs-card-foot {
     display: flex;
