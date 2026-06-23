@@ -66,16 +66,25 @@ function computeFolderInfo(
 ): Record<SimpleSlug, ProcessedContent> {
   // Create default folder descriptions
   const folderInfo: Record<SimpleSlug, ProcessedContent> = Object.fromEntries(
-    [...folders].map((folder) => [
-      folder,
-      defaultProcessedContent({
-        slug: joinSegments(folder, "index") as FullSlug,
-        frontmatter: {
-          title: `${i18n(locale).pages.folderContent.folder}: ${folder}`,
-          tags: [],
-        },
-      }),
-    ]),
+    [...folders].map((folder) => {
+      // Cold Storage section pages get a clean title (the folder's display name,
+      // numeric ordering prefix stripped) instead of the raw "Folder: <slug>".
+      const seg = (folder.split("/").pop() ?? folder) as string
+      const clean = seg.replace(/^\d+[.\-\s]+/, "").replaceAll("-", " ")
+      const title = folder.startsWith("Cold-Storage")
+        ? clean
+        : `${i18n(locale).pages.folderContent.folder}: ${folder}`
+      return [
+        folder,
+        defaultProcessedContent({
+          slug: joinSegments(folder, "index") as FullSlug,
+          frontmatter: {
+            title,
+            tags: [],
+          },
+        }),
+      ]
+    }),
   )
 
   // Update with actual content if available

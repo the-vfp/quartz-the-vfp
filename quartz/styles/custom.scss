@@ -1192,155 +1192,608 @@ body[data-slug="index"] {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   DARKHOUR — Cold Storage section theme  (v2 — closer to Claude Design)
-   Scoped entirely to body[data-slug^="Cold-Storage"]; the Plant Tracker
-   portfolio keeps its cream/sage Garden Path look.
+   DARKHOUR — Cold Storage "MARTE.vault" section theme (v3 — full re-theme)
+   Scoped entirely to body[data-slug^="Cold-Storage"]; the portfolio home
+   (rose) and the Plant Tracker Help Center (cream/sage) are untouched.
 
-   v2 pushes toward the DARKHOUR mockup: fully monospace, deeper warm-black
-   palette with a true rust-red, ◆ red pins on section headers, taped/tilted
-   manila index cards, and red handwritten marginalia (system cursive stack —
-   no web-font load, which Quartz's @use/build order can't place reliably).
+   v3 is the hi-fi handoff: an in-fiction "encrypted vault" reading view —
+   Space Grotesk body + JetBrains Mono labels + Spectral italic ledes +
+   Cormorant monograms; near-black page over a faint red diagonal lattice;
+   ◆ red diamond section headers on hairlines; tag chips; data-sheet tables;
+   custom checklist; and Raph's decoupled, numbered annotation gutter
+   (authored as markdown footnotes, relocated by the vaultAnnotations plugin).
    ─────────────────────────────────────────────────────────────────── */
 body[data-slug^="Cold-Storage" i] {
-  /* --- Quartz core tokens (drive base.scss chrome) --- */
-  --light: #100d0b;
-  --lightgray: #2c241c;
-  --gray: #8a7f70;
-  --darkgray: #cdc4b4;
-  --dark: #ece5d8;
-  --secondary: #d9a55a;
-  --tertiary: #e8c27e;
-  --highlight: rgba(201, 128, 62, 0.1);
-  --textHighlight: #b5453a44;
+  /* ── Handoff palette (README §Design Tokens) ─────────────────────── */
+  --cs-bg: #0c0a0b;          /* page background */
+  --cs-panel: #0f0c0d;       /* sidebar / titlebar / panels */
+  --cs-active: #16100f;      /* active nav bg */
+  --cs-inset: #1c1314;       /* chip / inset bg + hairline */
+  --cs-border: #211718;      /* strong chrome border */
+  --cs-border-chip: #271b1c; /* chip / table-head border */
+  --cs-red: #b5403a;         /* primary accent */
+  --cs-red-link: #c4554e;    /* link / name */
+  --cs-red-rule: #6a2c29;    /* link underline */
+  --cs-red-dim: #8a5550;     /* done / dimmed */
+  --cs-red-heritage: #b5605a;
+  --cs-gold: #c9a86a;
+  --cs-gold-mono: #d8be8e;
+  --cs-teal: #6aa6b5;        /* Raph / annotation accent */
+  --cs-teal-body: #8fb6c0;   /* annotation body */
+  --cs-teal-time: #5d7a82;   /* annotation timestamp */
+  --cs-teal-rule: #24454e;   /* annotation note border */
+  --cs-teal-rule-soft: #1f3138;
+  --cs-heading: #ece6e3;
+  --cs-strong: #e3dad6;
+  --cs-strong-2: #cfc7c3;
+  --cs-body: #bdb4b0;
+  --cs-notes: #a89f9b;
+  --cs-mute-1: #9a8f8b;
+  --cs-mute-2: #8a807d;
+  --cs-mute-3: #7a6f6c;
+  --cs-mute-4: #6a605d;
+  --cs-mute-5: #5d5350;
+  --cs-mute-6: #4a3f3e;
 
-  /* --- Garden Path tokens, re-mapped to DARKHOUR --- */
-  --gp-cream: #100d0b;   /* page background */
-  --gp-cream-2: #1a1511; /* hover / inline code */
-  --gp-paper: #17120e;   /* panels, pre */
-  --gp-card: #1e1813;    /* cards */
-  --gp-sage: #d9a55a;
-  --gp-sage-deep: #dca94f;
-  --gp-sage-darker: #e8c27e;
-  --gp-sage-pale: #463728;
-  --gp-sage-tint: #241a10;
-  --gp-terracotta: #c1554a;
-  --gp-amber: #d3a04a;
-  --gp-ink: #f1ead9;
-  --gp-ink-2: #d8cfbe;
-  --gp-ink-mute: #9a8f7e;
-  --gp-ink-faint: #6a6052;
-  --gp-rule: #2c241b;
-  --gp-rule-soft: #221c15;
+  /* ── Fonts (loaded scoped in Head.tsx) ───────────────────────────── */
+  --cs-ui: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --cs-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --cs-serif: "Spectral", Georgia, "Times New Roman", serif;
+  --cs-display: "Cormorant Garamond", Georgia, serif;
 
-  /* --- DARKHOUR-specific --- */
-  --dh-red: #b5453a;
-  --dh-red-bright: #cd5a4d;
+  /* ── Quartz core tokens (drive base.scss chrome) ─────────────────── */
+  --light: var(--cs-bg);
+  --lightgray: var(--cs-border);
+  --gray: var(--cs-mute-2);
+  --darkgray: var(--cs-body);
+  --dark: var(--cs-heading);
+  --secondary: var(--cs-gold);      /* logo/page-title currentColor → gold */
+  --tertiary: var(--cs-gold-mono);
+  --highlight: rgba(181, 64, 58, 0.1);
+  --textHighlight: #b5403a44;
+
+  /* Fonts → base.scss reads these for body/headers/title/code */
+  --bodyFont: var(--cs-ui);
+  --headerFont: var(--cs-ui);
+  --titleFont: var(--cs-ui);
+  --codeFont: var(--cs-mono);
+
+  /* ── Garden Path tokens, re-mapped (callouts + any untouched rule) ── */
+  --gp-cream: var(--cs-bg);
+  --gp-cream-2: #1a1511;
+  --gp-paper: var(--cs-panel);
+  --gp-card: #1e1813;
+  --gp-sage: var(--cs-gold);
+  --gp-sage-deep: var(--cs-gold-mono);
+  --gp-sage-darker: var(--cs-gold-mono);
+  --gp-sage-pale: var(--cs-mute-6);
+  --gp-sage-tint: var(--cs-active);
+  --gp-terracotta: var(--cs-red);
+  --gp-amber: var(--cs-gold);
+  --gp-ink: var(--cs-heading);
+  --gp-ink-2: var(--cs-body);
+  --gp-ink-mute: var(--cs-mute-1);
+  --gp-ink-faint: var(--cs-mute-4);
+  --gp-rule: var(--cs-inset);
+  --gp-rule-soft: var(--cs-inset);
+
+  /* legacy aliases still referenced by the manila-card + margin callouts */
+  --dh-red: var(--cs-red);
+  --dh-red-bright: var(--cs-red-link);
   --dh-hand: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
 
-  background-color: var(--gp-cream);
-  color: var(--gp-ink-2);
+  /* ── Page surface + faint red diagonal lattice (showLattice) ──────── */
+  background-color: var(--cs-bg);
+  background-image:
+    repeating-linear-gradient(45deg, rgba(181, 64, 58, 0.045) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(-45deg, rgba(181, 64, 58, 0.045) 0 1px, transparent 1px 26px);
+  background-attachment: fixed;
+  color: var(--cs-body);
+  font-family: var(--cs-ui);
 
-  /* ── Full monospace: body inherits codeFont; re-affirm on components
-       that hardcode bodyFont/headerFont elsewhere in this file ──────── */
-  &,
-  .article-title,
-  article h1, article h2, article h3, article h4,
-  .portfolio-backlink,
-  .breadcrumb-container,
-  .content-meta,
-  button.toc-header h3,
-  button.desktop-explorer h2, button.mobile-explorer h2,
-  .folder-container,
-  .explorer-content,
-  ul.toc-content,
-  .callout-title,
-  footer {
-    font-family: var(--codeFont);
+  /* GardenBlocks wraps each h2 section in .gp-block (Help-Center cards) —
+     neutralise the card chrome here so prose + the annotation float flow. */
+  .gp-block {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
   }
+
   article p, article li, article td {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     line-height: 1.7;
-    color: var(--gp-ink-2);
+    color: var(--cs-body);
+  }
+  article strong, article b { color: var(--cs-strong); }
+
+  /* ── Portfolio identity (Override #2): wordmark + back-link in palette ─ */
+  .page-title a { color: var(--cs-gold); }            /* elephant mark → gold */
+  .page-title-leaf { color: var(--cs-gold); }
+  .page-title a span { font-family: var(--cs-display); color: var(--cs-heading); }
+  .portfolio-backlink {
+    color: var(--cs-red-link);
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
-  /* Page title → terminal header */
+  /* ── H1 / article title ──────────────────────────────────────────── */
   .article-title {
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--gp-ink);
+    font-family: var(--cs-ui);
+    font-weight: 700;
+    font-size: 2.05rem;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--cs-heading);
   }
-  &[data-slug="Cold-Storage/index"] .article-title {
-    font-size: 2.8rem;
+  &[data-slug="Cold-Storage/index"] .article-title { font-size: 2.6rem; }
+
+  /* ── Breadcrumb + content meta → mono terminal stamps ────────────── */
+  .breadcrumb-container {
+    font-family: var(--cs-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--cs-mute-3);
+    .breadcrumb-element:last-child * { color: var(--cs-red-link); }
+  }
+  .content-meta {
+    font-family: var(--cs-mono);
+    color: var(--cs-mute-4);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  /* Section headers → ◆ red pin + uppercase tan, no underline */
-  article h2 {
+  /* ── Tag chips ───────────────────────────────────────────────────── */
+  .tags { gap: 0.4rem; }
+  a.tag-link {
+    font-family: var(--cs-mono);
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 1rem;
-    color: var(--gp-sage-darker) !important;
-    margin-top: 2.2rem;
+    color: var(--cs-strong-2);
+    background: var(--cs-inset);
+    border: 1px solid var(--cs-border-chip);
+    border-radius: 5px;
+    padding: 4px 9px;
+    &::before { display: none; }
+    &:hover { background: var(--cs-active); color: var(--cs-heading); }
+  }
+
+  /* ── Section headers → ◆ red diamond + mono uppercase + top hairline ─ */
+  article h2 {
+    font-family: var(--cs-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    color: var(--cs-strong-2) !important;
+    margin: 2.1rem 0 1rem;
+    padding-top: 2.1rem;
+    border-top: 1px solid var(--cs-inset);
     &::before {
       content: "◆";
-      color: var(--dh-red);
-      font-size: 0.7em;
-      margin-right: 0.55em;
-      vertical-align: 0.12em;
+      color: var(--cs-red);
+      font-size: 0.62em;
+      margin-right: 0.7em;
+      vertical-align: 0.18em;
     }
+  }
+  /* first section sits tight under the lede — no rule above it */
+  article > .gp-block:first-of-type h2,
+  article > h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 1.4rem;
   }
   article h3 {
-    color: var(--gp-ink) !important;
+    font-family: var(--cs-mono);
+    font-weight: 700;
+    color: var(--cs-mute-3) !important;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    font-size: 0.66rem;
+    margin: 1.4rem 0 0.7rem;
   }
 
-  /* Intro blockquote → case-file note strip; italic inside → red marginalia */
+  /* ── Lede / pull-quote → Spectral italic, red left rule ──────────── */
   blockquote:not(.callout) {
-    border-left: 2px solid var(--dh-red);
-    background: var(--gp-card);
-    color: var(--gp-ink-2);
-    padding: 0.7rem 1rem;
-    border-radius: 0 4px 4px 0;
-    font-style: normal;
-    & em {
-      font-family: var(--dh-hand);
-      font-style: normal;
-      color: var(--dh-red-bright);
-      font-size: 1.15em;
+    border-left: 2px solid var(--cs-red);
+    background: none;
+    color: var(--cs-strong-2);
+    padding: 0.2rem 0 0.2rem 1.25rem;
+    border-radius: 0;
+    max-width: 640px;
+    font-family: var(--cs-serif);
+    font-style: italic;
+    font-size: 1.12rem;
+    line-height: 1.5;
+    & em { font-style: normal; color: var(--cs-red-link); }
+    & strong { color: var(--cs-strong); }
+  }
+
+  /* ── Cross-ref links → red entity names (not the landing cards) ──── */
+  a.internal:not(.cs-card) {
+    color: var(--cs-red-link);
+    border-bottom: 1px solid var(--cs-red-rule);
+    &:hover { border-bottom-color: var(--cs-red-link); }
+  }
+  code { color: var(--cs-gold); background: var(--cs-inset); }
+
+  /* ── Bullet lists → 5px red square markers ───────────────────────── */
+  article ul:not(.contains-task-list) {
+    list-style: none;
+    padding-left: 0;
+    & > li {
+      position: relative;
+      padding-left: 1.25rem;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.62em;
+        width: 5px;
+        height: 5px;
+        background: var(--cs-red);
+      }
     }
   }
 
-  /* Links → amber, dotted underline (terminal reference feel) */
-  a.internal {
-    color: var(--gp-sage);
-    border-bottom: 1px dotted var(--gp-sage-pale);
-    &:hover { border-bottom-color: var(--gp-sage); }
+  /* ── Tables → data sheets (NPC roster) ───────────────────────────── */
+  article table {
+    font-family: var(--cs-mono);
+    font-size: 0.78rem;
+    border-collapse: collapse;
   }
-
-  /* Tables → data sheets */
-  article table { font-size: 0.82rem; }
   article th {
+    text-align: left;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.68rem;
-    color: var(--gp-sage-darker);
-    border-bottom: 1px solid var(--gp-sage-pale);
+    letter-spacing: 0.14em;
+    font-size: 0.62rem;
+    color: var(--cs-mute-3);
+    border-bottom: 1px solid var(--cs-border-chip);
+    padding: 0 16px 10px 0;
   }
-  article td { border-bottom: 1px solid var(--gp-rule); }
+  article td {
+    vertical-align: top;
+    border-bottom: 1px solid var(--cs-inset);
+    color: var(--cs-notes);
+    padding: 14px 16px 14px 0;
+  }
+  article td:first-child { color: var(--cs-red-link); }   /* NPC names */
 
-  code { color: var(--gp-amber); }
+  /* ── Checklist → custom red checkboxes (GFM task list) ───────────── */
+  article ul.contains-task-list { list-style: none; padding-left: 0; }
+  article li.task-list-item {
+    position: relative;
+    padding-left: 1.7rem;
+    list-style: none;
+    &::before { display: none; }
+    & input[type="checkbox"] {
+      position: absolute;
+      left: 0;
+      top: 0.2em;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 17px;
+      height: 17px;
+      margin: 0;
+      border: 1.5px solid var(--cs-mute-6);
+      border-radius: 4px;
+      background: transparent;
+      cursor: default;
+    }
+    & input[type="checkbox"]:checked {
+      background: var(--cs-red);
+      border-color: var(--cs-red);
+    }
+    & input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 1px;
+      width: 4px;
+      height: 8px;
+      border: solid var(--cs-bg);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    /* checked items read as "done" — dimmed */
+    & input[type="checkbox"]:checked ~ * { color: var(--cs-mute-4); }
+  }
 
-  /* Breadcrumb + content meta → faint terminal stamps */
-  .breadcrumb-container { font-size: 0.72rem; letter-spacing: 0.04em; }
-  .content-meta {
-    color: var(--gp-ink-faint);
+  /* ── Jump-nav (restyled right-rail TOC) → "JUMP TO" reference list ── */
+  .toc {
+    border-top: 1px solid var(--cs-inset);
+    border-bottom: 1px solid var(--cs-inset);
+    padding: 0.6rem 0;
+  }
+  button.toc-header {
+    & h3 {
+      font-family: var(--cs-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cs-mute-5);
+    }
+    & .fold { color: var(--cs-mute-5); }
+  }
+  ul.toc-content {
+    font-size: 0.78rem;
+    & a {
+      font-family: var(--cs-ui);
+      font-weight: 500;
+      color: var(--cs-mute-1);
+      &:hover, &.in-view { color: var(--cs-heading); }
+    }
+  }
+
+  /* ── Sidebar (Explorer / Search) → vault nav ─────────────────────── */
+  .explorer-content { font-size: 0.8rem; }
+  button.desktop-explorer h2,
+  button.mobile-explorer h2 {
+    font-family: var(--cs-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cs-mute-5);
+  }
+
+  /* ── Footer → mono cross-ref tally ───────────────────────────────── */
+  footer {
+    font-family: var(--cs-mono);
+    font-size: 0.7rem;
+    color: var(--cs-mute-5);
+    border-top: 1px solid var(--cs-inset);
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     Section landing (Cold-Storage/index) — "THE LIBRARY" card grid.
+     Hand-authored as HTML in index.md; the stock article title /
+     breadcrumb / meta / back-link are hidden so the hero owns the page.
+     ──────────────────────────────────────────────────────────────── */
+  &[data-slug="Cold-Storage/index"] {
+    .article-title,
+    .breadcrumb-container,
+    .content-meta,
+    .portfolio-backlink {
+      display: none;
+    }
+  }
+
+  .cs-home-eyebrow {
+    font-family: var(--cs-mono);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--cs-mute-3);
+    margin: 0.4rem 0 1rem;
+  }
+  .cs-home-title {
+    font-family: var(--cs-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.6rem;
+    line-height: 1.12;
+    color: var(--cs-heading);
+    max-width: 16ch;
+    margin: 0 0 1.6rem;
+    border: none;
+    padding: 0;
+    &::before { content: none; }
+  }
+  .cs-home-label {
+    font-family: var(--cs-mono);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    color: var(--cs-strong-2);
+    margin: 2.4rem 0 1.3rem;
+    &::before {
+      content: "◆";
+      color: var(--cs-red);
+      font-size: 0.62em;
+      margin-right: 0.7em;
+      vertical-align: 0.18em;
+    }
+    & span {
+      font-family: var(--cs-serif);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.86rem;
+      color: var(--cs-mute-3);
+      margin-left: 0.4em;
+    }
+  }
+
+  .cs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .cs-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 152px;
+    padding: 20px 22px 18px;
+    background: var(--cs-panel);
+    border: 1px solid var(--cs-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    &:hover {
+      border-color: var(--cs-red-rule);
+      background: var(--cs-active);
+      .cs-card-arrow { transform: translateX(3px); }
+    }
+  }
+  .cs-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cs-card-num {
+    font-family: var(--cs-mono);
+    font-size: 0.66rem;
+    color: var(--cs-mute-4);
+  }
+  .cs-card-icon {
+    font-size: 0.9rem;
+    color: var(--cs-mute-4);
+    line-height: 1;
+  }
+  .cs-card-title {
+    font-family: var(--cs-ui);
+    font-weight: 600;
+    font-size: 1.16rem;
+    color: var(--cs-heading);
+    margin: 1.3rem 0 0.35rem;
+  }
+  .cs-card-tag {
+    font-family: var(--cs-serif);
+    font-style: italic;
+    font-size: 0.86rem;
+    color: var(--cs-mute-2);
+  }
+  .cs-card-foot {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1.2rem;
+    font-family: var(--cs-mono);
     font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    color: var(--cs-red-link);
   }
-  .explorer-content, ul.toc-content { font-size: 0.8rem; }
+  .cs-card-arrow {
+    margin-left: auto;
+    transition: transform 0.15s ease;
+  }
+  /* sealed card → dashed, dimmed title, red mark; still a live link */
+  .cs-card-sealed {
+    border-style: dashed;
+    border-color: var(--cs-mute-6);
+    .cs-card-title { color: var(--cs-mute-2); }
+    .cs-card-icon { color: var(--cs-red); }
+    &:hover { border-color: var(--cs-red-rule); }
+  }
+  .cs-home-foot {
+    font-family: var(--cs-mono);
+    font-size: 0.7rem;
+    color: var(--cs-mute-5);
+    letter-spacing: 0.03em;
+    margin: 2.6rem 0 0;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--cs-inset);
+  }
+  @media (max-width: 1080px) {
+    .cs-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .cs-grid { grid-template-columns: 1fr; }
+    .cs-home-title { font-size: 2rem; }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     RAPH'S LAYER — decoupled numbered annotation gutter
+     (markdown footnotes, relocated/retagged by vaultAnnotations.ts)
+     ──────────────────────────────────────────────────────────────── */
+  /* inline ①②③ markers in the prose carry the anchoring */
+  sup.cs-annot-ref a,
+  .data-footnote-ref {
+    color: var(--cs-teal);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: none;
+    padding: 0 0.15em;
+    &:hover { color: var(--cs-teal-body); }
+  }
+
+  .cs-annot-layer {
+    float: right;
+    width: 244px;
+    margin: 0.4rem 0 1.2rem 40px;
+    padding-left: 22px;
+    border-left: 1px solid var(--cs-teal-rule-soft);
+    counter-reset: cs-annot;
+  }
+  .cs-annot-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.1rem;
+    font-family: var(--cs-mono);
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--cs-teal);
+  }
+  .cs-annot-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--cs-teal);
+    color: #08191c;
+    font-weight: 700;
+    font-size: 0.5rem;
+  }
+  ol.cs-annot-list { list-style: none; margin: 0; padding: 0; }
+  li.cs-annot {
+    counter-increment: cs-annot;
+    position: relative;
+    padding-left: 26px;
+    border-left: 2px solid var(--cs-teal-rule);
+    margin: 0 0 1.1rem;
+    padding-bottom: 0.1rem;
+    &::before { display: none; }   /* override the red-square bullet */
+  }
+  .cs-annot-num {
+    position: absolute;
+    left: 8px;
+    top: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: default;
+    font-family: var(--cs-mono);
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--cs-teal);
+    &::before { content: counter(cs-annot); }
+  }
+  .cs-annot-time {
+    display: block;
+    font-family: var(--cs-mono);
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--cs-teal-time);
+    margin-bottom: 0.25rem;
+  }
+  .cs-annot-body, .cs-annot-body p {
+    font-family: var(--cs-ui);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--cs-teal-body);
+    margin: 0;
+  }
+  .cs-annot-body a.internal {
+    color: var(--cs-teal-body);
+    border-bottom-color: var(--cs-teal-rule);
+  }
+  /* hide the raw GFM footnotes section once relocated */
+  section[data-footnotes].cs-annot-source { display: none; }
 
   /* ── [!subject] → taped manila index card ───────────────────────── */
   .callout[data-callout="subject"] {
@@ -1443,6 +1896,195 @@ body[data-slug^="Cold-Storage" i] {
       font-size: 1.25rem;
       line-height: 1.3;
     }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     Folder / section pages — roster list (monogram · name · →)
+     ──────────────────────────────────────────────────────────────── */
+  /* hide the auto-generated "N items under this folder" count + tidy meta */
+  &[data-slug$="/index"] .content-meta { display: none; }
+  .page-listing {
+    margin-top: 1.4rem;
+    & > p { display: none; }
+  }
+  ul.section-ul { margin-top: 0; }
+  li.section-li {
+    margin: 0;
+    border-bottom: 1px solid var(--cs-inset);
+    &::before { display: none; }
+    &:last-child { border-bottom: none; }
+
+    & > .section {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 6px;
+      transition: background 0.12s ease;
+      &:hover { background: var(--cs-active); }
+      &::after {
+        content: "→";
+        margin-left: auto;
+        font-family: var(--cs-mono);
+        color: var(--cs-mute-4);
+        transition: transform 0.12s ease, color 0.12s ease;
+      }
+      &:hover::after { color: var(--cs-red-link); transform: translateX(3px); }
+    }
+
+    .section-monogram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid var(--cs-gold);
+      color: var(--cs-gold-mono);
+      font-family: var(--cs-display);
+      font-size: 0.84rem;
+      line-height: 1;
+    }
+    .section .meta,
+    .section .tags { display: none; }
+    .section .desc { flex: 1; min-width: 0; }
+    .section .desc h3 { margin: 0; }
+    .section .desc h3 a {
+      font-family: var(--cs-ui);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--cs-heading);
+      border-bottom: none;
+      &:hover { color: var(--cs-heading); border-bottom: none; }
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     VaultSidebar (left rail) — curated "MARTE.vault" section nav
+     ──────────────────────────────────────────────────────────────── */
+  .vault-nav {
+    margin-top: 0.4rem;
+    & ul { list-style: none; margin: 0; padding: 0; }
+    & li { margin: 0; padding: 0; &::before { display: none; } }
+  }
+  .vault-nav-label {
+    font-family: var(--cs-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--cs-mute-5);
+    margin: 1.5rem 0 0.5rem;
+    padding-left: 12px;
+  }
+  .vault-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    border-bottom: none;
+    font-family: var(--cs-ui);
+    font-size: 0.84rem;
+    color: var(--cs-mute-1);
+    transition: color 0.12s ease, background 0.12s ease;
+    &:hover { color: var(--cs-heading); background: var(--cs-active); }
+  }
+  .vault-nav-icon {
+    width: 13px;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    color: var(--cs-mute-3);
+    line-height: 1;
+  }
+  .vault-nav-text { flex: 1; }
+  .vault-nav-item.active {
+    background: var(--cs-active);
+    border-left-color: var(--cs-red);
+    color: var(--cs-heading);
+    font-weight: 500;
+    .vault-nav-icon { color: var(--cs-red); }
+  }
+  .vault-nav-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 2rem;
+    padding: 1rem 12px 0;
+    border-top: 1px solid var(--cs-inset);
+  }
+  .vault-nav-enc {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--cs-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--cs-mute-4);
+  }
+  .vault-nav-enc-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cs-red);
+    box-shadow: 0 0 6px var(--cs-red);
+    flex-shrink: 0;
+  }
+  .vault-nav-foot-line {
+    font-family: var(--cs-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    color: var(--cs-mute-5);
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     Responsive (README breakpoints 1080 / 860 / 560 + Override #1)
+     ──────────────────────────────────────────────────────────────── */
+  @media (max-width: 1080px) {
+    /* annotation gutter drops below the prose; numbers become toggles */
+    .cs-annot-layer {
+      float: none;
+      width: auto;
+      max-width: 600px;
+      margin: 1.6rem 0;
+      padding: 1.25rem 0 0;
+      border-left: none;
+      border-top: 1px solid var(--cs-teal-rule-soft);
+    }
+    li.cs-annot .cs-annot-body { display: none; }
+    li.cs-annot.is-open .cs-annot-body { display: block; }
+    .cs-annot-num {
+      cursor: pointer;
+      padding: 2px 4px;
+      &:hover { color: var(--cs-teal-body); }
+    }
+  }
+
+  /* Quartz stacks the left sidebar into a horizontal row on mobile; the vault
+     nav needs the full width, so stack the rail vertically instead. */
+  @media (max-width: 800px) {
+    /* Quartz lays the left sidebar out as a row on mobile via an ID selector
+       (.page>#quartz-body .sidebar.left) — match the ID to win and stack it. */
+    #quartz-body .left.sidebar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .vault-nav { width: 100%; }
+  }
+
+  @media (max-width: 560px) {
+    .article-title { font-size: 1.7rem; }
+    &[data-slug="Cold-Storage/index"] .article-title { font-size: 1.9rem; }
+    /* NPC table scrolls horizontally, keeps a minimum width */
+    .table-container, article > table {
+      overflow-x: auto;
+      display: block;
+      max-width: 100%;
+    }
+    article table { min-width: 540px; }
   }
 }
 

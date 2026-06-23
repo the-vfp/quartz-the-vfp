@@ -212,19 +212,31 @@ for (const [srcSub, dstSub] of Object.entries(FOLDER_MAP)) {
 log(`  copied ${count} content pages` + (drafted.length ? `, skipped ${drafted.length} draft` : ""))
 for (const d of drafted) log(`    · draft (kept private): ${d}`)
 
-// ── 2. Index home page (synced from source, with public-only tweaks) ─────────
+// ── 2. Index home page ───────────────────────────────────────────────────────
+// The public landing is a hand-authored "MARTE.vault" card grid (HTML in
+// index.md, marked `landing: custom`) — a presentation page, NOT a mirror of the
+// source campaign index. If that marker is present we leave it untouched;
+// otherwise we fall back to syncing it from the source vault as before.
 {
-  const srcIndex = path.join(SRC, "index.md")
-  if (fs.existsSync(srcIndex)) {
-    let c = fs.readFileSync(srcIndex, "utf8")
-    c = genericScrub(c)
-    // public-only: drop the in-character Journal — Session 0 row from the Case Log
-    c = c.replace(/^.*Journal — Session 0.*\r?\n/m, "")
-    fs.writeFileSync(path.join(DST, "index.md"), c)
+  const dstIndex = path.join(DST, "index.md")
+  const isCustomLanding =
+    fs.existsSync(dstIndex) && /^\s*landing:\s*custom\b/m.test(fs.readFileSync(dstIndex, "utf8"))
+  if (isCustomLanding) {
     sourcedRel.add("index.md")
-    log("  synced index.md (Session 0 row removed from Case Log)")
+    log("  index.md is a hand-authored landing (landing: custom) — left untouched")
   } else {
-    log("  ⚠ source index.md not found — left existing Cold Storage/index.md as-is")
+    const srcIndex = path.join(SRC, "index.md")
+    if (fs.existsSync(srcIndex)) {
+      let c = fs.readFileSync(srcIndex, "utf8")
+      c = genericScrub(c)
+      // public-only: drop the in-character Journal — Session 0 row from the Case Log
+      c = c.replace(/^.*Journal — Session 0.*\r?\n/m, "")
+      fs.writeFileSync(dstIndex, c)
+      sourcedRel.add("index.md")
+      log("  synced index.md (Session 0 row removed from Case Log)")
+    } else {
+      log("  ⚠ source index.md not found — left existing Cold Storage/index.md as-is")
+    }
   }
 }
 

@@ -57,6 +57,21 @@ type Props = {
   sort?: SortFn
 } & QuartzComponentProps
 
+// Initials for a roster monogram, e.g. "Claire Evangelista Marte" → "CM",
+// "Trip" → "T", "Aicha Rana (Sire)" → "AR". Hidden by default in PageList.css;
+// the Cold Storage theme reveals + styles it (see custom.scss).
+function monogram(title?: string): string {
+  if (!title) return ""
+  const words = title
+    .replace(/\([^)]*\)/g, "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+  if (words.length === 0) return ""
+  if (words.length === 1) return words[0].slice(0, 1).toUpperCase()
+  return (words[0][0] + words[words.length - 1][0]).toUpperCase()
+}
+
 export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort }: Props) => {
   const sorter = sort ?? byDateAndAlphabeticalFolderFirst(cfg)
   let list = allFiles.sort(sorter)
@@ -73,6 +88,9 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
         return (
           <li class="section-li">
             <div class="section">
+              <span class="section-monogram" aria-hidden="true">
+                {monogram(title)}
+              </span>
               <p class="meta">
                 {page.dates && <Date date={getDate(cfg, page)!} locale={cfg.locale} />}
               </p>
@@ -110,5 +128,10 @@ PageList.css = `
 
 .section > .tags {
   margin: 0;
+}
+
+/* roster monogram is opt-in per theme (Cold Storage reveals it) */
+.section-monogram {
+  display: none;
 }
 `

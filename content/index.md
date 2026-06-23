@@ -4,7 +4,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 ---
 
 <nav class="hp-nav">
-<a class="hp-brand" href="/"><svg class="hp-brand-elephant" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><ellipse cx="14.5" cy="12.5" rx="6.8" ry="5.4" fill="var(--gp-sage-deep)"/><circle cx="8.5" cy="12.2" r="4.6" fill="var(--gp-sage-deep)"/><circle cx="9.2" cy="9.6" r="3" fill="var(--gp-sage-deep)"/><rect x="7.4" y="15.5" width="2.6" height="4.4" rx="1.2" fill="var(--gp-sage-deep)"/><rect x="15.4" y="15.8" width="2.6" height="4.1" rx="1.2" fill="var(--gp-sage-deep)"/><path d="M5.6 13c-1.7 1.1-2.4 2.9-2 4.8" stroke="var(--gp-sage-deep)" stroke-width="2.4" stroke-linecap="round"/><circle cx="7.4" cy="11.2" r="0.8" fill="var(--gp-paper)"/></svg><span class="hp-brand-word">Anne Elefante</span></a>
+<a class="hp-brand" href="/"><svg class="hp-brand-elephant" width="22" height="22" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g fill="none" stroke="var(--gp-sage-deep)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M36 14 C 26 11 17 17 18 27 C 18 34 16 41 19 45 C 22 50 27 47 25 42"/><path d="M36 14 C 39 14 40 15 41 16 C 54 13 58 29 49 37 C 45 39 42 37 41 32 C 39 34 37 38 34 38"/></g><circle cx="24" cy="28" r="1.5" fill="var(--gp-sage-deep)"/></svg><span class="hp-brand-word">Anne Elefante</span></a>
 <div class="hp-navlinks">
 <a href="#about">About</a>
 <a href="#whatido">What I do</a>

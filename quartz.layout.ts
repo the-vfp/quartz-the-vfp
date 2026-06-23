@@ -16,20 +16,52 @@ const explorerSortByFilename = (a: FileTrieNode, b: FileTrieNode) => {
   return a.isFolder ? -1 : 1
 }
 
-// Explorer filter: on Help Center pages, collapse the rail down to just the
-// Help Center tree so it reads like the app's own docs nav — no Cold Storage,
-// no Project Journey. Everywhere else the full tree shows. Runs client-side
-// (Quartz serializes it with .toString()), so it reads the live page's
-// data-slug off <body> rather than receiving the current slug as an argument.
-const explorerFilterForHelpCenter = (node: FileTrieNode) => {
+// Explorer filter: inside a self-contained section (Help Center or Cold
+// Storage) collapse the rail down to just that section's tree, so it reads like
+// that section's own nav — no cross-section bleed. Everywhere else the full tree
+// shows. Runs client-side (Quartz serializes it with .toString()), so it reads
+// the live page's data-slug off <body> rather than receiving the current slug
+// as an argument.
+const explorerFilterBySection = (node: FileTrieNode) => {
   if (node.slugSegment === "tags") return false
   const slug =
     (typeof document !== "undefined" && document.body?.getAttribute("data-slug")) || ""
-  if (slug.startsWith("Help-Center")) {
-    return node.slug.startsWith("Help-Center")
+  for (const section of ["Help-Center", "Cold-Storage"]) {
+    if (slug.startsWith(section)) {
+      return node.slug.startsWith(section)
+    }
   }
   return true
 }
+
+const isColdStorage = (page: { fileData: { slug?: string } }) =>
+  (page.fileData.slug ?? "").startsWith("Cold-Storage")
+const notColdStorage = (page: { fileData: { slug?: string } }) => !isColdStorage(page)
+
+// Section-aware left rail: every section gets the generic Quartz search +
+// explorer; Cold Storage swaps those for the sleek curated "MARTE.vault" nav.
+// PageTitle (the Anne Elefante portfolio wordmark + home link) stays for all.
+const sectionLeftSidebar = [
+  Component.PageTitle(),
+  Component.MobileOnly(Component.Spacer()),
+  Component.ConditionalRender({
+    component: Component.Flex({
+      components: [{ Component: Component.Search(), grow: true }],
+    }),
+    condition: notColdStorage,
+  }),
+  Component.ConditionalRender({
+    component: Component.Explorer({
+      sortFn: explorerSortByFilename,
+      filterFn: explorerFilterBySection,
+    }),
+    condition: notColdStorage,
+  }),
+  Component.ConditionalRender({
+    component: Component.VaultSidebar(),
+    condition: isColdStorage,
+  }),
+]
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -58,22 +90,7 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug !== "index",
     }),
   ],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-      ],
-    }),
-    Component.Explorer({
-      sortFn: explorerSortByFilename,
-      filterFn: explorerFilterForHelpCenter,
-    }),
-  ],
+  left: sectionLeftSidebar,
   right: [Component.DesktopOnly(Component.TableOfContents())],
 }
 
@@ -88,21 +105,6 @@ export const defaultListPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
   ],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-      ],
-    }),
-    Component.Explorer({
-      sortFn: explorerSortByFilename,
-      filterFn: explorerFilterForHelpCenter,
-    }),
-  ],
+  left: sectionLeftSidebar,
   right: [],
 }

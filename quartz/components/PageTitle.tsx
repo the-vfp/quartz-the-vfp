@@ -9,32 +9,29 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
   return (
     <h2 class={classNames(displayClass, "page-title")}>
       <a href={baseDir}>
+        {/* Anne Elefante mark — hand-drawn fine-line elephant head (trunk down,
+            soft ear, eye dot), based on Ellene's tattoo. currentColor-driven so
+            it recolors per section: sage on cream, gold on near-black in the
+            Cold Storage vault. stroke-width bumped to 2.6 for inline/small size. */}
         <svg
           class="page-title-leaf"
           width="24"
           height="24"
-          viewBox="0 0 24 24"
+          viewBox="0 0 64 64"
           fill="none"
           aria-hidden="true"
         >
-          {/* body */}
-          <ellipse cx="14.5" cy="12.5" rx="6.8" ry="5.4" fill="#4F6A40" />
-          {/* head */}
-          <circle cx="8.5" cy="12.2" r="4.6" fill="#4F6A40" />
-          {/* ear */}
-          <circle cx="9.2" cy="9.6" r="3" fill="#4F6A40" />
-          {/* legs */}
-          <rect x="7.4" y="15.5" width="2.6" height="4.4" rx="1.2" fill="#4F6A40" />
-          <rect x="15.4" y="15.8" width="2.6" height="4.1" rx="1.2" fill="#4F6A40" />
-          {/* trunk */}
-          <path
-            d="M5.6 13c-1.7 1.1-2.4 2.9-2 4.8"
-            stroke="#4F6A40"
-            stroke-width="2.4"
+          <g
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.6"
             stroke-linecap="round"
-          />
-          {/* eye */}
-          <circle cx="7.4" cy="11.2" r="0.8" fill="#F5F0E2" />
+            stroke-linejoin="round"
+          >
+            <path d="M36 14 C 26 11 17 17 18 27 C 18 34 16 41 19 45 C 22 50 27 47 25 42" />
+            <path d="M36 14 C 39 14 40 15 41 16 C 54 13 58 29 49 37 C 45 39 42 37 41 32 C 39 34 37 38 34 38" />
+          </g>
+          <circle cx="24" cy="28" r="1.5" fill="currentColor" />
         </svg>
         <span>{title}</span>
       </a>

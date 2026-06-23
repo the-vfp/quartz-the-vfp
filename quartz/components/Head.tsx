@@ -57,6 +57,14 @@ export default (() => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
         />
+        {/* Cold Storage (DARKHOUR "MARTE.vault") reskin fonts — Space Grotesk
+            (UI/body) + JetBrains Mono (labels/meta/table) + Spectral (italic
+            ledes/notes) + Cormorant Garamond (monogram/wordmark). Loaded
+            sitewide but only applied under the scoped Cold Storage theme. */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+        />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

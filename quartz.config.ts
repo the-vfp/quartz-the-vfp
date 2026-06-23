@@ -85,6 +85,7 @@ const config: QuartzConfig = {
       Plugin.Latex({ renderEngine: "katex" }),
       Plugin.HardLineBreaks(),
       Plugin.GardenBlocks(),
+      Plugin.VaultAnnotations(),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [

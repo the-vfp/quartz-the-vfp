@@ -1,85 +1,61 @@
 ---
 title: Cold Storage
-tags:
-  - chronicle
+landing: custom
 ---
 
-# COLD STORAGE
-### *Sunset in Chi-Town* — a Vampire: The Masquerade chronicle
+<div class="cs-home">
 
-*Chicago by Night · 5th Edition · Storyteller: Tyler*
+<p class="cs-home-eyebrow">The Cold Storage</p>
+<h1 class="cs-home-title">What's kept here is kept cold, and kept quiet.</h1>
 
-Five strangers, each with someone to lose, pressed together by a blackmailer's hand. What began as a shakedown became a hunt — through a shell security firm, a forum of crackpot truths, and a house built to kill them — for the man called **[[Redwood|Paul Sterry Sr.]]** and the grief that made him.
+<p class="cs-home-label">The Library</p>
 
-Everything ends up here eventually. Filed, cross-referenced, kept cold.
+<div class="cs-grid">
 
-> **Arc I — Power Prey:** closed. · **Arc II:** incoming.
+<a class="cs-card" href="/Cold-Storage/1.-Summaries/">
+<span class="cs-card-top"><span class="cs-card-num">01</span><span class="cs-card-icon">○</span></span>
+<span class="cs-card-title">Chronicle</span>
+<span class="cs-card-tag">the nights, before they blur</span>
+<span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
+</a>
 
----
+<a class="cs-card" href="/Cold-Storage/Coterie/">
+<span class="cs-card-top"><span class="cs-card-num">02</span><span class="cs-card-icon">◇</span></span>
+<span class="cs-card-title">Coterie</span>
+<span class="cs-card-tag">the five, bound by one bad night</span>
+<span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
+</a>
 
-## The Coterie
+<a class="cs-card" href="/Cold-Storage/2.-NPCs/">
+<span class="cs-card-top"><span class="cs-card-num">03</span><span class="cs-card-icon">□</span></span>
+<span class="cs-card-title">Contacts</span>
+<span class="cs-card-tag">every face I've weighed</span>
+<span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
+</a>
 
-> [!subject] [[Claire Evangelista Marte|Claire]] · Banu Haqim
-> alive
-> *the one keeping this file.*
+<a class="cs-card" href="/Cold-Storage/3.-Locations/">
+<span class="cs-card-top"><span class="cs-card-num">04</span><span class="cs-card-icon">△</span></span>
+<span class="cs-card-title">Locations</span>
+<span class="cs-card-tag">ground worth remembering</span>
+<span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
+</a>
 
-> [!subject] [[Collin]] · Brujah
-> alive
-> *only one not on the list.*
+<a class="cs-card" href="/Cold-Storage/4.-Factions/">
+<span class="cs-card-top"><span class="cs-card-num">05</span><span class="cs-card-icon">▢</span></span>
+<span class="cs-card-title">Factions</span>
+<span class="cs-card-tag">courts, coteries &amp; who owes whom</span>
+<span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
+</a>
 
-> [!subject] [[Mitch]] · Gangrel
-> alive
-> *the Beast gets closer every night.*
+<a class="cs-card cs-card-sealed" href="/Cold-Storage/5.-Journal/">
+<span class="cs-card-top"><span class="cs-card-num">06</span><span class="cs-card-icon">✕</span></span>
+<span class="cs-card-title">Sealed</span>
+<span class="cs-card-tag">her own hand — written to him</span>
+<span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
+</a>
 
-> [!subject] [[Trip]] · Tremere
-> alive
-> *won't kill if there's another way.*
+</div>
 
-> [!subject] [[Spider]] · Nosferatu
-> alive
-> *the heavy. quiet about it.*
+<p class="cs-home-foot">MARTE.vault · a public mirror — updated a few nights a season · annotations by R.</p>
 
-## Case Log
-
-| Log | Date |
-|---|---|
-| [[Session 1]] | 2026-03-23 |
-| [[Session 2]] | 2026-04-20 |
-| [[Session 3]] | 2026-05-04 |
-| [[Session 4]] | 2026-05-05 |
-
-Arc I — *Power Prey* — runs Sessions 1–4. Arc II opens next. The [[Journal — Session 0|Journal]] entries are Claire's own, written to her husband — subjective by design.
-
-## Claire's Circle
-
-- [[Raphael Marte|Raphael]] — husband, Touchstone, parallel investigator
-- [[Holly Marte|Holly]] and [[Joy Marte|Joy]] — daughters, who don't know
-- [[Aicha Rana (Sire)|Aicha Rana]] — sire · [[Khadija]] — grandsire
-
-## Antagonists & Leads
-
-- [[Redwood|Paul Sterry Sr.]] — *Redwood.* The blackmailer; a grieving father, unmasked and repurposed against the [[Sabbat]]
-- [[Michelle Sterry]] — the girl at the root of it all; [[Walter Nash]]'s victim, Paul's daughter
-- [[Walter Nash]] — killed Michelle; a Blood Hunt now hangs over him
-- [[Knights Cross]] — a gang of vampire hunters; one of them got away
-- [[Dark Descent]] — Paul's crackpot-forum persona, hiding real knowledge in plain sight
-- [[Steve Jensen]] — dead; the man on the Nash footage
-- [[Jonathan]] — Collin's touchstone; taken, and recovered
-- [[Dutch]] — Trip's ghoul · [[Carter]] — Mitch's brother
-
-
-## The City
-
-- [[Hercules House]] — the killbox at the end of Power Prey
-- [[Darkhour Office]] — Ravenswood; the shell that started the raid
-- [[Garfield Park]] — Conservatory Elysium
-- [[Trip's Clinic]] · [[Collin's Shop]] · [[Carter's Apartment]] · [[Claire's Condo]] · [[Marte Safehouse]] · [[Honored Drinks]]
-
-## Powers in Play
-
-- [[Camarilla]] — the sect; Prince [[Kevin Jackson]] is watching the coterie now
-- [[Sabbat]] — the rival, surfacing in Milwaukee
-- [[Banu Haqim]] — Claire's clan
-- [[Darkhour Security]] — the hired cutout · [[Knights Cross]] — the hunters
-- [[Bridgepoint Consulting]] — the Martes' legitimate front
-- [[verumtenebris.org]] — the forum that was never quite noise
+</div>

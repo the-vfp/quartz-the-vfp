@@ -35,8 +35,11 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
 
       // Display reading time if enabled — skippable per-page with the
       // `hideReadingTime: true` frontmatter flag (e.g. on landing/index pages
-      // where an estimate is meaningless).
-      const hideReadingTime = (fileData.frontmatter as any)?.hideReadingTime === true
+      // where an estimate is meaningless), and always suppressed in the Cold
+      // Storage vault (in-fiction case files don't show a reading estimate).
+      const hideReadingTime =
+        (fileData.frontmatter as any)?.hideReadingTime === true ||
+        (fileData.slug ?? "").startsWith("Cold-Storage")
       if (options.showReadingTime && !hideReadingTime) {
         const { minutes, words: _words } = readingTime(text)
         const displayedTime = i18n(cfg.locale).components.contentMeta.readingTime({
