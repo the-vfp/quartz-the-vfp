@@ -2379,13 +2379,14 @@ body[data-slug^="Help-Center" i] {
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-card);
     height: auto;
-    padding: 7px 14px;
+    padding: 6px 14px;
     color: var(--ink);
     font-family: var(--bodyFont);
     font-weight: 600;
-    /* The base p carries a 1em block margin that inflated the collapsed bar
-       to ~77px — zero it so the height is just text + padding (~40px). */
-    & > p { color: var(--text-faint); margin: 0; }
+    /* The base p carried a 1em block margin AND a ~1.9 line-height that
+       together inflated the collapsed bar to ~77px. Zero the margin and
+       tighten the leading so the 18px icon sets the height (~34px). */
+    & > p { color: var(--text-faint); margin: 0; line-height: 1; }
     & svg .search-path { stroke: var(--text-faint); }
   }
   & button.desktop-explorer h2,
@@ -2702,5 +2703,12 @@ body[data-slug^="Help-Center" i] {
       & .article-title::before { width: 48px; height: 48px; font-size: 24px; }
       & article > section.gp-block > h2 { font-size: 24px; }
     }
+    /* Keep the brand mark + wordmark + search on one aligned row. The 36px
+       desktop mark plus the full wordmark overflowed the ~343px phone header
+       and wrapped "Anne Elefante" to two lines, throwing the row out of
+       alignment. Shrink the lockup proportionally so it fits one line. */
+    & .page-title { font-size: 1.4rem; }
+    & .page-title a span { white-space: nowrap; }
+    & .page-title-leaf { width: 30px; height: 30px; }
   }
 }
