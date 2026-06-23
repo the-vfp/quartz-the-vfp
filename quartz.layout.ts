@@ -17,18 +17,16 @@ const explorerSortByFilename = (a: FileTrieNode, b: FileTrieNode) => {
 }
 
 // Explorer filter: on Help Center pages, collapse the rail down to just the
-// Help Center branch so it reads like the app's own docs nav — no Cold Storage,
-// no Project Journey, and the "Plant Tracker" parent folder is kept in the tree
-// only so Help Center stays reachable (its row is hidden + un-indented in CSS so
-// Help Center reads as the top-level item). Everywhere else the full tree shows.
-// Runs client-side (Quartz serializes it with .toString()), so it reads the live
-// page's data-slug off <body> rather than receiving the current slug as an arg.
+// Help Center tree so it reads like the app's own docs nav — no Cold Storage,
+// no Project Journey. Everywhere else the full tree shows. Runs client-side
+// (Quartz serializes it with .toString()), so it reads the live page's
+// data-slug off <body> rather than receiving the current slug as an argument.
 const explorerFilterForHelpCenter = (node: FileTrieNode) => {
   if (node.slugSegment === "tags") return false
   const slug =
     (typeof document !== "undefined" && document.body?.getAttribute("data-slug")) || ""
-  if (slug.startsWith("Plant-Tracker/Help-Center")) {
-    return node.slug === "Plant-Tracker/index" || node.slug.startsWith("Plant-Tracker/Help-Center")
+  if (slug.startsWith("Help-Center")) {
+    return node.slug.startsWith("Help-Center")
   }
   return true
 }

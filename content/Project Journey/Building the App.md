@@ -11,7 +11,7 @@ tags:
 
 I didn't set out to make an app with AI. I had a problem: I couldn't remember each of my plant's watering schedules and their individual histories. I also couldn't find a tool that would allow me to easily do *only* what I wanted without so much bloat in the way of extra features.
 
-![[Plant Corner.png|320]]
+![[Plant Corner.png|640]]
 
 I was already using AI heavily in a variety of creative projects, so I worked with Claude to solve my problem:
 
@@ -52,7 +52,7 @@ From thereon, I started noting down the features that I wanted to implement in t
 
 I worked incrementally and throughout it all, I ensured that each new feature continued to address the app's main purpose: tracking how I have been caring for my plants. My experience working in tech taught me how easy it is to allow scope creep and I was determined to keep Plant Tracker lightweight and focused.
 
-![[plant-tracker-dashboard-concepts.png|320]]
+![[plant-tracker-dashboard-concepts.png|640]]
 
 During the early days of the build, Claude Design was released. I used it to design a dashboard for the app as a way of learning this new tool. It produced three different concepts for the dashboard. I opted for *The Ledger* design since it actually brought a new functionality by surfacing a view of waterings for the week ahead.
 

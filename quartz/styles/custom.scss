@@ -1448,15 +1448,14 @@ body[data-slug^="Cold-Storage" i] {
 
 /* ═══════════════════════════════════════════════════════════════════
    PLANT TRACKER HELP CENTER — "sticker" reskin
-   Scoped to body[data-slug^="Plant-Tracker/Help-Center"]. Mirrors the
-   live app's reskin (Claude Design handoff): warm cream paper, leaf-green
-   primary, deep-cactus links, thick ink outlines + offset "sticker"
-   shadows, Fredoka display + Nunito body. Everything else on the site
-   (home = rose, Cold Storage = dark, the rest of Plant Tracker = sage)
-   is untouched. Light only — the palette is forced regardless of the
-   dark-mode toggle so the docs always read like the app.
+   Scoped to body[data-slug^="Help-Center"]. Mirrors the live app's reskin
+   (Claude Design handoff): warm cream paper, leaf-green primary, deep-cactus
+   links, thick ink outlines + offset "sticker" shadows, Fredoka display +
+   Nunito body. Everything else on the site (home = rose, Cold Storage = dark,
+   Project Journey = sage) is untouched. Light only — the palette is forced
+   regardless of the dark-mode toggle so the docs always read like the app.
    ═══════════════════════════════════════════════════════════════════ */
-body[data-slug^="Plant-Tracker/Help-Center" i] {
+body[data-slug^="Help-Center" i] {
   /* ── Design-system tokens (verbatim from the handoff) ─────────────── */
   --paper: #fbf3e4;
   --surface: #fffcf6;
@@ -1466,8 +1465,11 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
   --cactus: #2f6e47;
   --pot-fill: #e8f0db;
   --text-muted: #5c6953;
-  --text-faint: #a6b099;
-  --label: #9aa68c;
+  /* Handoff values were #a6b099 / #9aa68c, but as actual text (meta, eyebrows,
+     section labels) they only hit ~2:1 on cream — below WCAG AA. Darkened to a
+     shared muted-label tone that clears 4.5:1 while staying lighter than body. */
+  --text-faint: #67715c;
+  --label: #67715c;
   --card-edge: #ebddc1;
   --rest-fill: #ebeee6;
   --water: #dcebf5;
@@ -1703,7 +1705,7 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
       border-color: #d98a3c;
       border-width: 2.5px;
       box-shadow: var(--pop-sm);
-      & .callout-title { color: #a8501a; }
+      & .callout-title { color: #934514; }
     }
     &[data-callout="danger"],
     &[data-callout="failure"],
@@ -1714,7 +1716,7 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
       border-color: #d9573a;
       border-width: 2.5px;
       box-shadow: var(--pop-sm);
-      & .callout-title { color: #b5341f; }
+      & .callout-title { color: #a32c19; }
     }
   }
 
@@ -1782,20 +1784,6 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
     }
   }
 
-  /* Sidebar shows only the Help Center branch: hide the "Plant Tracker"
-     wrapper row (kept in the tree so Help Center stays reachable) and drop its
-     indent so Help Center reads as the top-level folder. */
-  & .explorer-ul > li > .folder-container[data-folderpath="Plant-Tracker/index"] {
-    display: none;
-  }
-  & .explorer-ul
-    > li
-    > .folder-container[data-folderpath="Plant-Tracker/index"]
-    + .folder-outer
-    > ul {
-    padding-left: 0;
-  }
-
   /* ── Right rail: "In this article" TOC pills ──────────────────────── */
   & button.toc-header h3 {
     font-family: var(--bodyFont);
@@ -1849,7 +1837,7 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
   }
 
   /* ═══ HOME (index) ONLY — hero badge + section emoji badges ════════ */
-  &[data-slug="Plant-Tracker/Help-Center/index"] {
+  &[data-slug="Help-Center/index"] {
     /* The home has no in-article TOC — drop the empty right rail and centre
        the content beside the sidebar, like the handoff's 2-column home.
        Desktop only: tablet/mobile keep Quartz's stacked responsive grids. */
@@ -1886,12 +1874,16 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
       }
     }
 
-    /* Section header: emoji "pot" badge + Fredoka title */
+    /* Section header: emoji "pot" badge + Fredoka title. Badges are keyed to
+       the heading's slug id (NOT document order), so sections can be reordered
+       or inserted without desyncing the icons. Any unmapped/new section keeps
+       the default 🌿 badge — to add one, append a line below with its id. */
     & article > section.gp-block > h2 {
       display: flex;
       align-items: center;
       gap: 14px;
       &::before {
+        content: "🌿";
         flex: 0 0 auto;
         width: 44px;
         height: 44px;
@@ -1905,12 +1897,11 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
         font-size: 21px;
       }
     }
-    & article > section.gp-block:nth-of-type(1) > h2::before { content: "🌱"; }
-    & article > section.gp-block:nth-of-type(2) > h2::before { content: "🌵"; }
-    & article > section.gp-block:nth-of-type(3) > h2::before { content: "💧"; background: var(--water); }
-    & article > section.gp-block:nth-of-type(4) > h2::before { content: "📈"; }
-    & article > section.gp-block:nth-of-type(5) > h2::before { content: "📖"; }
-    & article > section.gp-block:nth-of-type(n + 6) > h2::before { content: "🌿"; }
+    & article > section.gp-block > h2[id="getting-started"]::before { content: "🌱"; }
+    & article > section.gp-block > h2[id="managing-plants"]::before { content: "🌵"; }
+    & article > section.gp-block > h2[id="daily-care"]::before { content: "💧"; background: var(--water); }
+    & article > section.gp-block > h2[id="tracking--insights"]::before { content: "📈"; }
+    & article > section.gp-block > h2[id="reference"]::before { content: "📖"; }
 
     /* Link list inside each section card */
     & article > section.gp-block > ul {
@@ -1940,7 +1931,7 @@ body[data-slug^="Plant-Tracker/Help-Center" i] {
   @media all and ($mobile) {
     & .article-title { font-size: 34px; }
     & .gp-block { padding: 20px 22px; }
-    &[data-slug="Plant-Tracker/Help-Center/index"] {
+    &[data-slug="Help-Center/index"] {
       & .article-title::before { width: 48px; height: 48px; font-size: 24px; }
       & article > section.gp-block > h2 { font-size: 24px; }
     }
