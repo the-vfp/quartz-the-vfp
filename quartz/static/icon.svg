@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Anne Elefante favicon — the masthead elephant-head mark on a sticker chip,
+       in the home page's "Porcelain & Rose" palette: warm cream #f4ecdc
+       background, dusty-rose #9e4757 line (the rose accent the home masthead
+       recolors to), #e2d2b8 hairline. Stroke is thickened and the drawing padded
+       vs. the inline PageTitle SVG so it stays legible down to 16x16 in a browser
+       tab. icon.png is rendered from this. -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#f4ecdc"/>
+  <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="12.75" fill="none" stroke="#e2d2b8" stroke-width="1.5"/>
+  <g transform="translate(32 32) scale(0.82) translate(-37 -30.5)">
+    <g fill="none" stroke="#9e4757" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M36 14 C 26 11 17 17 18 27 C 18 34 16 41 19 45 C 22 50 27 47 25 42"/>
+      <path d="M36 14 C 39 14 40 15 41 16 C 54 13 58 29 49 37 C 45 39 42 37 41 32 C 39 34 37 38 34 38"/>
+    </g>
+    <circle cx="24" cy="28" r="1.8" fill="#9e4757"/>
+  </g>
+</svg>
