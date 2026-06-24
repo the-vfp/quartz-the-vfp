@@ -2712,3 +2712,356 @@ body[data-slug^="Help-Center" i] {
     & .page-title-leaf { width: 30px; height: 30px; }
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   LONGFORM — Anne Elefante reading kit (light academia)
+   Opt in per page with `cssclasses: [longform]` in frontmatter, which
+   renderPage.tsx mirrors onto <body class="longform">. The long-form
+   article layout from the Anne Elefante design-system handoff: warm cream
+   paper, Playfair Display display + EB Garamond body, rose accent, gold
+   trim. A distraction-free reading shell — both sidebars (search,
+   explorer, wordmark, TOC) are removed and the page collapses to a single
+   centred column; the only navigation is the "← Portfolio" back-link.
+   Signature reading moves — book-index TOC with dotted leaders + §
+   numerals, raised initial, gold-ruled italic pull quote, gold-soft
+   framed figures, right-margin marginalia (collapse inline ≤1040px), and
+   a ~◆~ fleuron break. Light only; the academia palette is forced
+   regardless of the dark-mode toggle. Other sections (home = rose, Help
+   Center = sticker, Cold Storage = dark) are untouched.
+   ═══════════════════════════════════════════════════════════════════ */
+body.longform {
+  /* ── Design-system tokens (verbatim from the handoff) ─────────────── */
+  --cream: #F4ECDC;
+  --cream-2: #ECE0CA;
+  --paper: #FBF6EA;
+  --ink: #2E2620;
+  --ink-2: #5A4A42;
+  --ink-muted: #8C7B6A;
+  --ink-faint: #B0A18C;
+  --rose: #9E4757;
+  --rose-deep: #8A3B4C;
+  --rose-pale: #E2C9CF;
+  --rose-tint: #F3E7E1;
+  --gold: #B0894C;
+  --gold-soft: #D8C7A8;
+  --hairline: #E2D2B8;
+  --hairline-soft: #ECE0CA;
+  --on-rose: #F4ECDC;
+
+  --ae-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --ae-body: "EB Garamond", Georgia, "Times New Roman", serif;
+
+  /* ~◆~ fleuron mask (from the DS primitives) */
+  --ae-fleuron-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='18' viewBox='0 0 170 18' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M22 9 C33 4 40 4 50 9 C60 14 67 14 72 9'/%3E%3Cpath d='M98 9 C103 14 110 14 120 9 C130 4 137 4 148 9'/%3E%3Cpath d='M85 4.5 L89.5 9 L85 13.5 L80.5 9 Z' fill='black' stroke='none'/%3E%3C/svg%3E");
+
+  /* Remap Garden Path + Quartz core tokens so any chrome we don't touch
+     (sidebar, search, explorer, links) resolves to the academia palette
+     and dark mode is neutralised. */
+  --gp-cream: var(--cream);
+  --gp-cream-2: var(--cream-2);
+  --gp-paper: var(--paper);
+  --gp-card: var(--paper);
+  --gp-sage: var(--rose);
+  --gp-sage-deep: var(--rose-deep);
+  --gp-sage-darker: var(--ink);
+  --gp-sage-pale: var(--gold-soft);
+  --gp-sage-tint: var(--rose-tint);
+  --gp-ink: var(--ink);
+  --gp-ink-2: var(--ink-2);
+  --gp-ink-mute: var(--ink-muted);
+  --gp-ink-faint: var(--ink-faint);
+  --gp-rule: var(--hairline);
+  --gp-rule-soft: var(--hairline-soft);
+  --light: var(--cream);
+  --dark: var(--ink);
+  --darkgray: var(--ink-2);
+  --gray: var(--ink-muted);
+  --lightgray: var(--hairline);
+  --secondary: var(--rose);
+  --tertiary: var(--gold);
+  --highlight: var(--rose-tint);
+  --textHighlight: #E2C9CF88;
+  --bodyFont: var(--ae-body);
+  --headerFont: var(--ae-display);
+  --titleFont: var(--ae-display);
+
+  background-color: var(--cream);
+  color: var(--ink-2);
+  font-family: var(--ae-body);
+  & ::selection { background: var(--rose-pale); color: var(--ink); }
+
+  /* ── Distraction-free shell ───────────────────────────────────────────
+     Keep the Anne Elefante wordmark (it links home) pinned top-left, but
+     drop the search box + explorer from the left rail and hide the right
+     TOC, so the page is quiet. Two-column grid: a slim logo rail + the
+     reading column. Selectors are qualified with #quartz-body so they
+     out-specify Quartz's ID-carrying base rules (.page > #quartz-body …). */
+  & #quartz-body .left.sidebar > :not(.page-title) { display: none; }
+  & #quartz-body .right.sidebar { display: none; }
+  & #quartz-body {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header"
+      "grid-sidebar-left grid-center"
+      "grid-sidebar-left grid-footer";
+  }
+  /* Centre the reading content + its header/footer at the article width
+     (880px = 640px text measure + the marginalia gutter). */
+  & #quartz-body > .center > article,
+  & #quartz-body .page-header,
+  & #quartz-body .page-footer,
+  & #quartz-body footer {
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* The article authors its own title block, so hide Quartz's stock
+     breadcrumb / title / meta. Keep (and restyle) the portfolio back-link
+     as the single navigation affordance. */
+  & .breadcrumb-container,
+  & .article-title,
+  & .content-meta { display: none; }
+
+  & .portfolio-backlink {
+    font-family: var(--ae-body);
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: var(--rose);
+    &:hover { color: var(--rose-deep); }
+  }
+
+  /* ── Base prose ───────────────────────────────────────────────────── */
+  & article p {
+    font-family: var(--ae-body);
+    font-size: 19px;
+    line-height: 1.72;
+    color: var(--ink-2);
+    margin: 0 0 18px;
+    max-width: 640px;
+  }
+  & article ul,
+  & article ol { max-width: 640px; }
+  & article li {
+    font-family: var(--ae-body);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  & article a { color: var(--rose); text-decoration-color: var(--gold-soft); }
+  & article a:hover { color: var(--rose-deep); }
+  & article em { font-style: italic; }
+  & article strong { font-weight: 500; color: var(--ink); }
+
+  /* ── Title block ──────────────────────────────────────────────────── */
+  /* Quartz's base styles give the <header> element display:flex, which laid
+     the title block out in a row — force a block so each line stacks. */
+  & .ae-head { display: block; max-width: 640px; margin: 0 0 8px; }
+  & h1.ae-title {
+    display: block;
+    font-family: var(--ae-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+  & h1.ae-title em { font-style: italic; color: var(--rose); }
+  & .ae-lead {
+    font-family: var(--ae-body);
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.4;
+    color: var(--ink-muted);
+    margin: 0 0 16px;
+    max-width: 640px;
+  }
+  & .ae-byline {
+    font-family: var(--ae-body);
+    font-variant: small-caps;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    color: var(--gold);
+  }
+
+  /* ── Book-index table of contents ─────────────────────────────────── */
+  & .ae-index {
+    max-width: 640px;
+    margin: 28px 0 8px;
+    padding: 18px 0;
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+  }
+  & .ae-index-title {
+    font-family: var(--ae-body);
+    font-variant: small-caps;
+    letter-spacing: 0.22em;
+    font-size: 13px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  & .ae-index ol { list-style: none; margin: 0; padding: 0; max-width: none; }
+  & .ae-index li { display: flex; align-items: baseline; gap: 6px; padding: 5px 0; }
+  & .ae-index a {
+    font-family: var(--ae-body);
+    font-variant: small-caps;
+    letter-spacing: 0.06em;
+    font-size: 16px;
+    color: var(--ink-2);
+    text-decoration: none;
+    white-space: nowrap;
+    &:hover { color: var(--rose); }
+  }
+  & .ae-leader { flex: 1; border-bottom: 1px dotted var(--gold-soft); transform: translateY(-3px); }
+  & .ae-ref {
+    font-family: var(--ae-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ── Sections + running headings (§ label above the title) ────────── */
+  & .ae-sec { max-width: 880px; margin: 0 auto; }
+  & .ae-sec::after { content: ""; display: block; clear: both; }
+  & .ae-sec h2 {
+    max-width: 640px;
+    margin: 44px 0 14px;
+    font-family: var(--ae-display);
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  & .ae-sec-num {
+    display: block;
+    font-family: var(--ae-body);
+    font-variant: small-caps;
+    letter-spacing: 0.18em;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  & .ae-sec-name { display: block; }
+
+  /* ── Raised initial (illuminated, not a floated drop cap) ─────────── */
+  & .ae-initial {
+    font-family: var(--ae-display);
+    font-weight: 500;
+    font-size: 3.4em;
+    line-height: 0.8;
+    color: var(--rose);
+    vertical-align: baseline;
+    margin-right: 0.04em;
+  }
+
+  /* ── Italic pull quote, framed by thin gold rules ─────────────────── */
+  & .ae-pull {
+    max-width: 640px;
+    margin: 40px 0;
+    padding: 26px 0;
+    border-top: 1px solid var(--gold-soft);
+    border-bottom: 1px solid var(--gold-soft);
+  }
+  & .ae-pull blockquote {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: var(--ae-body);
+    font-style: italic;
+    font-size: clamp(24px, 3.2vw, 30px);
+    line-height: 1.4;
+    color: var(--ink);
+    text-wrap: balance;
+    em { color: var(--rose); }
+  }
+
+  /* ── Figures — gold-soft hairline frame + italic caption ──────────── */
+  & .ae-fig { max-width: 640px; margin: 30px 0; }
+  & .ae-fig-wide { max-width: 880px; }
+  & .ae-fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--gold-soft);
+    border-radius: 8px;
+  }
+  & .ae-fig figcaption {
+    margin-top: 10px;
+    font-family: var(--ae-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  & .ae-fig-label {
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    color: var(--gold);
+    margin-right: 0.5em;
+  }
+
+  /* ── Footnote markers + marginalia notes ──────────────────────────── */
+  & .ae-fnref {
+    font-family: var(--ae-body);
+    color: var(--gold);
+    font-size: 0.72em;
+    font-weight: 500;
+    vertical-align: super;
+    line-height: 0;
+    padding: 0 0.05em;
+  }
+  & .ae-note {
+    float: right;
+    clear: right;
+    width: 200px;
+    margin: 6px 0 16px 40px;
+    font-family: var(--ae-body);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  & .ae-note-num { color: var(--gold); font-weight: 500; margin-right: 0.4em; }
+  & .ae-note-body em { font-style: italic; color: var(--ink-2); }
+
+  /* ── Fleuron section break ────────────────────────────────────────── */
+  & .ae-fleuron {
+    max-width: 880px;
+    margin: 8px auto 64px;
+    height: 18px;
+    background-color: var(--gold);
+    -webkit-mask: var(--ae-fleuron-mask) center / 170px 18px no-repeat;
+            mask: var(--ae-fleuron-mask) center / 170px 18px no-repeat;
+  }
+
+  /* ── Collapse to a single column: marginalia drop inline, gold-ruled ─ */
+  @media (max-width: 1040px) {
+    & #quartz-body > .center > article { max-width: 640px; }
+    & .page-header,
+    & .ae-fleuron,
+    & .ae-fig-wide,
+    & .ae-sec { max-width: 640px; }
+    & .ae-note {
+      float: none;
+      clear: none;
+      width: auto;
+      max-width: 640px;
+      margin: 8px 0 18px;
+      padding: 8px 0 8px 16px;
+      border-left: 1px solid var(--gold-soft);
+    }
+  }
+
+  @media (max-width: 560px) {
+    & h1.ae-title { font-size: 34px; }
+    & .ae-pull blockquote { font-size: 22px; }
+  }
+}

@@ -65,6 +65,16 @@ export default (() => {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap"
         />
+        {/* "Building the App" long-form article — Anne Elefante reading kit
+            (light academia). Playfair Display + EB Garamond with the italic
+            weights the reading layout needs (raised initial, § numerals, italic
+            lede + pull quotes). The site theme already loads these families,
+            but not every italic axis; this guarantees them. Applied only under
+            the scoped body[data-slug="Building-the-App"] theme in custom.scss. */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+        />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

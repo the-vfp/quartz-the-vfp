@@ -259,10 +259,13 @@ export function renderPage(
 
   const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
   const direction = i18n(cfg.locale).direction ?? "ltr"
+  // Expose frontmatter `cssclasses` on the <body> so page-level looks (e.g. the
+  // sidebar-free "longform" reading layout) can be opted into per page.
+  const bodyClasses = (componentData.fileData.frontmatter?.cssclasses ?? []).join(" ") || undefined
   const doc = (
     <html lang={lang} dir={direction}>
       <Head {...componentData} />
-      <body data-slug={slug}>
+      <body data-slug={slug} class={bodyClasses}>
         <div id="quartz-root" class="page">
           <Body {...componentData}>
             {LeftComponent}

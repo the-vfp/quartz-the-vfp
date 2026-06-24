@@ -64,7 +64,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <p class="hp-proj-body">I had 19 houseplants and no system. So I took a product idea from concept to live app: I set the scope, made the design calls, and directed Claude Code through implementation. It's been in daily use ever since, tracking watering schedules for a real plant collection.</p>
 <div class="hp-proj-cta">
 <a class="hp-btn hp-btn-primary" href="https://plant-tracker-blue.vercel.app" target="_blank" rel="noopener">Try it <span class="hp-ext" aria-hidden="true">↗</span></a>
-<a class="hp-btn" href="Project-Journey/Building-the-App">How I built it →</a>
+<a class="hp-btn" href="Building-the-App">How I built it →</a>
 </div>
 </div>
 <div class="hp-proj-img">
@@ -78,7 +78,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <p class="hp-proj-body">Then I built its help centre partly as documentation and partly as a scalability experiment: how do you produce 10+ articles without quality drifting? My answer was governance-first. I wrote three seed articles, bootstrapped a style guide from them, then directed AI to generate the rest under those standards.</p>
 <div class="hp-proj-cta">
 <a class="hp-btn hp-btn-primary" href="Help-Center/index">Read it →</a>
-<!-- TODO: add "How I built it →" → Project-Journey/Creating-the-Help-Center once that reflection is written (currently draft) -->
+<!-- TODO: add "How I built it →" → Creating-the-Help-Center once that reflection is written (currently draft) -->
 
 </div>
 </div>

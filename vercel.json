@@ -7,8 +7,18 @@
       "permanent": true
     },
     {
+      "source": "/Project-Journey/Building-the-App",
+      "destination": "/Building-the-App",
+      "permanent": true
+    },
+    {
+      "source": "/Project-Journey/Help-Center-Style-Guide",
+      "destination": "/Help-Center-Style-Guide",
+      "permanent": true
+    },
+    {
       "source": "/Plant-Tracker/Project-Journey/:path*",
-      "destination": "/Project-Journey/:path*",
+      "destination": "/:path*",
       "permanent": true
     },
     {
