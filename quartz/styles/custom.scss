@@ -2,9 +2,10 @@
 @use "./variables.scss" as *;
 
 /* ─────────────────────────────────────────────────────────────────
-   Garden Path — Plant Tracker portfolio theme
-   Cream + sage palette, Cormorant Garamond + DM Sans, light only.
-   Designed to match Claude Design's "Garden Path" direction.
+   Garden Path — global DEFAULT/fallback theme (Plant Tracker green + OG images)
+   Cream + sage palette, light only. NOT the site-wide look — each section
+   overrides this in a scoped block below (home, Help Center, Cold Storage).
+   Global type is now Playfair Display + EB Garamond (see quartz.config.ts).
    ───────────────────────────────────────────────────────────────── */
 
 :root {
@@ -1067,7 +1068,10 @@ body[data-slug="index"] {
     color: var(--gp-ink-mute);
   }
 
-  /* ── About: photo left, blurb right (mirrors the project spreads) ─ */
+  /* ── About: photo left, blurb right — deliberately the odd one out
+        (this is the personal section, so it doesn't mirror the project
+        spreads). The "Hi" lives inside the text column, hugging the
+        blurb, rather than in a full-width section head. ─────────────── */
   & .hp-hi {
     font-family: var(--headerFont);
     font-style: italic;
@@ -1076,13 +1080,15 @@ body[data-slug="index"] {
     line-height: 1;
     letter-spacing: -0.01em;
     color: var(--gp-sage-deep);   /* match the page's primary-button pink */
-    margin: 0;
+    margin: 0 0 0.85rem;          /* sit right above the first paragraph */
   }
   /* keep the sparkle upright — the heading's italic shouldn't skew the emoji */
   & .hp-hi-spark {
     font-style: normal;
     display: inline-block;
-    margin-right: 0.15em;
+    font-size: 0.42em;        /* shrink — it was inheriting the full ~4rem */
+    vertical-align: super;    /* lift it into a little superscript sparkle */
+    margin-left: 0.1em;
   }
   & .hp-about {
     display: grid;
@@ -1114,6 +1120,7 @@ body[data-slug="index"] {
       color: var(--gp-ink-2);
       margin: 0;
     }
+    & p + p { margin-top: 1rem; }   /* space the body paragraphs apart */
     & .hp-about-signoff {
       color: var(--gp-sage-deep);   /* the page's primary-button pink */
       font-weight: 500;

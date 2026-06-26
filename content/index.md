@@ -150,15 +150,14 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <div class="hp-divider"></div>
 
 <section class="hp-section" id="about">
-<div class="hp-section-head">
-<h2 class="hp-hi"><span class="hp-hi-spark">✨</span> Hi</h2>
-</div>
 <div class="hp-about">
 <div class="hp-about-img">
 <img src="attachments/anne-hello-kitty.jpg" alt="Anne hugging a life-size Hello Kitty statue outside the Hello Kitty shop" loading="lazy" />
 </div>
 <div class="hp-about-text">
-<p>I'm trying my best to take care of the nineteen plants I bought on a whim. I like to think I'm a cozy gamer because I love farming games, but my nights as a raid lead in Final Fantasy XIV say otherwise. When I'm not at my computer, catch me at a cute café with too much stationery spread out for journaling, or at a farmer's market with a scoop of ice cream and my Hello Kitty grocery bags.</p>
+<h2 class="hp-hi">Hi <span class="hp-hi-spark">✨</span></h2>
+<p>I'm an actual human being on the other side of the screen! I'm out here trying my best to take care of the nineteen plants I bought on a whim, I read epic fantasy doorstoppers, and I'd <em>like</em> to think that I'm a cozy gamer who loves farming games… but my nights as a raid lead in Final Fantasy XIV say otherwise.</p>
+<p>When I'm not at my computer, catch me at a cute café with too much stationery spread out for journaling. If you see me out with my Hello Kitty grocery bags, the chances are high that I've stuffed them full of desserts, board games, or a very ill-advised book haul — sometimes there's actual groceries, too.</p>
 <p class="hp-about-signoff">Thanks for stopping by!</p>
 </div>
 </div>
