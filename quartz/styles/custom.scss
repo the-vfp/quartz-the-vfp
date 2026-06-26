@@ -1067,6 +1067,60 @@ body[data-slug="index"] {
     color: var(--gp-ink-mute);
   }
 
+  /* ── About: photo left, blurb right (mirrors the project spreads) ─ */
+  & .hp-hi {
+    font-family: var(--headerFont);
+    font-style: italic;
+    font-size: clamp(2.75rem, 5.5vw, 4rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--gp-sage-deep);   /* match the page's primary-button pink */
+    margin: 0;
+  }
+  /* keep the sparkle upright — the heading's italic shouldn't skew the emoji */
+  & .hp-hi-spark {
+    font-style: normal;
+    display: inline-block;
+    margin-right: 0.15em;
+  }
+  & .hp-about {
+    display: grid;
+    grid-template-columns: minmax(240px, 38%) 1fr;
+    gap: clamp(1.5rem, 4vw, 2.75rem);
+    align-items: center;
+  }
+  & .hp-about-img {
+    /* no frame — let the photo be itself; the section's pink lives in the
+       big rose "Hi ✨" heading instead */
+    display: flex;
+    justify-content: center;
+    & img {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      margin: 0;
+      border: none;   /* clear the global article-img hairline — no frame */
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(110, 80, 40, 0.16);
+    }
+  }
+  & .hp-about-text {
+    min-width: 0;
+    & p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--gp-ink-2);
+      margin: 0;
+    }
+    & .hp-about-signoff {
+      color: var(--gp-sage-deep);   /* the page's primary-button pink */
+      font-weight: 500;
+      margin: 1.1rem 0 0;
+    }
+  }
+
   /* ── Background timeline ────────────────────────────────────────── */
   & .hp-timeline {
     --rail: 0.45rem; /* shared center axis for the line + dots */
@@ -1165,6 +1219,24 @@ body[data-slug="index"] {
       background: var(--gp-flourish) center / 150px 16px no-repeat;
     }
   }
+  & .hp-epigraph {
+    font-family: var(--bodyFont);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--gp-ink-mute);
+    max-width: 32rem;
+    margin: 0 0 0.15rem;
+  }
+  & .hp-epigraph-cite {
+    font-style: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: var(--gp-gold);
+    margin-left: 0.4em;
+    white-space: nowrap;
+  }
   & .hp-footer-copy {
     font-family: var(--bodyFont);
     font-variant: small-caps;
@@ -1187,6 +1259,7 @@ body[data-slug="index"] {
     & .hp-navlinks { display: none; }
     & .hp-cards { grid-template-columns: 1fr; }
     & .hp-proj { grid-template-columns: 1fr; }
+    & .hp-about { grid-template-columns: 1fr; }
     & .hp-footer { align-items: center; }
   }
 }

@@ -14,7 +14,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 <a class="hp-btn hp-btn-primary hp-nav-resume" href="/resume.pdf" target="_blank" rel="noopener">Résumé <span class="hp-ext" aria-hidden="true">↗</span></a>
 </nav>
 
-<header class="hp-hero" id="about">
+<header class="hp-hero" id="top">
 <img class="hp-avatar" src="attachments/anne-elefante.jpg" alt="Anne Elefante" />
 <div class="hp-role">Knowledge &amp; Support Specialist</div>
 <h1 class="hp-name">Anne <span class="hp-accent">Elefante</span></h1>
@@ -147,7 +147,25 @@ description: Knowledge & Support Specialist — I build the things people reach 
 </div>
 </section>
 
+<div class="hp-divider"></div>
+
+<section class="hp-section" id="about">
+<div class="hp-section-head">
+<h2 class="hp-hi"><span class="hp-hi-spark">✨</span> Hi</h2>
+</div>
+<div class="hp-about">
+<div class="hp-about-img">
+<img src="attachments/anne-hello-kitty.jpg" alt="Anne hugging a life-size Hello Kitty statue outside the Hello Kitty shop" loading="lazy" />
+</div>
+<div class="hp-about-text">
+<p>I'm trying my best to take care of the nineteen plants I bought on a whim. I like to think I'm a cozy gamer because I love farming games, but my nights as a raid lead in Final Fantasy XIV say otherwise. When I'm not at my computer, catch me at a cute café with too much stationery spread out for journaling, or at a farmer's market with a scoop of ice cream and my Hello Kitty grocery bags.</p>
+<p class="hp-about-signoff">Thanks for stopping by!</p>
+</div>
+</div>
+</section>
+
 <footer class="hp-footer" id="contact">
+<p class="hp-epigraph">“The truth about stories is that that’s all we are.” <span class="hp-epigraph-cite">— Thomas King</span></p>
 <div class="hp-footer-copy">© 2026 Anne Elefante · Built with Quartz</div>
 <div class="hp-footer-links">
 <a href="https://www.linkedin.com/in/christianne-elefante" target="_blank" rel="noopener">LinkedIn <span class="hp-ext" aria-hidden="true">↗</span></a>
