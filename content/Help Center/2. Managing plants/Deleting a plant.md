@@ -1,6 +1,6 @@
 ---
 title: Deleting a plant
-order: 3
+order: 5
 description: How to remove a plant from your collection — and what gets deleted with it.
 category: managing-plants
 draft: false
@@ -9,10 +9,10 @@ tags:
   - help_center
 ---
 
-Deleting a plant takes everything with it: the plant itself, every logged watering, every note, and every photo. There's no undo, no trash, and no recovery.
+Deleting a plant takes everything with it: the plant itself, every logged watering, every note, and every photo. There's no undo, no trash, and no recovery. If you'd rather keep a plant's history but stop it asking for care, [[Putting a plant to rest|lay it to rest]] instead — that's reversible.
 
 > [!WARNING] Deletion is permanent
-> Once you confirm, the plant and all its history are gone for good. If there's any chance you'll want it back — including the watering log and photos — [[Exporting and importing data|export a backup]] first. You can always import it later if you change your mind.
+> Once you confirm, the plant and all its history are gone for good — no undo, no trash. If there's any chance you'll want it back, [[Exporting and importing data|export a backup]] *before* you delete. Just remember a backup is your **whole** collection, not a single plant: importing it later brings the plant back, but rolls everything else back to that moment too, replacing anything you've changed since.
 
 ## Deleting a plant
 
@@ -22,7 +22,7 @@ Deleting a plant takes everything with it: the plant itself, every logged wateri
 2. Tap *Delete* in the header at the top of the page
 3. When the prompt asks to confirm — for example, "Delete \"Agnes\"? This removes all its data." — tap *OK*
 
-The home dashboard reopens, with the plant gone from every list and tab. The count in the header (`X thirsty · Y total`) drops by one, and any *Care Log* entries the plant contributed to the dashboard's *Care Log* tab disappear too.
+The home dashboard reopens, with the plant gone from every list and tab. The count in the header (`X to tend · Y total`) drops by one, and any *Care Log* entries the plant contributed to the dashboard's *Care Log* tab disappear too.
 
 <!--
 DRAFT ASSUMPTIONS — verify before publishing:

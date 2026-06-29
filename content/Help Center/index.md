@@ -5,7 +5,6 @@ description: Guides for using the Plant Tracker app — schedules, cadence, note
 draft: false
 hideReadingTime: true
 ---
-
 The Plant Tracker Help Center is a demonstration of my approach to designing and creating learning content through a selection of guides and AI. Take a look around and read [[Creating the Help Center]] for a deeper dive into how I put this together.
 
 > [!TIP] New here?
@@ -21,18 +20,22 @@ The Plant Tracker Help Center is a demonstration of my approach to designing and
 
 - [[Adding a plant]] — set up a new plant with a name, type, watering schedule, and icon
 - [[Editing a plant]] — change a plant's name, type, emoji, or schedule
+- [[Browsing all your plants]] — sort and filter your whole collection
+- [[Putting a plant to rest]] — move a plant to the graveyard without losing its history
 - [[Deleting a plant]] — remove a plant and everything attached to it
 
 ## Daily care
 
-- [[Logging a watering]] — record a watering from the dashboard or the plant's page
+- [[Tending to your plants]] — mark what's due done and log a watering
 - [[Adding photos]] — track growth over time
-- [[Notes Overview|Adding notes]] — log repotting, pruning, fertilizing, and more
+- [[Managing notes|Adding notes]] — log repotting, pruning, fertilizing, pinning, and more
 
 ## Tracking & insights
 
-- [[Changing a plant's watering schedule|Changing the watering schedule]] — tune how often a plant gets reminded
+- [[Setting a plant's care schedule|Setting the care schedule]] — tune how often a plant gets reminded to water, fertilize, rotate, and more
+- [[Filtering the care log]] — narrow a care log to the activities you care about
 - [[Watering Cadence Chart Overview|Watering cadence chart]] — read how often you've actually watered
+- [[Watching a plant grow]] — see a plant's photos as a growth timeline
 
 ## Reference
 

@@ -31,17 +31,17 @@ A full walkthrough of the form lives in [[Adding a plant]]. You can change any o
 
 Once your plant exists, water it (in real life), then tap the 💧 button on its row to log it. The watering shows up in your *Care Log* with a timestamp, and the tracker starts counting toward the next due day based on the schedule you set.
 
-You can also log from the plant's own page using the bigger 💧 *Water Now* button — see [[Logging a watering]] for the small differences.
+You can also log from the plant's own page using the bigger 💧 *Water Now* button — see [[Tending to your plants]] for the small differences.
 
-From here on, the daily rhythm is simple: open the dashboard, glance at *Thirsty*, water what's due, tap 💧.
+From here on, the daily rhythm is simple: open the dashboard, glance at *Tend*, handle what's due, tap to log it.
 
 ## Where to go from here
 
 Once your collection has a few plants in it, these articles dig into the parts you'll use most:
 
 - [[Home dashboard overview]] — what each tab and area on the dashboard is for
-- [[Notes Overview|Notes]] and [[Adding photos|photos]] — recording what's happening with each plant beyond watering
-- [[Changing a plant's watering schedule|Changing the watering schedule]] and [[Watering Cadence Chart Overview|the cadence chart]] — tuning how often each plant gets watered
+- [[Managing notes|Notes]] and [[Adding photos|photos]] — recording what's happening with each plant beyond watering
+- [[Setting a plant's care schedule|Setting the care schedule]] and [[Watering Cadence Chart Overview|the cadence chart]] — tuning how often each plant gets watered and tended
 
 When you're ready to protect your work, [[Exporting and importing data|export a backup]]. Plant Tracker stores everything on your phone, so backups are the only way to keep your data when you switch devices or clear your browser. Worth doing before you have a lot to lose.
 

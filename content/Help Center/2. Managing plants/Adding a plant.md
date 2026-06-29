@@ -9,9 +9,9 @@ tags:
   - help_center
 ---
 
-Adding a plant is the first thing to do to start using the tracker! Each plant gets a name, a type, an emoji, and a watering schedule that the tracker uses to remind you when it's thirsty.
+Adding a plant is the first thing to do to start using the tracker! Each plant gets a name, a type, an emoji, and a care schedule that the tracker uses to remind you when it's due.
 
-Once a plant is saved, you can [[Notes Overview|add notes]] in its care log, log waterings to build up its [[Watering Cadence Chart Overview|cadence chart]], and snap photos to track its growth over time.
+Once a plant is saved, you can [[Managing notes|add notes]] in its care log, log waterings to build up its [[Watering Cadence Chart Overview|cadence chart]], and snap photos to track its growth over time.
 
 > [!TIP] Picking an emoji
 > The emoji is what you'll see on the home dashboard, so pick something you'll recognize at a glance. Match it to the plant (🪴 for Agnes the Maranta) or pick a vibe (Rae's a heart 💗 because she's beloved).
@@ -27,7 +27,7 @@ Once a plant is saved, you can [[Notes Overview|add notes]] in its care log, log
 
 3. Give your plant a *Name* — this is what shows up on the dashboard
 4. Fill in the *Type* — the species or common name, like *Maranta Red Prayer Plant*
-5. Set *Water Every (days)* — how many days between waterings. You can [[Changing a plant's watering schedule|change this later]] anytime.
+5. Under *Care schedule*, set *Water (days)* — how many days between waterings. You can also set fertilize, rotate, and pest-control reminders here, or [[Setting a plant's care schedule|change them all later]] anytime.
 6. Pick an *Icon* — tap the keyboard (⌨) for the full emoji picker if you want something outside the default choices
 7. Tap *Add Plant* and your new plant will appear on the home dashboard 🌱
 

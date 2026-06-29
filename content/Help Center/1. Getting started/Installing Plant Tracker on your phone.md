@@ -8,7 +8,7 @@ tags:
   - plant_tracker
   - help_center
 ---
-Plant Tracker is a web app that you can install on your phone so it opens from your home screen, runs full-screen, and feels like a native app. Same Plant Tracker, same plants, same care log — just out of your browser tabs and one tap away.
+Plant Tracker runs right in your browser — open [plant-tracker-blue.vercel.app](https://plant-tracker-blue.vercel.app/) on any phone or computer to use it. You can also install it on your phone so it opens from your home screen, runs full-screen, and feels like a native app. Same Plant Tracker, same plants, same care log — just out of your browser tabs and one tap away.
 
 > [!NOTE] What "installing" actually does
 > There's nothing to download from an app store. Installing copies a shortcut to your home screen and tells your phone to launch the site full-screen. You can uninstall any time by deleting the icon — your data stays put.

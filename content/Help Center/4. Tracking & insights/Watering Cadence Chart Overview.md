@@ -1,9 +1,9 @@
 ---
 title: Watering Cadence Chart Overview
-order: 2
+order: 3
 description: What the watering cadence chart measures and how to read it.
 category: tracking-and-insights
-draft:
+draft: false
 tags:
   - plant_tracker
   - help_center
@@ -11,7 +11,7 @@ tags:
 
 A plant's **cadence** is how often you've actually been watering it — the real gaps between waterings, not the schedule you set. The chart turns those gaps into bars so you can see whether your watering rhythm matches what the plant needs.
 
-Use it to adjust the [[Changing a plant's watering schedule|watering schedule]] you've set, to spot drift when conditions change (a hotter room, a bigger pot), or to congratulate yourself on a plant well watered 🥂
+Use it to adjust the [[Setting a plant's care schedule|watering schedule]] you've set, to spot drift when conditions change (a hotter room, a bigger pot), or to congratulate yourself on a plant well watered 🥂
 
 ![[plant-tracker-agnes-expanded-graph.png|320]]
 
@@ -28,3 +28,4 @@ Above the chart, you can set the range — the last 10, the last 20, or every wa
 ## How the chart updates
 
 The chart reads from your logged waterings, so adding or deleting a watering updates the bars automatically.
+

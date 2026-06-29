@@ -1,0 +1,13 @@
+{
+  "name": "plant-tracker-screenshots",
+  "private": true,
+  "type": "module",
+  "description": "Headless screenshot pipeline for the Plant Tracker Help Center images.",
+  "scripts": {
+    "shoot": "node capture.mjs",
+    "list": "node capture.mjs --list"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}

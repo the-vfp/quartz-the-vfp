@@ -11,7 +11,7 @@ tags:
 
 Photos are how you watch a plant change over time. New leaves, color shifts, that one good day after you finally got the watering right — they all live in the plant's *Care Log* and on the home dashboard's *Care Log* tab.
 
-You can add as many photos as you want. Plant Tracker compresses them automatically so they don't eat up your phone's storage.
+You can add as many photos as you want. Plant Tracker compresses them automatically so they don't eat up your phone's storage. Once a plant has two or more, you can watch them play out as a [[Watching a plant grow|growth timeline]].
 
 > [!NOTE] Photos and backups
 > Photos are an opt-in extra when you [[Exporting and importing data|back up your data]]. The default *Export Data* leaves them out to keep the file small; use *Export with Photos* if you want them included.
@@ -26,6 +26,9 @@ You can add as many photos as you want. Plant Tracker compresses them automatica
 4. Wait for ⏳ *Processing…* to finish — usually a second or two
 
 The photo saves to the plant's *Care Log* with the current timestamp, and it shows up on the home dashboard's *Care Log* tab too.
+
+> [!TIP] Photos and notes are separate
+> A saved photo logs on its own — there's no caption field. If you want to record what's happening in the shot, add it as a separate [[Managing notes|note]].
 
 ## Viewing a photo
 

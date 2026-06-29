@@ -29,9 +29,17 @@ A grab bag of common questions and short answers. Most have longer articles atta
 
 ## Notifications and reminders
 
-**Will Plant Tracker notify me when a plant is thirsty?** No push notifications. The app only shows you what's thirsty when you open it — the *Thirsty* tab and the [[Home dashboard overview|week-ahead strip]] are the reminders. See [[Troubleshooting]] for more.
+**Will Plant Tracker notify me when a plant needs care?** No push notifications. The app only shows you what's due when you open it — the *Tend* tab and the [[Home dashboard overview|week-ahead strip]] are the reminders. See [[Troubleshooting]] for more.
 
 **Can I set custom reminders?** Not within Plant Tracker. You'd set those in your phone's calendar or reminder app and reference Plant Tracker when they fire.
+
+## Tending and the graveyard
+
+**Why don't I see fertilizing, rotating, or pest-control reminders?** Those are off until you set them. Only watering is on by default — add an interval for the others in a plant's [[Setting a plant's care schedule|care schedule]] and they'll start appearing in the *Tend* tab when due.
+
+**Where do my resting plants go?** When you [[Putting a plant to rest|lay a plant to rest]], it moves to the graveyard — the *Resting* filter on the *All Plants* tab. Its history is kept, it's left out of the *Tend* tab and your dashboard counts, and you can revive it anytime.
+
+**Why don't I see the filter chips on my care log?** The [[Filtering the care log|emoji filter]] only appears once a log has at least two different kinds of entry. A log that's all waterings has nothing to filter, so the row stays hidden.
 
 ## Recovery
 
@@ -45,11 +53,13 @@ A grab bag of common questions and short answers. Most have longer articles atta
 
 **Are my photos in the backup file?** Only if you used *Export with Photos*. The plain *Export Data* button skips them to keep the file small — see [[Adding photos]] for more.
 
+**Why isn't there a 📸 *See growth* button on my plant?** The [[Watching a plant grow|growth timeline]] needs at least two photos to chart a journey. Add a second photo and the 📸 *See growth* button appears in the plant's photo section.
+
 ## Cost and access
 
 **How much does Plant Tracker cost?** Nothing — there's no purchase, subscription, or in-app fee.
 
-**Is there a desktop version?** The same web app works in any browser, including on a laptop. Your plants on the desktop are separate from your plants on your phone, since storage is per-browser.
+**Is there a desktop version?** The same web app works in any browser, including on a laptop — just open [plant-tracker-blue.vercel.app](https://plant-tracker-blue.vercel.app/). Your plants on the desktop are separate from your plants on your phone, since storage is per-browser.
 
 <!--
 DRAFT ASSUMPTIONS — verify before publishing:

@@ -1,7 +1,7 @@
 ---
 title: Editing a plant
 order: 2
-description: Update a plant's name, type, emoji, or watering schedule any time.
+description: Update a plant's name, type, emoji, or care schedule any time.
 category: managing-plants
 draft: false
 tags:
@@ -9,7 +9,7 @@ tags:
   - help_center
 ---
 
-Anything you set when you [[Adding a plant|added a plant]] can be changed later — the name, the type, the emoji, the watering schedule. Edits take effect immediately and apply everywhere the plant shows up: home dashboard, week-ahead strip, care log, the works.
+Anything you set when you [[Adding a plant|added a plant]] can be changed later — the name, the type, the emoji, the care schedule. Edits take effect immediately and apply everywhere the plant shows up: home dashboard, week-ahead strip, care log, the works.
 
 ## Editing a plant
 
@@ -20,10 +20,10 @@ Anything you set when you [[Adding a plant|added a plant]] can be changed later 
 
 ![[plant-tracker-agnes-edit.png|320]]
 
-3. Update any of the fields — *Name*, *Type*, *Water Every (days)*, or *Icon*
+3. Update any of the fields — *Name*, *Type*, *Icon*, or the *Care schedule* intervals
 4. Tap *Save Changes*
 
-If you only need to change how often the tracker reminds you to water, [[Changing a plant's watering schedule|the watering-schedule article]] walks through that specific case. Everything else (name, type, icon) is straightforward — type the new value or pick a new emoji from the grid, then save.
+If you only need to retime its care — watering, fertilizing, rotating, or pest control — [[Setting a plant's care schedule|the care-schedule article]] walks through each reminder. Everything else (name, type, icon) is straightforward — type the new value or pick a new emoji from the grid, then save.
 
 > [!TIP] What changes immediately
 > The new name and emoji propagate everywhere right away — including in the *Care Log* on the home dashboard, where past entries display with the updated info. The history isn't rewritten, just relabeled.
