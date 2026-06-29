@@ -1,5 +1,6 @@
 ---
 title: Setting a plant's care schedule
+aliases: [Help Center/4. Tracking & insights/Changing a plant's watering schedule]
 order: 1
 description: Set how often Plant Tracker reminds you to water, fertilize, rotate, and treat each plant for pests.
 category: tracking-and-insights

@@ -1,5 +1,6 @@
 ---
-title: Adding photos
+title: Managing photos
+aliases: [Help Center/3. Daily care/Adding photos]
 order: 2
 description: Snap or pick a photo of a plant to track its growth — and how to view or remove photos later.
 category: daily-care

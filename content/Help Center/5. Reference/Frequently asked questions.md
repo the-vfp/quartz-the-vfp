@@ -51,7 +51,7 @@ A grab bag of common questions and short answers. Most have longer articles atta
 
 **Why does my photo look smaller than the one I took?** Plant Tracker compresses photos on upload (1200 pixels on the longest side) so your collection doesn't fill up your phone's storage. The original photo on your phone isn't changed.
 
-**Are my photos in the backup file?** Only if you used *Export with Photos*. The plain *Export Data* button skips them to keep the file small — see [[Adding photos]] for more.
+**Are my photos in the backup file?** Only if you used *Export with Photos*. The plain *Export Data* button skips them to keep the file small — see [[Managing photos]] for more.
 
 **Why isn't there a 📸 *See growth* button on my plant?** The [[Watching a plant grow|growth timeline]] needs at least two photos to chart a journey. Add a second photo and the 📸 *See growth* button appears in the plant's photo section.
 

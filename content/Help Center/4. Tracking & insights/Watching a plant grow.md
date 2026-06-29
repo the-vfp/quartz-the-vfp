@@ -9,7 +9,7 @@ tags:
   - help_center
 ---
 
-Once a plant has a few [[Adding photos|photos]], you can see them laid out as a timeline — a top-to-bottom view of how far it's come. It's the most satisfying screen in Plant Tracker, and it's one tap from the plant's page. 🌱
+Once a plant has a few [[Managing photos|photos]], you can see them laid out as a timeline — a top-to-bottom view of how far it's come. It's the most satisfying screen in Plant Tracker, and it's one tap from the plant's page. 🌱
 
 ![[plant-tracker-see-growth.png|320]]
 

@@ -27,7 +27,7 @@ The Plant Tracker Help Center is a demonstration of my approach to designing and
 ## Daily care
 
 - [[Tending to your plants]] — mark what's due done and log a watering
-- [[Adding photos]] — track growth over time
+- [[Managing photos]] — track growth over time
 - [[Managing notes|Adding notes]] — log repotting, pruning, fertilizing, pinning, and more
 
 ## Tracking & insights

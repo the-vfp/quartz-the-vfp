@@ -1,5 +1,6 @@
 ---
 title: Tending to your plants
+aliases: [Help Center/3. Daily care/Logging a watering]
 order: 1
 description: Clear the care that's due — water, fertilize, rotate, and more — from the Tend tab, plus the quick ways to log a watering.
 category: daily-care

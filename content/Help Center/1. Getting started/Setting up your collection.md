@@ -40,7 +40,7 @@ From here on, the daily rhythm is simple: open the dashboard, glance at *Tend*, 
 Once your collection has a few plants in it, these articles dig into the parts you'll use most:
 
 - [[Home dashboard overview]] — what each tab and area on the dashboard is for
-- [[Managing notes|Notes]] and [[Adding photos|photos]] — recording what's happening with each plant beyond watering
+- [[Managing notes|Notes]] and [[Managing photos|photos]] — recording what's happening with each plant beyond watering
 - [[Setting a plant's care schedule|Setting the care schedule]] and [[Watering Cadence Chart Overview|the cadence chart]] — tuning how often each plant gets watered and tended
 
 When you're ready to protect your work, [[Exporting and importing data|export a backup]]. Plant Tracker stores everything on your phone, so backups are the only way to keep your data when you switch devices or clear your browser. Worth doing before you have a lot to lose.
