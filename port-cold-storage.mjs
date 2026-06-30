@@ -29,13 +29,17 @@ const SRC = "C:\\Users\\thevf\\Documents\\Drive\\Ellene\\3. 🎲 Tabletop Games\
 const DST = "C:\\Users\\thevf\\quartz-the-vfp\\content\\Cold Storage"
 
 // source subfolder -> target subfolder. Folders not listed (e.g. "0. Claire",
-// the private Full Sheet / Experience Log) are intentionally excluded.
+// the private Full Sheet / Experience Log, and "9. Family (private)") are
+// intentionally excluded. Public targets are clean, number-free names; section
+// ORDER in the wiki is set by the hardcoded list in VaultSidebar.tsx, not by
+// these names, so dropping the numeric prefixes here is safe.
 const FOLDER_MAP = {
-  "2. Claude Summaries": "1. Summaries",
-  "4. NPCs": "2. NPCs",
-  "5. Locations": "3. Locations",
-  "6. Factions": "4. Factions",
-  "3. Journal": "5. Journal",
+  "2. Chronicle": "Chronicle",
+  "3. Coterie": "Coterie",
+  "4. Contacts": "Contacts",
+  "5. Locations": "Locations",
+  "6. Factions": "Factions",
+  "7. Sealed": "Sealed",
 }
 
 // nicer display titles where the filename stem isn't ideal
@@ -49,45 +53,45 @@ const PLAYERS = ["Sam", "Tony", "Alan", "Ron", "Christy"]
 // File-specific edits for stable, known references (vault refs + OOC prose).
 // Keyed by target-relative path. find must match exactly or it's reported MISS.
 const FILE_EDITS = {
-  "4. Factions/Banu Haqim.md": [
+  "Factions/Banu Haqim.md": [
     [
       "Full mechanical reference for Banu Haqim (bane, compulsion, clan discipline spread) is on the Claire Full Sheet. Political context in Chicago is still thin — will expand as the campaign touches it.",
       "Political context in Chicago is still thin — will expand as the campaign touches it.",
     ],
   ],
-  "3. Locations/Honored Drinks.md": [
+  "Locations/Honored Drinks.md": [
     [
       "Appears in Christy's [[Session 1]] notes as \"Honoured Drink 🍺\" (spelling/singular variant). The [[Session 2]] summary uses \"Honored Drinks.\" Canonical name TBD.",
       "Also appears as \"Honoured Drink\" — a spelling/singular variant.",
     ],
   ],
-  "4. Factions/Camarilla.md": [
+  "Factions/Camarilla.md": [
     [
       "Runs an education system for new vampires — noted in Christy's [[Session 1]] session notes as \"oh cool, the Prince runs new vampires through an education system.\"",
       "Runs an education system for new vampires.",
     ],
   ],
-  "2. NPCs/Claire Evangelista Marte.md": [
+  "Coterie/Claire Evangelista Marte.md": [
     [
       "\n\nFull mechanical reference lives in `0. Claire/Claire Marte Full Sheet.md`. Foundry is the source of truth for live tracker state.",
       "",
     ],
   ],
-  "2. NPCs/Steve Jensen.md": [
+  "Contacts/Steve Jensen.md": [
     ["ID number 633CH noted in Christy's [[Session 1]] notes.", "ID number 633CH."],
   ],
-  "2. NPCs/Walter Nash.md": [
+  "Contacts/Walter Nash.md": [
     [
       "The footage seems to show him feeding (per Christy's session notes: \"they also have video of Nash feeding\").",
       "The footage seems to show him feeding.",
     ],
   ],
-  "2. NPCs/Carter.md": [
+  "Contacts/Carter.md": [
     ["surfaced in [[Session 2]]'s notes.", "surfaced in [[Session 2]]."],
   ],
   // Note: the "X's PC." blockquote tags (Collin/Mitch/Spider/Trip/Claire) are
   // handled generically by pcTagRe in genericScrub(), so no per-file edits here.
-  "1. Summaries/Session 1.md": [
+  "Chronicle/Session 1.md": [
     ["Tyler informed Ron that [[Collin]]'s investigation", "[[Collin]]'s investigation"],
     ["This was Ron's first exposure to frenzy mechanics:", "This was the group's first exposure to frenzy mechanics:"],
     ["Tony ([[Mitch]]) on the lesson learned:", "[[Mitch]]'s player on the lesson learned:"],
@@ -150,6 +154,20 @@ function genericScrub(content) {
   c = c.replace(/\s*_[^_\n]*generated from[^_\n]*_/gi, "") // auto-caption footer
   // strip %% private %% … %% /private %% blocks (visible in Obsidian, never public)
   c = c.replace(/\n?[^\S\n]*%%\s*private\s*%%[\s\S]*?%%\s*\/private\s*%%[^\S\n]*/gi, "")
+  // Claire's mortal family (Raphael/Holly/Joy) is kept private — their pages live
+  // in the un-ported "9. Family (private)" folder and are deliberately NOT on the
+  // public wiki ("this is Claire's vault; the family is what she keeps out of it").
+  // The source keeps the wikilinks intact for private navigation; here we flatten
+  // them to plain text so no broken links surface in the public copy.
+  c = c.replace(/\[\[(?:Raphael|Holly|Joy) Marte\|([^\]]*)\]\]/g, "$1")
+  c = c.replace(/\[\[(?:Raphael|Raph|Holly|Joy)\|([^\]]*)\]\]/g, "$1")
+  c = c.replace(/\[\[Raphael Marte\]\]/g, "Raphael")
+  c = c.replace(/\[\[Holly Marte\]\]/g, "Holly")
+  c = c.replace(/\[\[Joy Marte\]\]/g, "Joy")
+  c = c.replace(/\[\[Raphael\]\]/g, "Raphael")
+  c = c.replace(/\[\[Raph\]\]/g, "Raph")
+  c = c.replace(/\[\[Holly\]\]/g, "Holly")
+  c = c.replace(/\[\[Joy\]\]/g, "Joy")
   return c
 }
 

@@ -1,0 +1,30 @@
+---
+title: "Journal — Session 2"
+type: journal
+session: 2
+date: 2026-04-20
+---
+
+We chose the office over the [[Honored Drinks|bar]] and the [[verumtenebris.org|forum]], and I'm the one who pushed for it — physical evidence over people, sources over interviews, the way I'd always rather work. I was right about the target and wrong about what it would cost, and I haven't decided whether those cancel.
+
+[[Trip]] drove. He was on his third cigarette before we reached the highway and looked worse than the night before — "less okay," he said, when I asked, and thanked me for putting it kindly, which from Trip is practically affection. Ravenswood is where the city gives up pretending: flickering lamps, foundations abandoned mid-crane, blue security lights blinking over buildings with nothing left in them to guard. [[Darkhour Security|Darkhour]]'s own building is a security company with no security — no cameras, no hidden cameras, no alarm panel, a window latch that gave under [[Spider]]'s hand so easily he realized halfway through forcing it that it had never been locked. Spider saw three figures in a parked car across the street, watching the place, and we went around the back rather than let them watch us too.
+
+With my senses up the dark might as well have been daylight, and what the dark was holding was a half-gutted shell someone had moved into a few weeks ago and a wall I won't forget. Stalker photographs of [[Carter]] — not snapshots, the kind you take from a car — and sticky notes beside them in a tidy hand: laundry, eight to ten-thirty; home by four; take liberties, red bike.[^r1] A jacket on a chair that matched the one from the Nash footage. A printed email set under the monitor like a paperweight. The company on paper is older than the dust in it. Somebody built this place to look empty, or stripped it bare so we could get in, and the not-knowing is the most honest thing I can tell you about Darkhour.[^r2]
+
+Then I heard the one heartbeat — upstairs, racing, a single person breathing too hard to be calm — and I put my fingers to Spider's mouth to stop him talking and signed it to the others, *one, up there*, and we moved to the stairs the way you move toward the only sound in a quiet house.
+
+That's where it stopped being mine. A car door, far off. A mechanism engaging, closer. Then something small and metal struck the wall by my foot and rolled down to me, and I shut my senses off a half-second before the tear gas bloomed, which is the one thing I did cleanly all night. What came after I mostly watched, because watching is what I'm for. Spider went up the stairs into the muzzle flash, took three rounds through the middle on the way, tore the mask off the man at the top and found [[Steve Jensen]]'s face under it — the man from the footage — and drained him to the floor; he broke his own vow to do it, and I saw the moment he decided, or the moment the Hunger decided for him, and neither of us could tell you which. [[Collin]] put a man down through the front door with a shot so clean and so unbothered that I understood, watching it, that this was not his first time. And Trip flipped the table for cover, and when the second man went down through the chest, Trip stopped hunting for paper and knelt in the blood and saved his life instead, hands soaked to the wrist, and did not feed. Two of them in the same minute at opposite ends of what we are. I keep setting them side by side, and the only thing I've worked out is that the restraint is the rarer thing, and I would like to go on believing Trip has it.
+
+And then me. There was a runner, and a captive is worth more than a corpse, so I took a dropped baton and went after him. Raphael, I have spent my whole life — both of them — arranging things so I would never have to do what I tried to do in that yard, and tonight I learned exactly how little is underneath the arrangement.[^r3] I couldn't trip him. I couldn't tackle him. I reached for the blood the way you reach for a tool no one ever taught you to hold, and it gave me nothing but more hunger, and he drove his knee into my temple with the full weight of a running man behind it. I went sideways into cover — the driver was firing from a black Charger by then, and I'm not so far gone I'll stand in front of a gun to prove a point — and I sat against a fence with my head ringing and made myself useful the only way left to me. Corporate fleet plate, trackable. Female, late twenties, hair up, Eastern European to the bone, and frightened — eyes wide, not a professional's calm. She didn't slow and she didn't circle. She's gone, for now.[^r4]
+
+Earlier, on the wall, before any of it, the beast wanted cruelty out of me and I gave it Collin — sharp, petty, the kind of thing I'd be ashamed to have you hear me say to anyone. It wasn't me and it was entirely me. You should know it can still do that.[^r5]
+
+We left with two living captives, a fled driver, a tower full of data, and a wall that proves someone has been watching Carter long enough to know his laundry. I came out with more questions than I went in with, which you of all people know is how I prefer to end a night — even one that ended with me on the ground.
+
+Give the girls my love. I'll find you before I sleep.
+
+[^r1]: 04:14 — They had his laundry schedule. That's weeks of someone standing in the street. Same hands as the camera in his wall, probably. I'm cross-referencing tonight.
+[^r2]: 04:21 — Empty on purpose or emptied for you, it's a stage either way. I want to know who built it, not just who's standing on it.
+[^r3]: 04:33 — There's plenty under that arrangement. It just isn't fists. You ran at him; you should've let him go and watched — which is what you did the second you hit the ground. Lead with that part next time.
+[^r4]: 04:40 — Fleet plate is mine by morning. Scared *and* on a corporate plate means employee, not contractor, and frightened people leave the cleanest trails. Send me the number.
+[^r5]: 04:52 — It made you cruel for half a minute. You've been crueler to me stone sober, and here I am.

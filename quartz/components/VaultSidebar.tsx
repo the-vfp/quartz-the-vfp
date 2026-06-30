@@ -22,16 +22,16 @@ type NavItem = {
 
 const VAULT: NavItem[] = [
   { label: "Home", icon: "●", target: "Cold-Storage" as SimpleSlug },
-  { label: "Chronicle", icon: "○", target: "Cold-Storage/1.-Summaries" as SimpleSlug },
+  { label: "Chronicle", icon: "○", target: "Cold-Storage/Chronicle" as SimpleSlug },
   { label: "Coterie", icon: "◇", target: "Cold-Storage/Coterie" as SimpleSlug },
-  { label: "Contacts", icon: "□", target: "Cold-Storage/2.-NPCs" as SimpleSlug },
-  { label: "Locations", icon: "△", target: "Cold-Storage/3.-Locations" as SimpleSlug },
-  { label: "Factions", icon: "▢", target: "Cold-Storage/4.-Factions" as SimpleSlug },
+  { label: "Contacts", icon: "□", target: "Cold-Storage/Contacts" as SimpleSlug },
+  { label: "Locations", icon: "△", target: "Cold-Storage/Locations" as SimpleSlug },
+  { label: "Factions", icon: "▢", target: "Cold-Storage/Factions" as SimpleSlug },
 ]
 const SEALED: NavItem = {
   label: "Sealed",
   icon: "✕",
-  target: "Cold-Storage/5.-Journal" as SimpleSlug,
+  target: "Cold-Storage/Sealed" as SimpleSlug,
 }
 
 const VaultSidebar: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {

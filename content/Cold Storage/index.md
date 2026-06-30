@@ -12,7 +12,7 @@ landing: custom
 
 <div class="cs-grid">
 
-<a class="cs-card" href="/Cold-Storage/1.-Summaries/">
+<a class="cs-card" href="/Cold-Storage/Chronicle/">
 <span class="cs-card-top"><span class="cs-card-num">01</span><span class="cs-card-icon">○</span></span>
 <span class="cs-card-title">Chronicle</span>
 <span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
@@ -24,25 +24,25 @@ landing: custom
 <span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
 </a>
 
-<a class="cs-card" href="/Cold-Storage/2.-NPCs/">
+<a class="cs-card" href="/Cold-Storage/Contacts/">
 <span class="cs-card-top"><span class="cs-card-num">03</span><span class="cs-card-icon">□</span></span>
 <span class="cs-card-title">Contacts</span>
 <span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
 </a>
 
-<a class="cs-card" href="/Cold-Storage/3.-Locations/">
+<a class="cs-card" href="/Cold-Storage/Locations/">
 <span class="cs-card-top"><span class="cs-card-num">04</span><span class="cs-card-icon">△</span></span>
 <span class="cs-card-title">Locations</span>
 <span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
 </a>
 
-<a class="cs-card" href="/Cold-Storage/4.-Factions/">
+<a class="cs-card" href="/Cold-Storage/Factions/">
 <span class="cs-card-top"><span class="cs-card-num">05</span><span class="cs-card-icon">▢</span></span>
 <span class="cs-card-title">Factions</span>
 <span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
 </a>
 
-<a class="cs-card cs-card-sealed" href="/Cold-Storage/5.-Journal/">
+<a class="cs-card cs-card-sealed" href="/Cold-Storage/Sealed/">
 <span class="cs-card-top"><span class="cs-card-num">06</span><span class="cs-card-icon">✕</span></span>
 <span class="cs-card-title">Sealed</span>
 <span class="cs-card-foot"><span class="cs-card-arrow">→</span></span>
