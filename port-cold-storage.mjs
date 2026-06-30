@@ -168,6 +168,8 @@ function genericScrub(content) {
   c = c.replace(/\[\[Raph\]\]/g, "Raph")
   c = c.replace(/\[\[Holly\]\]/g, "Holly")
   c = c.replace(/\[\[Joy\]\]/g, "Joy")
+  // PKJ's Letter is a private handout (8. Handouts isn't ported) — de-link refs in public
+  c = c.replace(/\[\[PKJ's Letter(?:\|[^\]]*)?\]\]/g, "the Prince's letter")
   return c
 }
 
