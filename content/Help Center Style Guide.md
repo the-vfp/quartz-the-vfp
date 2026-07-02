@@ -1,7 +1,7 @@
 ---
 title: Help Center Style Guide
 description: Editorial rules for Plant Tracker Help Center articles. Use this as the system prompt + reference when generating new articles with Claude.
-draft: false
+draft: true
 tags:
   - plant_tracker
   - help_center
