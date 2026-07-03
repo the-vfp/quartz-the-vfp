@@ -1,5 +1,13 @@
 # Anne Elefante — Design System
 
+> **Scope:** this documents the **home page + longform reading pages** only ("Romantic
+> Academia"). It is **not** the whole-site theme. The site has several scoped sections,
+> each with its own look (Help Center "sticker", Cold Storage "DARKHOUR", sage default) —
+> see the root `CLAUDE.md` for the full architecture. In particular, the "Applying it →
+> Quartz" block below shows the rose/cream palette *this section* wants; the live
+> `quartz.config.ts` is intentionally the **sage "Garden Path"** default (it keeps Plant
+> Tracker green + drives OG images), so **do not** copy the block below into the config.
+
 > **Romantic academia.** Ornament with restraint: the warmth of coquette, the gravity of dark academia, the symmetry of baroque — spent carefully, never piled on. A person with a library card made this, not a generator.
 
 ## The three rules that keep it from reading "AI"
@@ -23,7 +31,7 @@ Drop cap is **intentionally omitted** — it fights the centered hero. (If a lon
 
 ## Two themes, one system
 
-**Light academia is the default** — the whole site (portfolio + reading pages) ships light: calm, bookish, low-risk. **Dark academia is the dark-mode theme**, offered as a toggle. Both are first-class and fully specified; light simply leads.
+**Light academia is the default** — these pages (portfolio home + reading pages) ship light: calm, bookish, low-risk. **Dark academia is the dark-mode theme**, offered as a toggle. Both are first-class and fully specified; light simply leads.
 
 | Theme | Role | Notes |
 |-------|------|-------|
