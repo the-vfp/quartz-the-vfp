@@ -12,3 +12,12 @@ replit.nix
 
 .vercel
 .env*.local
+
+# Local Claude Code config & agent worktrees (machine-specific, not site content)
+.claude/launch.json
+.claude/worktrees/
+
+# Local working notes & one-off tooling (not part of the deployed site)
+CLAUDE.md
+build-keeper.mjs
+cold-storage-redesign-brief.md
