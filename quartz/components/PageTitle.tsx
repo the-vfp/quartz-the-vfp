@@ -9,9 +9,10 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
   return (
     <h2 class={classNames(displayClass, "page-title")}>
       <a href={baseDir}>
-        {/* Anne Elefante mark — hand-drawn fine-line elephant head (trunk down,
-            soft ear, eye dot), based on Ellene's tattoo. currentColor-driven so
-            it recolors per section: sage on cream, gold on near-black in the
+        {/* Anne Elefante mark — hand-drawn fine-line elephant head (trunk curled
+            up in a spiral at eye level, soft ear, eye dot), based on Ellene's
+            tattoo; "Curl" redraw picked July 2026. currentColor-driven so it
+            recolors per section: sage on cream, gold on near-black in the
             Cold Storage vault. stroke-width bumped to 2.6 for inline/small size. */}
         <svg
           class="page-title-leaf"
@@ -28,7 +29,7 @@ const PageTitle: QuartzComponent = ({ fileData, cfg, displayClass }: QuartzCompo
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <path d="M36 14 C 26 11 17 17 18 27 C 18 34 16 41 19 45 C 22 50 27 47 25 42" />
+            <path d="M36 14 C 26 11 17 17 18 27 C 18 33 15 35.5 10.5 35 C 4.5 34 2.5 25.5 8.5 24 C 13 22.8 14.5 27.5 10 29.2" />
             <path d="M36 14 C 39 14 40 15 41 16 C 54 13 58 29 49 37 C 45 39 42 37 41 32 C 39 34 37 38 34 38" />
           </g>
           <circle cx="24" cy="28" r="1.5" fill="currentColor" />
