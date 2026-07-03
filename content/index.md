@@ -1,6 +1,6 @@
 ---
-title: Anne Elefante
-description: Knowledge & Support Specialist — I build the things people reach for when they're stuck.
+title: Anne Elefante — Knowledge & Support Specialist
+description: I build the things people reach for when they're stuck.
 ---
 
 <nav class="hp-nav">
@@ -53,7 +53,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 
 <section class="hp-section" id="projects">
 <div class="hp-section-head">
-<h2 class="hp-section-title">Projects</h2>
+<h2 class="hp-section-title" id="projects-title">Projects</h2>
 </div>
 
 <div class="hp-projects">
@@ -108,7 +108,7 @@ description: Knowledge & Support Specialist — I build the things people reach 
 
 <section class="hp-section" id="background">
 <div class="hp-section-head">
-<h2 class="hp-section-title">Background</h2>
+<h2 class="hp-section-title" id="background-title">Background</h2>
 </div>
 <div class="hp-timeline">
 

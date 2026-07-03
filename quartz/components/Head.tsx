@@ -22,6 +22,15 @@ export default (() => {
 
     const { css, js, additionalHead } = externalResources
 
+    // Section fonts are scoped by slug in custom.scss, so only load each
+    // section's Google Fonts stylesheet on the pages that actually use it —
+    // otherwise every page (the home included) pays render-blocking weight for
+    // ~6 families it never paints, which hurts first paint most on mobile.
+    const slug = fileData.slug ?? ""
+    const isHelpCenter = slug.startsWith("Help-Center")
+    const isColdStorage = slug.startsWith("Cold-Storage")
+    const isLongform = (fileData.frontmatter?.cssclasses ?? []).includes("longform")
+
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
@@ -52,30 +61,35 @@ export default (() => {
           </>
         )}
         {/* Plant Tracker Help Center reskin fonts — Fredoka (display) + Nunito
-            (body/labels). Loaded sitewide but only applied under the scoped
-            Help Center theme in custom.scss. */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
-        />
+            (body/labels). Only loaded on Help Center pages, where the scoped
+            theme in custom.scss actually applies them. */}
+        {isHelpCenter && (
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
+          />
+        )}
         {/* Cold Storage (DARKHOUR "MARTE.vault") reskin fonts — Space Grotesk
             (UI/body) + JetBrains Mono (labels/meta/table) + Spectral (italic
-            ledes/notes) + Cormorant Garamond (monogram/wordmark). Loaded
-            sitewide but only applied under the scoped Cold Storage theme. */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap"
-        />
-        {/* "Building the App" long-form article — Anne Elefante reading kit
-            (light academia). Playfair Display + EB Garamond with the italic
-            weights the reading layout needs (raised initial, § numerals, italic
-            lede + pull quotes). The site theme already loads these families,
-            but not every italic axis; this guarantees them. Applied only under
-            the scoped body[data-slug="Building-the-App"] theme in custom.scss. */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
-        />
+            ledes/notes) + Cormorant Garamond (monogram/wordmark). Only loaded
+            on Cold Storage pages, where the scoped theme applies them. */}
+        {isColdStorage && (
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+          />
+        )}
+        {/* Long-form reading kit (light academia) — Playfair Display + EB
+            Garamond with the italic weights the reading layout needs (raised
+            initial, § numerals, italic lede + pull quotes). The site theme
+            already loads these families, but not every italic axis; this
+            guarantees them. Only loaded on pages that opt into `longform`. */}
+        {isLongform && (
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+          />
+        )}
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -95,7 +109,7 @@ export default (() => {
             <meta name="twitter:image" content={ogImageDefaultPath} />
             <meta
               property="og:image:type"
-              content={`image/${getFileExtension(ogImageDefaultPath) ?? "png"}`}
+              content={`image/${getFileExtension(ogImageDefaultPath)?.slice(1) ?? "png"}`}
             />
           </>
         )}

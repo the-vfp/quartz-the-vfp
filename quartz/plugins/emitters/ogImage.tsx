@@ -62,7 +62,10 @@ async function generateSocialImage(
     },
   })
 
-  return sharp(Buffer.from(svg)).webp({ quality: 40 })
+  // PNG rather than WebP: LinkedIn's crawler (the primary share target for
+  // this site) is unreliable at rendering WebP OG cards. PNG keeps text crisp
+  // and is universally supported by social crawlers.
+  return sharp(Buffer.from(svg)).png()
 }
 
 async function processOgImage(
@@ -96,7 +99,7 @@ async function processOgImage(
     ctx,
     content: stream,
     slug: `${slug}-og-image` as FullSlug,
-    ext: ".webp",
+    ext: ".png",
   })
 }
 
@@ -154,11 +157,13 @@ export const CustomOgImages: QuartzEmitterPlugin<Partial<SocialImageOptions>> = 
             }
 
             const generatedOgImagePath = isRealFile
-              ? `https://${baseUrl}/${pageData.slug!}-og-image.webp`
+              ? `https://${baseUrl}/${pageData.slug!}-og-image.png`
               : undefined
             const defaultOgImagePath = `https://${baseUrl}/static/og-image.png`
             const ogImagePath = userDefinedOgImagePath ?? generatedOgImagePath ?? defaultOgImagePath
-            const ogImageMimeType = `image/${getFileExtension(ogImagePath) ?? "png"}`
+            // getFileExtension returns the dot (".png"); strip it so the mime is
+            // "image/png", not the malformed "image/.png".
+            const ogImageMimeType = `image/${getFileExtension(ogImagePath)?.slice(1) ?? "png"}`
             return (
               <>
                 {!userDefinedOgImagePath && (
