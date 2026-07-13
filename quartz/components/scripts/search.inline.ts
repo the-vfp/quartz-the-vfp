@@ -203,6 +203,19 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
   if (!searchLayout) return
 
   const idDataMap = Object.keys(data) as FullSlug[]
+
+  // Section-scoped search: mirrors the Explorer's `explorerFilterBySection`.
+  // Inside a self-contained section (Help Center or Cold Storage) we restrict
+  // results to that section so its search reads like that section's own search
+  // — no cross-section bleed. Home / longform / tag pages keep global search.
+  const sections = ["Help-Center", "Cold-Storage"]
+  const currentSection = sections.find((s) => currentSlug.startsWith(s)) ?? null
+  const inCurrentSection = (id: number) =>
+    !currentSection || (idDataMap[id] ?? "").startsWith(currentSection)
+  // When a section filter is active we over-fetch, then trim after filtering,
+  // so a section still fills up to `numSearchResults` cards.
+  const searchLimit = currentSection ? Math.max(numSearchResults, 10000) : numSearchResults
+
   const appendLayout = (el: HTMLElement) => {
     searchLayout.appendChild(el)
   }
@@ -457,7 +470,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
           tag: { tags: tag },
         })
         for (let searchResult of searchResults) {
-          searchResult.result = searchResult.result.slice(0, numSearchResults)
+          searchResult.result = searchResult.result.slice(0, searchLimit)
         }
         // set search type to basic and remove tag from term for proper highlightning and scroll
         searchType = "basic"
@@ -466,14 +479,14 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
         // default search by tags index
         searchResults = await index.searchAsync({
           query: currentSearchTerm,
-          limit: numSearchResults,
+          limit: searchLimit,
           index: ["tags"],
         })
       }
     } else if (searchType === "basic") {
       searchResults = await index.searchAsync({
         query: currentSearchTerm,
-        limit: numSearchResults,
+        limit: searchLimit,
         index: ["title", "content"],
       })
     }
@@ -489,7 +502,10 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
       ...getByField("content"),
       ...getByField("tags"),
     ])
-    const finalResults = [...allIds].map((id) => formatForDisplay(currentSearchTerm, id))
+    const finalResults = [...allIds]
+      .filter(inCurrentSection)
+      .slice(0, numSearchResults)
+      .map((id) => formatForDisplay(currentSearchTerm, id))
     await displayResults(finalResults)
   }
 

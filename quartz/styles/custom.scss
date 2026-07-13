@@ -1207,8 +1207,15 @@ body[data-slug="index"] {
   }
 
   /* ── Footer / contact ───────────────────────────────────────────── */
-  & .hp-footer {
+  /* Qualified with #quartz-body so this out-specifies Quartz's base rule
+     `.page > #quartz-body footer { max-width:100%; min-width:100% }` (an
+     ID-level selector). Without the bump, the base forces this nested
+     <footer> full-width and its centered flourish drifts off the page
+     centre — misaligning with the body `.hp-divider`. min-width:0 undoes
+     the inherited min-width:100%. */
+  & #quartz-body .hp-footer {
     max-width: var(--hp-max);
+    min-width: 0;
     margin: clamp(2.5rem, 6vw, 4rem) auto 3rem;
     padding: 1.75rem var(--hp-pad) 0;
     display: flex;
@@ -2036,6 +2043,52 @@ body[data-slug^="Cold-Storage" i] {
       color: var(--cs-heading);
       border-bottom: none;
       &:hover { color: var(--cs-heading); border-bottom: none; }
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     Search — discreet trigger at the top of the left rail
+     ────────────────────────────────────────────────────────────────
+     The full-screen overlay modal inherits the DARKHOUR palette for
+     free (the --light / --lightgray / --dark / --tertiary / --highlight
+     remaps above cover everything search.scss references). Only the
+     collapsed button needs bespoke styling to sit quietly above the
+     vault nav and read in the MARTE.vault mono idiom. */
+  .search {
+    max-width: none;
+    margin-top: 0.2rem;
+
+    & > .search-button {
+      width: 100%;
+      height: auto;
+      padding: 7px 11px;
+      gap: 8px;
+      background: var(--cs-panel);
+      border: 1px solid var(--cs-border);
+      border-radius: 3px;
+      transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+
+      & svg {
+        width: 12px;
+        min-width: 12px;
+        margin: 0;
+        .search-path { stroke: var(--cs-mute-3); stroke-width: 1.6px; }
+      }
+
+      & > p {
+        font-family: var(--cs-mono);
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--cs-mute-3);
+      }
+
+      &:hover {
+        border-color: var(--cs-border-chip);
+        background: var(--cs-active);
+        & .search-path { stroke: var(--cs-gold); }
+        & > p { color: var(--cs-strong-2); }
+      }
     }
   }
 

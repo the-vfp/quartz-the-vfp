@@ -57,6 +57,14 @@ const sectionLeftSidebar = [
     }),
     condition: notColdStorage,
   }),
+  // Cold Storage gets its own discreet search above the vault nav. It's the
+  // same Search component (so it inherits the section-scoping in
+  // search.inline.ts → returns only Cold-Storage results); the MARTE.vault
+  // restyle of the collapsed button lives in custom.scss.
+  Component.ConditionalRender({
+    component: Component.Search(),
+    condition: isColdStorage,
+  }),
   Component.ConditionalRender({
     component: Component.VaultSidebar(),
     condition: isColdStorage,
