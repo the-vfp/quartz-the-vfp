@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Anne Elefante — Résumé</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap');
+
+  :root {
+    --bg:        #fbf8f1;  /* warm near-white page */
+    --ink:       #2e2620;  /* near-black brown — name, titles */
+    --ink-body:  #4a4038;  /* body copy */
+    --ink-mute:  #6f6156;  /* descriptors */
+    --rose:      #9e4757;  /* accent — surname, company subheads, bullets */
+    --gold:      #b0894c;  /* eyebrows, dates, contact link */
+    --rule:      #d8c7a8;  /* hairlines, entry spine */
+  }
+
+  @page { size: letter; margin: 0; }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink-body);
+    font-family: "EB Garamond", Georgia, serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.55in 0.8in 0.45in;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+  .name {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 41px;
+    line-height: 1;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .name em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--rose);
+  }
+  .role {
+    font-family: "EB Garamond", serif;
+    font-variant: small-caps;
+    letter-spacing: 0.22em;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 0.5rem 0 0;
+    padding-left: 0.12em;
+  }
+  .contact { text-align: right; line-height: 1.5; }
+  .contact .loc {
+    font-variant: small-caps;
+    letter-spacing: 0.14em;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+  .contact .link {
+    font-variant: small-caps;
+    letter-spacing: 0.09em;
+    font-size: 11px;
+    color: var(--gold);
+    margin: 0.1rem 0 0;
+  }
+
+  .rule {
+    border: 0;
+    border-top: 1.5px solid var(--gold);
+    margin: 0.85rem 0 0;
+    opacity: 0.8;
+  }
+
+  /* ── Tagline ────────────────────────────────────────────── */
+  .tagline {
+    font-family: "EB Garamond", serif;
+    font-style: italic;
+    font-size: 16.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 1rem 0 0;
+    max-width: 46rem;
+  }
+
+  /* ── Sections ───────────────────────────────────────────── */
+  .sec { margin-top: 1.4rem; }
+  .sec-label {
+    font-family: "EB Garamond", serif;
+    font-variant: small-caps;
+    letter-spacing: 0.2em;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 0 0 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .sec-label .diamond { font-size: 9px; transform: translateY(-1px); }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 1.55in 1fr;
+    column-gap: 0;
+  }
+  .entry + .entry { margin-top: 1.05rem; }
+
+  .meta { padding-right: 0.9rem; padding-top: 0.15rem; }
+  .dates {
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.35;
+  }
+  .descriptor {
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin: 0.5rem 0 0;
+    line-height: 1.4;
+  }
+
+  .content {
+    border-left: 1px solid var(--rule);
+    padding-left: 1.4rem;
+  }
+  .entry-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0;
+  }
+  .entry-sub {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--rose);
+    margin: 0.2rem 0 0;
+  }
+
+  .bullets {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+  }
+  .bullets li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 13.5px;
+    line-height: 1.46;
+    color: var(--ink-body);
+    margin-top: 0.4rem;
+  }
+  .bullets li:first-child { margin-top: 0; }
+  .bullets li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    font-size: 8px;
+    color: var(--rose);
+    line-height: 1.7;
+  }
+
+  .edu-note {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-body);
+    margin: 0.5rem 0 0;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="head-left">
+        <h1 class="name">Anne <em>Elefante</em></h1>
+        <p class="role">Knowledge &amp; Support Specialist</p>
+      </div>
+      <div class="contact">
+        <p class="loc">Edmonton, AB</p>
+        <p class="link">linkedin.com/in/christianne-elefante</p>
+      </div>
+    </header>
+
+    <hr class="rule" />
+
+    <p class="tagline">Twice the founding support hire — built knowledge infrastructure from scratch at Showbie and Decisive Farming.</p>
+
+    <section class="sec">
+      <h2 class="sec-label"><span class="diamond">◆</span> Experience</h2>
+
+      <div class="entry">
+        <div class="meta">
+          <p class="dates">May 2021 – Feb 2026</p>
+          <p class="descriptor">B2B SaaS · agronomy &amp; farm management</p>
+        </div>
+        <div class="content">
+          <h3 class="entry-title">Customer Experience Manager II</h3>
+          <p class="entry-sub">Decisive Farming (TELUS Agriculture)</p>
+          <ul class="bullets">
+            <li>Led the customer-facing help centre from zero as a cross-functional initiative — built the project case, timeline, launch criteria, and maintenance plan; partnered with the CEO, Product, Design, and Client Success from kickoff through launch.</li>
+            <li>Designed the knowledge base architecture end-to-end — information architecture, content hierarchy, taxonomy, and a style guide ensuring consistent documentation across the business.</li>
+            <li>Owned the automated onboarding program in Intercom — scoped what to automate versus where human judgment added value, designed in-app product tours mapped to user roles, and secured director-level buy-in for a unified onboarding and help-centre hub.</li>
+            <li>Set the voice-of-customer feedback loop with Product — translated support trends and ticket patterns into roadmap signal, content priorities, and knowledge base improvements.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="meta">
+          <p class="dates">2016 – 2021</p>
+          <p class="descriptor">EdTech · Showbie &amp; Socrative</p>
+        </div>
+        <div class="content">
+          <h3 class="entry-title">Customer Support &amp; Success</h3>
+          <p class="entry-sub">Showbie</p>
+          <ul class="bullets">
+            <li>Founded the support function as Showbie's first dedicated support hire — designed ticketing workflows, support processes, and the user-facing help library from scratch as the K–12 user base scaled.</li>
+            <li>Built the cross-functional model between Support, Product, and Sales — established the feedback channels the company used to turn user signal into product decisions.</li>
+            <li>Returned as Customer Success Representative — designed and facilitated webinars for audiences from small district tech teams to entire school staffs, and delivered tailored educator onboarding.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2 class="sec-label"><span class="diamond">◆</span> Education</h2>
+
+      <div class="entry">
+        <div class="meta">
+          <p class="dates">2021</p>
+        </div>
+        <div class="content">
+          <h3 class="entry-title">Master of Library and Information Studies (MLIS)</h3>
+          <p class="entry-sub">University of Alberta</p>
+          <p class="edu-note">ALA Spectrum Scholarship recipient</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="meta">
+          <p class="dates">2019</p>
+        </div>
+        <div class="content">
+          <h3 class="entry-title">Bachelor of Education, Secondary (B.Ed)</h3>
+          <p class="entry-sub">University of Alberta</p>
+          <p class="edu-note">English major, Communication Design minor · Graduated with Distinction</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
