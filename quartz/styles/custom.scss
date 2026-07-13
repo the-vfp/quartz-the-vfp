@@ -2301,6 +2301,26 @@ body[data-slug^="Help-Center" i] {
   background-color: var(--paper);
   & ::selection { background: var(--leaf-quiet); }
 
+  /* Search-hit highlight: the stock treatment is --tertiary (=leaf) at 60%,
+     which renders dark green text on a pale translucent-green wash — a muddy
+     green-on-green that's hard to read. Swap to a solid cactus chip with cream
+     text for a legible "darker green" highlight in both the result cards and
+     the preview. Qualified with #quartz-body so it out-specifies search.scss's
+     deep `.search-layout .highlight` chain (5 classes deep). */
+  & #quartz-body .search .highlight {
+    background: var(--cactus);
+    color: var(--paper);
+  }
+  /* Result-card titles are <h3>s, so the global heading rule
+     (h1–h6 { color: var(--gp-sage-darker) }, = leaf here) colours them bright
+     leaf on the element itself — too light on the cream cards, and it beats
+     the anchor's inherited colour. Pin the title (and card) to cactus (dark
+     green); the cream highlight chip inside still wins on the matched span. */
+  & #quartz-body .search .result-card,
+  & #quartz-body .search .result-card .card-title {
+    color: var(--cactus);
+  }
+
   /* A touch more room than the global 680px — the docs column is 720px */
   & #quartz-body > .center > article,
   & #quartz-body > .center > .page-header {
